@@ -1,0 +1,127 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+group = PROJ_GROUP
+
+// Both the artifactory and bintray plugins depend on this singular
+// global `version` variable. As such, we need to configure it based
+// on which task we're running.
+//
+// The solution here is brittle; it just checks whether 'bintrayUpload'
+// was called for execution, otherwise it assumes SNAPSHOT. If we
+// were to wait until the task graph was built, we'd be too late
+// (the plugins would already have used `version`).
+version = PROJ_VERSION
+
+// Create source/javadoc artifacts for publishing
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    // Exclude generated files
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+    source = android.sourceSets.main.java.srcDirs
+    failOnError false
+    classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title PROJ_ARTIFACTID
+    }
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Configure android-maven-gradle-plugin
+install {
+    repositories.mavenInstaller.pom.project {
+        name PROJ_NAME
+        description PROJ_DESCRIPTION
+        packaging 'aar'
+        url PROJ_WEBSITEURL
+
+        licenses {
+            license {
+                name POM_LICENCE_NAME
+                url POM_LICENCE_URL
+                distribution POM_LICENCE_DIST
+            }
+        }
+
+        scm {
+            url POM_SCM_URL
+            connection POM_SCM_CONNECTION
+            developerConnection POM_SCM_DEV_CONNECTION
+
+        }
+
+        developers {
+            developer {
+                id DEVELOPER_ID
+                name DEVELOPER_NAME
+                email DEVELOPER_EMAIL
+            }
+        }
+    }
+}
+
+// Configure gradle-bintray-plugin (for publishing releases)
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    user = properties.getProperty('BINTRAY_USER');
+    key = properties.getProperty('BINTRAY_KEY');
+
+    configurations = ['archives']
+    publications = ['mavenJava']
+    publish = true
+
+    pkg {
+        repo = 'maven'
+        name = PROJ_NAME
+        desc = PROJ_DESCRIPTION
+        websiteUrl = PROJ_WEBSITEURL
+        issueTrackerUrl = PROJ_ISSUETRACKERURL
+        vcsUrl = PROJ_VCSURL
+        licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
+        labels = [PROJ_NAME]
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId PROJ_ARTIFACTID
+
+            pom {
+                packaging 'aar'
+            }
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', PROJ_DESCRIPTION)
+//                root.children().last() + pomConfig
+            }
+        }
+    }
+}
