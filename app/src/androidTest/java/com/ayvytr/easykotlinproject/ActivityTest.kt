@@ -3,8 +3,8 @@ package com.ayvytr.easykotlinproject
 
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import android.view.View
 import android.widget.TextView
+import com.ayvytr.easykotlin.view.ex.*
 import junit.framework.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ActivityTest
 {
-    @Rule
+    @get:Rule
     var rule = ActivityTestRule(MainActivity::class.java)
 
     @Test
@@ -31,12 +31,27 @@ class ActivityTest
     {
         val tv = rule.activity.findViewById(R.id.tv) as TextView
         rule.activity.runOnUiThread {
-            tv.visibility = View.VISIBLE
-            assertEquals(tv.visibility, View.VISIBLE)
-            tv.visibility = View.INVISIBLE
-            assertEquals(tv.visibility, View.INVISIBLE)
-            tv.visibility = View.GONE
-            assertEquals(tv.visibility, View.GONE)
+            tv.show()
+            assertEquals(tv.isVisible(), true)
+            assertEquals(tv.isInvisible(), false)
+            assertEquals(tv.isGone(), false)
+            assertEquals(tv.isNotVisible(), false)
+            assertEquals(tv.isNotInvisible(), true)
+            assertEquals(tv.isNotGone(), true)
+            tv.invisible()
+            assertEquals(tv.isInvisible(), true)
+            assertEquals(tv.isVisible(), false)
+            assertEquals(tv.isGone(), false)
+            assertEquals(tv.isNotVisible(), true)
+            assertEquals(tv.isNotInvisible(), false)
+            assertEquals(tv.isNotGone(), true)
+            tv.hide()
+            assertEquals(tv.isGone(), true)
+            assertEquals(tv.isShow(), false)
+            assertEquals(tv.isInvisible(), false)
+            assertEquals(tv.isNotVisible(), true)
+            assertEquals(tv.isNotInvisible(), true)
+            assertEquals(tv.isNotGone(), false)
         }
     }
 }
