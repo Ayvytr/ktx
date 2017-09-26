@@ -1,6 +1,7 @@
 package com.ayvytr.easykotlin.view.ex
 
 import android.view.View
+import android.view.View.*
 
 /**
  * View 相关的Kotlin扩展方法
@@ -59,4 +60,74 @@ fun View.showOrInvisible(isShow: Boolean)
 fun View.enable(enable: Boolean)
 {
     isEnabled = enable
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] == [View.VISIBLE])
+ */
+fun View.isVisible(): Boolean
+{
+    return visibility == VISIBLE
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] == [View.VISIBLE])
+ */
+fun View.isShow(): Boolean
+{
+    return isVisible()
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 不可见([View.getVisibility] != [View.VISIBLE])
+ */
+fun View.isNotVisible(): Boolean
+{
+    return !isVisible()
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] == [View.INVISIBLE])
+ */
+fun View.isInvisible(): Boolean
+{
+    return visibility == INVISIBLE
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] != [View.INVISIBLE])
+ */
+fun View.isNotInvisible(): Boolean
+{
+    return !isInvisible()
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] == [View.GONE])
+ */
+fun View.isGone(): Boolean
+{
+    return visibility == GONE
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] != [View.GONE])
+ */
+fun View.isNotGone(): Boolean
+{
+    return !isGone()
 }
