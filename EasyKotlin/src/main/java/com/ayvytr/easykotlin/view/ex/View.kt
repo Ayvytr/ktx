@@ -7,7 +7,7 @@ import android.view.View.*
  * View 相关的Kotlin扩展方法
  * <p>
  *
- * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @author ['s GitHub](https://github.com/Ayvytr)
  * @since 0.1.0
  */
 
