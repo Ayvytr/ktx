@@ -4,8 +4,8 @@ package com.ayvytr.easykotlinproject
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.widget.TextView
-import com.ayvytr.easykotlin.Easy
-import com.ayvytr.easykotlin.ex.SpManager
+import com.ayvytr.easykotlin.EasyKotlin
+import com.ayvytr.easykotlin.ex.sp.SpManager
 import com.ayvytr.easykotlin.view.ex.*
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
@@ -55,8 +55,8 @@ class ActivityTest
     @Test
     fun testEasy()
     {
-        Easy.default.init(rule.activity)
-        assertNotNull(Easy.default.getContext())
+        EasyKotlin.default.init(rule.activity)
+        assertNotNull(EasyKotlin.default.getContext())
         val sp = SpManager.getDefault(rule.activity).getSp("aa")
         assertNotNull(sp)
 
