@@ -3,10 +3,7 @@ package com.ayvytr.easykotlinproject
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
-import com.ayvytr.easykotlin.context.getDrawable2
-import com.ayvytr.easykotlin.context.getDrawableArray
-import com.ayvytr.easykotlin.context.getDrawableIdArray
-import com.ayvytr.easykotlin.context.toast
+import com.ayvytr.easykotlin.context.*
 import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()
@@ -43,5 +40,8 @@ class ResourcesActivity : AppCompatActivity()
         val m = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(m)
         toast("${m.widthPixels}, ${m.heightPixels}")
+
+        val color = ResCompat.getColor(this, R.color.abc_background_cache_hint_selector_material_dark)
+        btnGetAppName.setBackgroundColor(color)
     }
 }
