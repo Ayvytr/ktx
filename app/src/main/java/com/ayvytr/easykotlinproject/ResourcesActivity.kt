@@ -2,6 +2,7 @@ package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.DisplayMetrics
 import com.ayvytr.easykotlin.context.getDrawable2
 import com.ayvytr.easykotlin.context.getDrawableArray
 import com.ayvytr.easykotlin.context.getDrawableIdArray
@@ -38,5 +39,9 @@ class ResourcesActivity : AppCompatActivity()
 
         ib2.setImageDrawable(drawableArray[0])
         ib3.setImageDrawable(drawableArray[1])
+
+        val m = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(m)
+        toast("${m.widthPixels}, ${m.heightPixels}")
     }
 }
