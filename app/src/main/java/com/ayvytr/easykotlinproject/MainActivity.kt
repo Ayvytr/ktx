@@ -2,6 +2,8 @@ package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.ayvytr.easykotlin.context.getColor2
+import com.ayvytr.easykotlin.context.getDrawable2
 import com.ayvytr.easykotlin.context.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,5 +30,9 @@ class MainActivity : AppCompatActivity()
             //            Toast.makeText(this, "Toast2", Toast.LENGTH_SHORT).show()
             toast("这是我的Toast，哈哈！2")
         }
+
+        getString(R.string.app_name)
+        getColor2(R.color.abc_background_cache_hint_selector_material_dark)
+        getDrawable2(R.drawable.abc_ab_share_pack_mtrl_alpha)
     }
 }

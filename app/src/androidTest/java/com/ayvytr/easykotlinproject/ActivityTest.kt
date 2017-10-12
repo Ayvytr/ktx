@@ -69,4 +69,12 @@ class ActivityTest
         val i = sp.getInt("int")
         assertEquals(i, 111)
     }
+
+    @Test
+    fun testContext()
+    {
+        var context = rule.activity
+        context.getString(R.string.abc_action_bar_home_description)
+        context.getColor(R.color.abc_background_cache_hint_selector_material_dark)
+    }
 }

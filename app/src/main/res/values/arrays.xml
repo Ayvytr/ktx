@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="drawableArray">
+        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_launcher_round</item>
+    </integer-array>
+</resources>
