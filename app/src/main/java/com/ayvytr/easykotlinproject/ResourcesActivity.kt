@@ -49,6 +49,20 @@ class ResourcesActivity : AppCompatActivity()
         val dm = getDisplayMetrics()
         tv2.text = "${dm.widthPixels} ${dm.heightPixels}"
 
+        btnHideActionBar.setOnClickListener {
+            if (supportActionBar!!.isShowing) hideActionBar() else showActionBar()
+        }
+
+        btnFullScreen.setOnClickListener {
+            if(isFullscreen())
+            {
+                fullscreen(false)
+            }
+            else
+            {
+                fullscreen(true)
+            }
+        }
     }
 
     override fun onBackPressed()

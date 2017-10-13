@@ -47,8 +47,19 @@
     <com.ayvytr.easykotlin.view.custom.SingleTextView
         android:id="@+id/tv2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="屏幕尺寸2："/>
 
+    <Button
+        android:id="@+id/btnHideActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示/隐藏ActionBar"/>
+
+    <Button
+        android:id="@+id/btnFullScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全屏切换"/>
 
 </LinearLayout>
