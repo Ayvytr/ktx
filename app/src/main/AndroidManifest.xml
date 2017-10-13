@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ResourcesActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true">
         </activity>
     </application>

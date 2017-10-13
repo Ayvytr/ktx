@@ -38,4 +38,17 @@
 
     </LinearLayout>
 
+    <com.ayvytr.easykotlin.view.custom.SingleTextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="屏幕尺寸："/>
+
+    <com.ayvytr.easykotlin.view.custom.SingleTextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="屏幕尺寸2："/>
+
+
 </LinearLayout>

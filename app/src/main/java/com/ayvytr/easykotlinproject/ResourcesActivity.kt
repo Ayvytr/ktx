@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()
 {
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -43,5 +42,23 @@ class ResourcesActivity : AppCompatActivity()
 
         val color = ResCompat.getColor(this, R.color.abc_background_cache_hint_selector_material_dark)
         btnGetAppName.setBackgroundColor(color)
+
+//        setLandscape()
+
+        tv.text = "${getScreenWidth()} ${getScreenHeight()}"
+        val dm = getDisplayMetrics()
+        tv2.text = "${dm.widthPixels} ${dm.heightPixels}"
+
+    }
+
+    override fun onBackPressed()
+    {
+        if (isLandscape())
+        {
+            setPortrait()
+            return
+        }
+
+        super.onBackPressed()
     }
 }

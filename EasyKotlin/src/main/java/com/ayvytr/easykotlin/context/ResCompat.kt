@@ -9,8 +9,8 @@ import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 
 /**
- * 这个类是专门用于自定义控件时，需要使用控件的 [Context] 时，专门提供的类，用来做控件的初始化操作，使用
- * Easy.getDefault().init(Context) 初始化最好不要在自定义控件时使用.
+ * 这个类是专门用于自定义控件时，需要使用控件的 [Context] 时，专门提供的类，用来做控件的 Context 相关操作
+ *
  *
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 1.8.1
