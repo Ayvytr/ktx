@@ -1,6 +1,8 @@
 package com.ayvytr.easykotlin.context
 
+import android.app.Activity
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Point
 import android.util.DisplayMetrics
@@ -31,6 +33,16 @@ fun Context.isLandscape(): Boolean
 fun Context.isPortrait(): Boolean
 {
     return resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+}
+
+fun Activity.setLandscape()
+{
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+}
+
+fun Activity.setPortrait()
+{
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
 
 fun Context.getScreenWidth(): Int

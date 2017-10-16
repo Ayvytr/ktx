@@ -14,12 +14,12 @@ val PLAIN_TEXT_LABEL = "PLAIN_TEXT_LABEL"
 val URI_LABEL = "URI_LABEL"
 val INTENT_LABEL = "INTENT_LABEL"
 
-fun ClipboardManager.setText(text: CharSequence)
+fun ClipboardManager.setText2(text: CharSequence)
 {
     primaryClip = ClipData.newPlainText(PLAIN_TEXT_LABEL, text)
 }
 
-fun ClipboardManager.getText(context: Context): String
+fun ClipboardManager.getText2(context: Context): String
 {
     if (primaryClip.itemCount > 0)
     {

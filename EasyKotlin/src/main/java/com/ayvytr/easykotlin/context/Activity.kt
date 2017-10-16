@@ -1,7 +1,6 @@
 package com.ayvytr.easykotlin.context
 
 import android.app.Activity
-import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 
@@ -9,15 +8,6 @@ import android.view.WindowManager
  * Created by Do on 2017/10/13.
  */
 
-fun Activity.setLandscape()
-{
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-}
-
-fun Activity.setPortrait()
-{
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-}
 
 fun Activity.showActionBar()
 {
@@ -33,14 +23,7 @@ fun Activity.showActionBar()
 
 fun Activity.hideActionBar()
 {
-    if (this is AppCompatActivity)
-    {
-        supportActionBar?.hide()
-    }
-    else
-    {
-        actionBar?.hide()
-    }
+    if (this is AppCompatActivity) supportActionBar?.hide() else actionBar?.hide()
 }
 
 fun Activity.fullscreen(isFullScreen: Boolean)
