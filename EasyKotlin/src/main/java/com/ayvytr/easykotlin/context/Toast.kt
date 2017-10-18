@@ -4,17 +4,17 @@ import android.content.Context
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.widget.Toast
-import com.ayvytr.easykotlin.EasyKotlin.Companion.gToast
 
 /**
- * Context 的扩展显示Toast方法，一个方法创建并显示Toast（原想采用扩展属性，但是无法实现共享 [Toast] 实例的问题，所以采用全局
- * [com.ayvytr.easykotlin.Easy.gToast].
+ * Context 的扩展显示Toast方法，一个方法创建并显示Toast（原想采用扩展属性，但是无法实现共享 [Toast] 实例的问题，所以采用全局 gToast.
  * <p>
  *
  * @author ['s GitHub](https://github.com/Ayvytr)
  * @since 0.2.0
  */
 
+
+private var gToast: Toast? = null
 
 /**
  * 创建并显示Toast，显示长度为 [Toast.LENGTH_SHORT]

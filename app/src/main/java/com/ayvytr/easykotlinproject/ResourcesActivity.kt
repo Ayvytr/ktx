@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import com.ayvytr.easykotlin.context.*
+import com.ayvytr.easykotlin.view.activity.fullscreen
+import com.ayvytr.easykotlin.view.activity.hideActionBar
+import com.ayvytr.easykotlin.view.activity.isFullscreen
+import com.ayvytr.easykotlin.view.activity.showActionBar
 import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()

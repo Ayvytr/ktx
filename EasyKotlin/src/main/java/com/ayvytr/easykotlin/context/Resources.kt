@@ -1,7 +1,6 @@
 package com.ayvytr.easykotlin.context
 
 import android.content.Context
-import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.support.annotation.ArrayRes
@@ -11,49 +10,75 @@ import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 
 /**
- * Created by Do on 2017/10/11.
+ * 专门为方便 [Context] 类获取字符串等资源提供的方法，部分方法因为和系统弃用方法名相同，所以在类名后跟了数字2，比如 getDrawable2.
+ *
+ *
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 1.0.0
  */
 
-fun Context.getStringArray(@ArrayRes id:Int): Array<String>
+/**
+ * @see android.content.res.Resources.getStringArray
+ */
+fun Context.getStringArray(@ArrayRes id: Int): Array<String>
 {
     return resources.getStringArray(id)
 }
 
-fun Context.getIntArray(@ArrayRes id:Int): IntArray
+/**
+ * @see android.content.res.Resources.getIntArray
+ */
+fun Context.getIntArray(@ArrayRes id: Int): IntArray
 {
     return resources.getIntArray(id)
 }
 
-fun Context.getTextArray(@ArrayRes id:Int): Array<CharSequence>
+/**
+ * @see android.content.res.Resources.getTextArray
+ */
+fun Context.getTextArray(@ArrayRes id: Int): Array<CharSequence>
 {
     return resources.getTextArray(id)
 }
 
+/**
+ * @see android.content.res.Resources.obtainTypedArray
+ */
 fun Context.getTypedArray(@ArrayRes id: Int): TypedArray
 {
     return resources.obtainTypedArray(id)
 }
 
+/**
+ * @see ContextCompat.getDrawable
+ */
 fun Context.getDrawable2(@DrawableRes id: Int): Drawable
 {
     return ContextCompat.getDrawable(this, id)
 }
 
+/**
+ * @see ContextCompat.getColor
+ */
 fun Context.getColor2(@ColorRes id: Int): Int
 {
     return ContextCompat.getColor(this, id)
 }
 
-fun Context.getConfiguration(): Configuration
-{
-    return resources.configuration
-}
+/**
+ * @See android.content.res.Resources.getConfiguration
+ */
+fun Context.getConfiguration() = resources.configuration
 
-fun Context.getDimen(@DimenRes id: Int): Float
-{
-    return resources.getDimension(id)
-}
+/**
+ * @see android.content.res.Resources.getDimension
+ */
+fun Context.getDimen(@DimenRes id: Int) = resources.getDimension(id)
 
+/**
+ * 获取返回 Drawable array
+ * @see getTypedArray
+ */
 fun Context.getDrawableArray(@ArrayRes id: Int): Array<Drawable?>
 {
     val typedArray = getTypedArray(id)
@@ -69,7 +94,10 @@ fun Context.getDrawableArray(@ArrayRes id: Int): Array<Drawable?>
     return drawables
 }
 
-
+/**
+ * 获取返回 Drawable id array
+ * @see getTypedArray
+ */
 fun Context.getDrawableIdArray(@ArrayRes id: Int): IntArray
 {
     val typedArray = getTypedArray(id)

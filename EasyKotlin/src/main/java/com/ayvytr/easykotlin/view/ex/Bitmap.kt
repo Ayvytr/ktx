@@ -9,9 +9,16 @@ import android.graphics.drawable.Drawable
 import java.io.ByteArrayOutputStream
 
 /**
- * Created by Do on 2017/10/11.
+ * 为 Bitmap 和 Drawable 类提供的互相转换的方法.
+ *
+ *
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 1.0.0
  */
 
+/**
+ * Drawable -> Bitmap
+ */
 fun Drawable.toBitmap(): Bitmap
 {
     if (this is BitmapDrawable)
@@ -34,12 +41,18 @@ fun Drawable.toBitmap(): Bitmap
     return bitmap
 }
 
-fun Bitmap.toDrawable(context:Context): Drawable
+/**
+ * Bitmap -> Drawable.
+ */
+fun Bitmap.toDrawable(context: Context): Drawable
 {
-   return BitmapDrawable(context.resources, this)
+    return BitmapDrawable(context.resources, this)
 }
 
-fun Bitmap.toByteArray():ByteArray
+/**
+ * Bitmap -> ByteArray
+ */
+fun Bitmap.toByteArray(): ByteArray
 {
     val b = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.PNG, 100, b)

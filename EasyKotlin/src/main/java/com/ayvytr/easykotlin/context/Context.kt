@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 
 /**
- * Context 相关的Kotlin扩展方法
+ * Context 加载布局方法，包括 [RecyclerView] item 的加载方法 [inflateRv(Int, ViewGroup)]
  * <p>
  *
  * @author ['s GitHub](https://github.com/Ayvytr)
- * @since 0.1.0
+ * @since 1.0.0
  */
 
 /**

@@ -8,9 +8,16 @@ import android.graphics.Point
 import android.util.DisplayMetrics
 
 /**
- * Created by Do on 2017/10/13.
+ * 为 [Context] 类提供的获取屏幕尺寸，判断横竖屏，设置横竖屏提供的方法.
+ *
+ *
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 1.0.0
  */
 
+/**
+ * @see [android.view.Display.getMetrics]
+ */
 fun Context.getDisplayMetrics(): DisplayMetrics
 {
     val dm = DisplayMetrics()
@@ -18,6 +25,9 @@ fun Context.getDisplayMetrics(): DisplayMetrics
     return dm
 }
 
+/**
+ * @see [android.view.Display.getSize]
+ */
 fun Context.getDisplaySize(): Point
 {
     val point = Point()

@@ -13,7 +13,7 @@ import android.support.v4.content.ContextCompat
  *
  *
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
- * @since 1.8.1
+ * @since 1.0.0
  */
 
 object ResCompat

@@ -3,6 +3,7 @@ package com.ayvytr.easykotlin.view.activity
 import android.app.Activity
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
+import android.view.WindowManager
 
 /**
  * Activity 相关的Kotlin扩展方法
@@ -42,4 +43,40 @@ fun Activity.getContext(): Context
 fun Activity.getActivity(): Activity
 {
     return this
+}
+
+fun Activity.showActionBar()
+{
+    if (this is AppCompatActivity)
+    {
+        supportActionBar?.show()
+    }
+    else
+    {
+        actionBar?.show()
+    }
+}
+
+fun Activity.hideActionBar()
+{
+    if (this is AppCompatActivity) supportActionBar?.hide() else actionBar?.hide()
+}
+
+fun Activity.fullscreen(isFullScreen: Boolean)
+{
+    val attrs = window.attributes
+    if (isFullScreen)
+    {
+        attrs.flags = attrs.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
+    }
+    else
+    {
+        attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
+    }
+    window.attributes = attrs
+}
+
+fun Activity.isFullscreen(): Boolean
+{
+    return window.attributes.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN == WindowManager.LayoutParams.FLAG_FULLSCREEN
 }

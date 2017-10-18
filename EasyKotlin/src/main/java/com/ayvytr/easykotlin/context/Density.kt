@@ -3,7 +3,11 @@ package com.ayvytr.easykotlin.context
 import android.content.Context
 
 /**
- * Created by Do on 2017/10/12.
+ * dp、px相互转化方法，可在Context子类中直接调用.
+ * <p>
+ *
+ * @author ['s GitHub](https://github.com/Ayvytr)
+ * @since 1.0.0
  */
 
 /**

@@ -11,7 +11,7 @@ import android.os.Build
  *
  *
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
- * @since 2.0.0
+ * @since 1.0.0
  */
 
 class Sp(val sp: SharedPreferences)
