@@ -2,6 +2,7 @@ package com.ayvytr.easykotlin.view.ex
 
 import android.view.View
 import android.view.View.*
+import android.widget.EditText
 
 /**
  * View 相关的Kotlin扩展方法
@@ -130,4 +131,28 @@ fun View.isGone(): Boolean
 fun View.isNotGone(): Boolean
 {
     return !isGone()
+}
+
+/**
+ * 设置 [EditText] 文本，并且把光标定位到末尾
+ */
+fun EditText.setText2(text: CharSequence?)
+{
+    if (text != null)
+    {
+        setText(text)
+        setSelection(getText().length)
+    }
+}
+
+/**
+ * 设置 [EditText] 文本，并且全选文本
+ */
+fun EditText.setTextWithSelection(text: CharSequence?)
+{
+    if (text != null)
+    {
+        setText(text)
+        setSelection(0, getText().length)
+    }
 }
