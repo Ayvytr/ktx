@@ -29,12 +29,9 @@ object EasyKotlin
         context = c.applicationContext
     }
 
+    @NotNull
     fun getContext(): Context
     {
-        if (context == null)
-        {
-            throw KotlinNullPointerException("EasyKotlin.context 未初始化，请调用EasyKotlin.init(context)初始化.")
-        }
         return context!!
     }
 
