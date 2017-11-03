@@ -2,6 +2,8 @@ package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.ayvytr.easykotlin.EasyKotlin
+import com.ayvytr.easykotlin.context.Res
 import com.ayvytr.easykotlin.context.getColor2
 import com.ayvytr.easykotlin.context.getDrawable2
 import com.ayvytr.easykotlin.context.toast
@@ -34,5 +36,8 @@ class MainActivity : AppCompatActivity()
         getString(R.string.app_name)
         getColor2(R.color.abc_background_cache_hint_selector_material_dark)
         getDrawable2(R.drawable.abc_ab_share_pack_mtrl_alpha)
+
+        EasyKotlin.init(this)
+        btn1.setBackgroundColor(Res.getColor(R.color.red))
     }
 }

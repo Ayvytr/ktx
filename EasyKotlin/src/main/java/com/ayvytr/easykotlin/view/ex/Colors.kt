@@ -6,7 +6,7 @@ import android.support.annotation.ColorInt
  * 提供了近千种颜色，以及获取红绿蓝，等方法，同时资源也提供了相应颜色，便于颜色获取和设置.
  *
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
- * @since 1.1.0
+ * @since 1.0.1
  */
 
 object Colors
