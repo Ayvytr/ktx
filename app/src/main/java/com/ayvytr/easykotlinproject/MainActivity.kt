@@ -1,5 +1,6 @@
 package com.ayvytr.easykotlinproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.ayvytr.easykotlin.EasyKotlin
@@ -7,6 +8,7 @@ import com.ayvytr.easykotlin.context.Res
 import com.ayvytr.easykotlin.context.getColor2
 import com.ayvytr.easykotlin.context.getDrawable2
 import com.ayvytr.easykotlin.context.toast
+import com.ayvytr.easykotlin.view.activity.getActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()
@@ -39,5 +41,9 @@ class MainActivity : AppCompatActivity()
 
         EasyKotlin.init(this)
         btn1.setBackgroundColor(Res.getColor(R.color.red))
+
+        btnResourceActivity.setOnClickListener {
+            startActivity(Intent(getActivity(), ResourcesActivity::class.java))
+        }
     }
 }

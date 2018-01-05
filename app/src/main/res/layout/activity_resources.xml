@@ -62,4 +62,10 @@
         android:layout_height="wrap_content"
         android:text="全屏切换"/>
 
+    <Button
+        android:id="@+id/btnFullScreenWithoutActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全屏切换，ActionBar不进行显示隐藏"/>
+
 </LinearLayout>

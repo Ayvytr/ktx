@@ -62,16 +62,25 @@ fun Activity.hideActionBar()
     if (this is AppCompatActivity) supportActionBar?.hide() else actionBar?.hide()
 }
 
-fun Activity.fullscreen(isFullScreen: Boolean)
+/**
+ * Activity切换为全屏/非全屏
+ *
+ * 2018-1-5 09:30 修改为2个参数，因为一般情况下，全屏和非全屏，ActionBar同时也有必要进行相应的隐藏/显示操作，所以进行了专门的修改
+ * @param isFullScreen true 是全屏; false 不是全屏
+ * @param withActionBar true 伴随全屏和非全屏，ActionBar分别进行隐藏和显示; false ActionBar不进行任何操作
+ */
+fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true)
 {
     val attrs = window.attributes
     if (isFullScreen)
     {
         attrs.flags = attrs.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
+        if (withActionBar) hideActionBar()
     }
     else
     {
         attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
+        if (withActionBar) showActionBar()
     }
     window.attributes = attrs
 }

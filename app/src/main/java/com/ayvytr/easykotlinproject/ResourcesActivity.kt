@@ -58,14 +58,11 @@ class ResourcesActivity : AppCompatActivity()
         }
 
         btnFullScreen.setOnClickListener {
-            if(isFullscreen())
-            {
-                fullscreen(false)
-            }
-            else
-            {
-                fullscreen(true)
-            }
+            fullscreen(!isFullscreen())
+        }
+
+        btnFullScreenWithoutActionBar.setOnClickListener {
+            fullscreen(!isFullscreen(), false)
         }
     }
 
