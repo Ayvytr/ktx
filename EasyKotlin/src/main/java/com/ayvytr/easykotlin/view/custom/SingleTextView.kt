@@ -19,6 +19,7 @@ class SingleTextView @JvmOverloads constructor(context: Context, attrs: Attribut
         gravity = Gravity.CENTER
         setSingleLine()
         ellipsize = TextUtils.TruncateAt.END
-        setPadding(10, 10, 10, 10)
+        //去掉padding属性，因为设置居中后，再设置padding没有意义，并且TextView尺寸特别小的时候，字会被裁切
+//        setPadding(10, 10, 10, 10)
     }
 }
