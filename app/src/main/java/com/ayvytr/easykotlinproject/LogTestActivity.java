@@ -3,7 +3,7 @@ package com.ayvytr.easykotlinproject;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ayvytr.easykotlin.log.Log;
+import com.ayvytr.easykotlin.log.L;
 
 public class LogTestActivity extends AppCompatActivity
 {
@@ -18,11 +18,11 @@ public class LogTestActivity extends AppCompatActivity
 
     private void testLog()
     {
-        Log.e(1);
-        Log.i(1);
-        Log.d(1);
-        Log.w(1);
-        Log.v(1);
-        Log.wtf(1);
+        L.e(1);
+        L.i(1);
+        L.d(1);
+        L.w(1);
+        L.v(1);
+        L.wtf(1);
     }
 }

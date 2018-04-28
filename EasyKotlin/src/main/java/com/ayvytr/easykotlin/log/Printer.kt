@@ -7,10 +7,13 @@ import java.util.*
 
 
 /**
- * @author wangdunwei
- * @date 2018/4/26
+ * Log处理和输出类.
+ * <p>
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @version v1.1.0
  */
-class Printer(private val settings: LogSetting)
+class Printer(private val settings: LogSettings)
 {
     /**
      * Android's max limit for a log entry is ~4076 bytes,
@@ -27,8 +30,8 @@ class Printer(private val settings: LogSetting)
     private val BOTTOM_LEFT_CORNER = '╚'
     private val MIDDLE_CORNER = '╟'
     private val HORIZONTAL_DOUBLE_LINE = '║'
-    private val DOUBLE_DIVIDER = "════════════════════════════════════════════"
-    private val SINGLE_DIVIDER = "────────────────────────────────────────────"
+    private val DOUBLE_DIVIDER = "════════════════════════════════════════════════════════"
+    private val SINGLE_DIVIDER = "────────────────────────────────────────────────────────"
     private val TOP_BORDER = TOP_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
     private val TOP_CONNECT_BORDER = TOP_LEFT_CONNECT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
     private val BOTTOM_BORDER = BOTTOM_LEFT_CORNER + DOUBLE_DIVIDER + DOUBLE_DIVIDER
@@ -117,13 +120,13 @@ class Printer(private val settings: LogSetting)
 
     private fun logTopBorder(level: Int)
     {
-        logChunk(level,
-                 when
-                 {
-                     settings.isShowBottomLogBorder -> TOP_BORDER
-                     needConnectBorder()            -> TOP_CONNECT_BORDER
-                     else                           -> TOP_BORDER
-                 })
+        performLog(level,
+                   when
+                   {
+                       settings.isShowBottomBorder -> TOP_BORDER
+                       needConnectBorder()         -> TOP_CONNECT_BORDER
+                       else                        -> TOP_BORDER
+                   })
     }
 
     private fun logMethodInfo(priority: Int)
@@ -137,7 +140,7 @@ class Printer(private val settings: LogSetting)
 
         var spaces = ""
         val trace = Thread.currentThread().stackTrace
-        val stackOffset = getStackOffset(trace) + settings.methodOffset
+        val stackOffset = getStackOffset(trace) + 1
         for (i in settings.methodCount - 1 downTo 0)
         {
             val stackIndex = i + stackOffset
@@ -159,7 +162,7 @@ class Printer(private val settings: LogSetting)
                     .append(":")
                     .append(trace[stackIndex].lineNumber)
                     .append(")")
-            logChunk(priority, builder.toString())
+            performLog(priority, builder.toString())
             spaces += "  "
         }
     }
@@ -168,7 +171,7 @@ class Printer(private val settings: LogSetting)
     {
         return if (settings.isShowThreadInfo && !settings.justShowMsg)
         {
-            "[\"${Thread.currentThread().name}\"Thread] "
+            "[\"${Thread.currentThread().name}\" Thread]"
         }
         else
         {
@@ -178,15 +181,15 @@ class Printer(private val settings: LogSetting)
 
     private fun logBottomBorder(logType: Int)
     {
-        if (settings.isShowBottomLogBorder)
+        if (settings.isShowBottomBorder)
         {
-            logChunk(logType, BOTTOM_BORDER)
+            performLog(logType, BOTTOM_BORDER)
         }
     }
 
     private fun logDivider(logType: Int)
     {
-        logChunk(logType, MIDDLE_BORDER)
+        performLog(logType, MIDDLE_BORDER)
     }
 
     private fun logContent(logType: Int, chunk: String)
@@ -194,7 +197,7 @@ class Printer(private val settings: LogSetting)
         val lines = chunk.split(System.getProperty("line.separator").toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (line in lines)
         {
-            logChunk(logType, "${if(settings.justShowMsg) "" else HORIZONTAL_DOUBLE_LINE} $line")
+            performLog(logType, "${if (settings.justShowMsg) "" else HORIZONTAL_DOUBLE_LINE} $line")
         }
     }
 
@@ -206,13 +209,16 @@ class Printer(private val settings: LogSetting)
         return need
     }
 
+    /**
+     * 最终的Log输出方法
+     */
     @Synchronized
-    private fun logChunk(level: Int, msg: String)
+    private fun performLog(level: Int, msg: String)
     {
         val tag = settings.tag
-        if (System.currentTimeMillis() - lastTimeMillis < 5)
+        if (System.currentTimeMillis() - lastTimeMillis < 3)
         {
-            SystemClock.sleep(5)
+            SystemClock.sleep(3)
         }
 
         when (level)
@@ -234,11 +240,7 @@ class Printer(private val settings: LogSetting)
     {
         val buffer = StringBuilder()
         buffer.append(getThreadInfo())
-
-        if (settings.isShowCalledInfo)
-        {
-            buffer.append(getNoArgsMessage())
-        }
+        buffer.append(getCalledMethodInfo())
 
         if (buffer.isNotEmpty())
         {
@@ -255,7 +257,7 @@ class Printer(private val settings: LogSetting)
             when
             {
                 any == null           -> buffer.append("null")
-                //如果是数组，需要通过专门的数组转字符串方法进行转换
+            //如果是数组，需要通过专门的数组转字符串方法进行转换
                 any.javaClass.isArray -> buffer.append(Arrays.toString(any as Array<*>))
                 else                  -> buffer.append(any)
             }
@@ -265,17 +267,16 @@ class Printer(private val settings: LogSetting)
         return buffer.toString()
     }
 
-    private fun getNoArgsMessage(): String
+    private fun getCalledMethodInfo(): String
     {
-        if(settings.justShowMsg)
+        if (settings.justShowMsg || !settings.isShowCalledInfo)
         {
             return ""
         }
 
         val trace = Thread.currentThread().stackTrace
-        val stackOffset = this.getStackOffset(trace)
-        val stackIndex = 1 + stackOffset
-        return getSimpleClassName(trace[stackIndex].className) + "." + trace[stackIndex].methodName + "()"
+        val element = trace[getStackOffset(trace) + 1]
+        return "[${getSimpleClassName(element.className)}.${element.methodName}()]"
     }
 
     private fun getSimpleClassName(name: String): String

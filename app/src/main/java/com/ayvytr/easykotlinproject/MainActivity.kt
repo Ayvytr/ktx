@@ -83,10 +83,15 @@ class MainActivity : AppCompatActivity()
 //        L.v(map)
 //        L.w(map)
 //        L.wtf(map)
-        L.settings.tag = "Different Tag"
-        L.settings.methodCount = 10
-        L.settings.isShowThreadInfo = false
-        L.settings.methodCount = 2
+
+//        L.getSettings().hasLog = false
+//        L.getSettings().tag = "Different Tag"
+//        L.getSettings().methodCount = 10
+//        L.getSettings().isShowThreadInfo = true
+//        L.getSettings().methodCount = 1
+//        L.getSettings().isShowCalledInfo = false
+//        L.getSettings().justShowMsg = true
+        L.getSettings().isShowBottomBorder = true
 
         val ints = arrayOf(1, 2, 3, 4, 5)
         L.i(ints)
