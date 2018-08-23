@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
  * 这个类是专门用于自定义控件时，需要使用控件的 {@link Context} 时，专门提供的类，用来做控件相关操作.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 2.0.0
+ * @since 1.2.0
  */
 
 public class ResUtil

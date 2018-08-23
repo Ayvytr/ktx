@@ -6,7 +6,7 @@ package com.ayvytr.easykotlin.android.log
  * <p>
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @version v1.1.0
+ * @since 1.1.0
  */
 class LogSettings internal constructor()
 {

@@ -11,7 +11,7 @@ import java.util.*
  * <p>
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @version 1.1.0
+ * @since 1.1.0
  */
 class Printer(private val settings: LogSettings)
 {

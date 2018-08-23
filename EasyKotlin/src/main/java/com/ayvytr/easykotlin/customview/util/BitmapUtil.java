@@ -14,7 +14,7 @@ import java.io.IOException;
  * 提供Bitmap，Drawable，byte[]的相互转换等图片转换功能.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 2.0.0
+ * @since 1.2.0
  */
 
 public class BitmapUtil

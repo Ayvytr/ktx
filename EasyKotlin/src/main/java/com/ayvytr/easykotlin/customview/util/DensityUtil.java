@@ -7,7 +7,7 @@ import android.content.Context;
  * 并添加了Context参数，直接通过Context进行转换.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 2.0.0
+ * @since 1.2.0
  */
 
 public class DensityUtil
