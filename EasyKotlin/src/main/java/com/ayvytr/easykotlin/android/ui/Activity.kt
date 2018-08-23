@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.view.activity
+package com.ayvytr.easykotlin.android.ui
 
 import android.app.Activity
 import android.content.Context

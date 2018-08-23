@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.view.ex
+package com.ayvytr.easykotlin.android.bitmap
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -61,3 +61,4 @@ fun Bitmap.toByteArray(): ByteArray
 
     return bytes
 }
+

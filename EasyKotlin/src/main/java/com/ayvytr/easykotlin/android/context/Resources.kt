@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.context
+package com.ayvytr.easykotlin.android.context
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -52,7 +52,7 @@ fun Context.getTypedArray(@ArrayRes id: Int): TypedArray
 /**
  * @see ContextCompat.getDrawable
  */
-fun Context.getDrawable2(@DrawableRes id: Int): Drawable
+fun Context.getDrawable2(@DrawableRes id: Int): Drawable?
 {
     return ContextCompat.getDrawable(this, id)
 }

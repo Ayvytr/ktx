@@ -3,11 +3,11 @@ package com.ayvytr.easykotlinproject
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.ayvytr.easykotlin.context.getColor2
-import com.ayvytr.easykotlin.context.getDrawable2
-import com.ayvytr.easykotlin.context.toast
-import com.ayvytr.easykotlin.log.L
-import com.ayvytr.easykotlin.view.activity.getContext
+import com.ayvytr.easykotlin.android.context.getColor2
+import com.ayvytr.easykotlin.android.context.getDrawable2
+import com.ayvytr.easykotlin.android.context.toast
+import com.ayvytr.easykotlin.android.log.L
+import com.ayvytr.easykotlin.android.ui.getContext
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()
@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity()
 
         btnLogTestActivity.setOnClickListener {
             startActivity(Intent(getContext(), LogTestActivity::class.java))
+        }
+        btnNpv.setOnClickListener {
+            startActivity(Intent(getContext(), NumberPickerActivity::class.java))
         }
         testLog()
     }

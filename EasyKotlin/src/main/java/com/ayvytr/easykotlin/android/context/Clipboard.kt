@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.context
+package com.ayvytr.easykotlin.android.context
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -14,8 +14,11 @@ import android.net.Uri
  * @since 1.0.0
  */
 
+@JvmField
 val PLAIN_TEXT_LABEL = "PLAIN_TEXT_LABEL"
+@JvmField
 val URI_LABEL = "URI_LABEL"
+@JvmField
 val INTENT_LABEL = "INTENT_LABEL"
 
 fun ClipboardManager.setText2(text: CharSequence)

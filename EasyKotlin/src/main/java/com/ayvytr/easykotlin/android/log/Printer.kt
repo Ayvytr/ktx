@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.log
+package com.ayvytr.easykotlin.android.log
 
 import android.os.SystemClock
 import android.util.Log
@@ -11,7 +11,7 @@ import java.util.*
  * <p>
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @version v1.1.0
+ * @version 1.1.0
  */
 class Printer(private val settings: LogSettings)
 {

@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.ex.sp
+package com.ayvytr.easykotlin.android.sp
 
 import android.content.SharedPreferences
 import android.os.Build
@@ -14,6 +14,7 @@ import android.os.Build
  * @since 1.0.0
  */
 
+@Deprecated("not suggested")
 class Sp(val sp: SharedPreferences)
 {
     /**

@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.log;
+package com.ayvytr.easykotlin.android.log;
 
 /**
  * EasyKotlin库的Log类，是整个Log模块的使用入口，Log输出在这里完成.

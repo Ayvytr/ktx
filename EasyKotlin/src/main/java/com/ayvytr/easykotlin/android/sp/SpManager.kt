@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.ex.sp
+package com.ayvytr.easykotlin.android.sp
 
 import android.content.Context
 import android.os.Build
@@ -15,6 +15,7 @@ import kotlin.collections.LinkedHashMap
  * @since 1.0.0
  */
 
+@Deprecated("not suggested")
 class SpManager private constructor(private var context: Context)
 {
 

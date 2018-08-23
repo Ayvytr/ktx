@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.context
+package com.ayvytr.easykotlin.android.context
 
 import android.content.Context
 

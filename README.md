@@ -34,7 +34,7 @@
     context.getAccountManager()
     ...
     
-### ResCompat.kt, Resources.kt:获取android字符串等资源，两个文件功能相近，都可使用    
+### Res.kt, Resources.kt:获取android字符串等资源，两个文件功能相近，都可使用
 
     context.getStringArray(...)
     //方法名称最后包含数字2的是和原生SDK中弃用的或者有版本限制的方法区分开来

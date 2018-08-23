@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.view.ex
+package com.ayvytr.easykotlin.android.ui
 
 import android.view.View
 import android.view.View.*

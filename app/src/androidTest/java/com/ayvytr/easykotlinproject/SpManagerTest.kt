@@ -1,7 +1,7 @@
 package com.ayvytr.easykotlinproject
 
 import android.support.test.rule.ActivityTestRule
-import com.ayvytr.easykotlin.ex.sp.SpManager
+import com.ayvytr.easykotlin.android.sp.SpManager
 import junit.framework.Assert
 import org.junit.Rule
 import org.junit.Test
