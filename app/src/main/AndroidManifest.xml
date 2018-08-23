@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".NumberPickerActivity">
         </activity>
+        <activity android:name=".QuickIndexViewActivity">
+        </activity>
     </application>
 
 </manifest>

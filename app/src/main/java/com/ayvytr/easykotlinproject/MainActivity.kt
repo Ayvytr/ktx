@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity()
         btnNpv.setOnClickListener {
             startActivity(Intent(getContext(), NumberPickerActivity::class.java))
         }
+        btnQiv.setOnClickListener {
+            startActivity(Intent(getContext(), QuickIndexViewActivity::class.java))
+        }
         testLog()
     }
 

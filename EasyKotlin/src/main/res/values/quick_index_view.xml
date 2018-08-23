@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="QuickIndexView">
-        <attr name="topDrawable" format="reference"/>
-        <attr name="bottomDrawable" format="reference"/>
-        <attr name="textColor" format="color"/>
-        <attr name="quickTextColor" format="color"/>
-        <attr name="quickLetters" format="reference"/>
-        <attr name="showToast" format="boolean"/>
-        <attr name="quickBackground" format="reference"/>
-        <attr name="quickWidth" format="dimension"/>
-        <attr name="quickHeight" format="dimension"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textSize"/>
+        <attr name="android:background"/>
+        <attr name="android:gravity"/>
+
+        <attr name="indexArray" format="reference"/>
+
     </declare-styleable>
 </resources>

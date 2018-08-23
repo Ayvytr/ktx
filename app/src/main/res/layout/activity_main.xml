@@ -15,16 +15,16 @@
 
     <Button
         android:id="@+id/btn1"
-        android:text="弹出Toast1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="弹出Toast1"
         app:layout_constraintTop_toBottomOf="@id/tv"/>
 
     <Button
         android:id="@+id/btn2"
-        android:text="弹出Toast2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="弹出Toast2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv"/>
 
@@ -36,9 +36,16 @@
 
     <Button
         android:id="@+id/btnNpv"
-        android:text="NumberPickerView"
-        app:layout_constraintTop_toBottomOf="@id/btn2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="NumberPickerView"
+        app:layout_constraintTop_toBottomOf="@id/btn2"/>
+
+    <Button
+        android:id="@+id/btnQiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QuickIndexView"
+        app:layout_constraintTop_toBottomOf="@id/btnNpv"/>
 
 </android.support.constraint.ConstraintLayout>

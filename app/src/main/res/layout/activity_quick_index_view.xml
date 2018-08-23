@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.ayvytr.easykotlin.customview.QuickIndexView
+        android:id="@+id/quickIndexView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="10sp"
+        android:background="#eee"
+        android:gravity="center"
+        app:indexArray="@array/defaultQuickIndexViewLetters"/>
+
+    <com.ayvytr.easykotlin.customview.FlowLayout
+        android:layout_width="@dimen/_200dp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改字体颜色"/>
+
+        <Button
+            android:id="@+id/btnTopDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改顶部图片"/>
+
+        <Button
+            android:id="@+id/btnBottomDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改底部图片"/>
+
+        <Button
+            android:id="@+id/btnBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="修改背景色"/>
+
+        <Button
+            android:id="@+id/btnShowToast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="是否显示Toast(Toast显示完再测)"/>
+
+        <Button
+            android:id="@+id/btnToastTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast字体颜色"/>
+
+        <Button
+            android:id="@+id/btnToastBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast背景"/>
+
+        <Button
+            android:id="@+id/btnToastWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast宽度"/>
+
+        <Button
+            android:id="@+id/btnToastHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast高度"/>
+
+        <Button
+            android:id="@+id/btnNullData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置空数据"/>
+
+        <Button
+            android:id="@+id/btnRestoreData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="还原数据"/>
+    </com.ayvytr.easykotlin.customview.FlowLayout>
+</RelativeLayout>
+
