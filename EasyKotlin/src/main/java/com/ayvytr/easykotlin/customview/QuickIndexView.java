@@ -33,7 +33,7 @@ import java.util.List;
  * 字母索引控件，和微信联系人右侧字母索引效果相似，可以在屏幕中心显示Toast，以及字母索引顶部和底部的图片
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 2.0.0
+ * @since 1.2.0
  */
 
 public class QuickIndexView extends View

@@ -11,7 +11,7 @@ import android.view.Gravity;
  * TextView，文字居中，单行，末尾省略.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 2.0.0
+ * @since 1.2.0
  */
 public class SingleTextView extends AppCompatTextView {
     public SingleTextView(Context context) {
