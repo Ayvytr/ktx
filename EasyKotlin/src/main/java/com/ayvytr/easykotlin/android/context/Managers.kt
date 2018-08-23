@@ -25,6 +25,7 @@ import android.nfc.NfcManager
 import android.os.*
 import android.os.storage.StorageManager
 import android.print.PrintManager
+import android.support.annotation.RequiresApi
 import android.telecom.TelecomManager
 import android.telephony.CarrierConfigManager
 import android.telephony.TelephonyManager
@@ -127,6 +128,7 @@ fun Context.getAccessibilityManager(): AccessibilityManager
 /**
  * @see [CaptioningManager]
  */
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 fun Context.getCaptioningManager(): CaptioningManager
 {
     return getSystemService(CAPTIONING_SERVICE) as CaptioningManager
@@ -175,6 +177,7 @@ fun Context.getVibrator(): Vibrator
 /**
  * @see [NsdManager]
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 fun Context.getNsdManager(): NsdManager
 {
     return getSystemService(NSD_SERVICE) as NsdManager
@@ -191,6 +194,7 @@ fun Context.getAudioManager(): AudioManager
 /**
  * @see [FingerprintManager]
  */
+@RequiresApi(Build.VERSION_CODES.M)
 fun Context.getFingerprintManager(): FingerprintManager
 {
     return getSystemService(FINGERPRINT_SERVICE) as FingerprintManager
@@ -199,6 +203,7 @@ fun Context.getFingerprintManager(): FingerprintManager
 /**
  * @see [MediaRouter]
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 fun Context.getMediaRouter(): MediaRouter
 {
     return getSystemService(MEDIA_ROUTER_SERVICE) as MediaRouter
@@ -215,6 +220,7 @@ fun Context.getTelephonyManager(): TelephonyManager
 /**
  * @see [CarrierConfigManager]
  */
+@RequiresApi(Build.VERSION_CODES.M)
 fun Context.getCarrierConfigManager(): CarrierConfigManager
 {
     return getSystemService(CARRIER_CONFIG_SERVICE) as CarrierConfigManager
@@ -223,6 +229,7 @@ fun Context.getCarrierConfigManager(): CarrierConfigManager
 /**
  * @see [TelecomManager]
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Context.getTelecomManager(): TelecomManager
 {
     return getSystemService(TELECOM_SERVICE) as TelecomManager
@@ -279,6 +286,7 @@ fun Context.getNfcManager(): NfcManager
 /**
  * @see [BluetoothManager]
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 fun Context.getBluetoothManager(): BluetoothManager
 {
     return getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
@@ -287,6 +295,7 @@ fun Context.getBluetoothManager(): BluetoothManager
 /**
  * @see [LauncherApps]
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Context.getLauncherApps(): LauncherApps
 {
     return getSystemService(LAUNCHER_APPS_SERVICE) as LauncherApps
@@ -295,6 +304,7 @@ fun Context.getLauncherApps(): LauncherApps
 /**
  * @see [DisplayManager]
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 fun Context.getDisplayManagerCompat(): DisplayManager
 {
     return getSystemService(DISPLAY_SERVICE) as DisplayManager
@@ -303,6 +313,7 @@ fun Context.getDisplayManagerCompat(): DisplayManager
 /**
  * @see [UserManager]
  */
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 fun Context.getUserManager(): UserManager
 {
     return getSystemService(USER_SERVICE) as UserManager
@@ -311,6 +322,7 @@ fun Context.getUserManager(): UserManager
 /**
  * @see [RestrictionsManager]
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Context.getRestrictionsManager(): RestrictionsManager
 {
     return getSystemService(RESTRICTIONS_SERVICE) as RestrictionsManager
@@ -319,6 +331,7 @@ fun Context.getRestrictionsManager(): RestrictionsManager
 /**
  * @see [AppOpsManager]
  */
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 fun Context.getAppOpsManager(): AppOpsManager
 {
     return getSystemService(APP_OPS_SERVICE) as AppOpsManager
@@ -327,6 +340,7 @@ fun Context.getAppOpsManager(): AppOpsManager
 /**
  * @see [CameraManager]
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Context.getCameraManager(): CameraManager
 {
     return getSystemService(CAMERA_SERVICE) as CameraManager
@@ -335,6 +349,7 @@ fun Context.getCameraManager(): CameraManager
 /**
  * @see [PrintManager]
  */
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 fun Context.getPrintManager(): PrintManager
 {
     return getSystemService(PRINT_SERVICE) as PrintManager
@@ -343,6 +358,7 @@ fun Context.getPrintManager(): PrintManager
 /**
  * @see [ConsumerIrManager]
  */
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 fun Context.getConsumerIrManager(): ConsumerIrManager
 {
     return getSystemService(CONSUMER_IR_SERVICE) as ConsumerIrManager
@@ -351,6 +367,7 @@ fun Context.getConsumerIrManager(): ConsumerIrManager
 /**
  * @see [MediaSessionManager]
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Context.getMediaSessionManager(): MediaSessionManager
 {
     return getSystemService(MEDIA_SESSION_SERVICE) as MediaSessionManager
@@ -367,6 +384,7 @@ fun Context.getBatteryManager(): BatteryManager
 /**
  * @see [JobScheduler]
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Context.getJobScheduler(): JobScheduler
 {
     return getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
@@ -375,6 +393,7 @@ fun Context.getJobScheduler(): JobScheduler
 /**
  * @see [MidiManager]
  */
+@RequiresApi(Build.VERSION_CODES.M)
 fun Context.getMidiManager(): MidiManager
 {
     return getSystemService(MIDI_SERVICE) as MidiManager
@@ -383,6 +402,7 @@ fun Context.getMidiManager(): MidiManager
 /**
  * @see [HardwarePropertiesManager]
  */
+@RequiresApi(Build.VERSION_CODES.N)
 fun Context.getHardwarePropertiesManager(): HardwarePropertiesManager
 {
     return getSystemService(HARDWARE_PROPERTIES_SERVICE) as HardwarePropertiesManager
