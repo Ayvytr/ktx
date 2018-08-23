@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.customview.global;
+package com.ayvytr.easykotlin.customview.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -15,7 +15,7 @@ import android.support.v4.content.ContextCompat;
  * @since 2.0.0
  */
 
-public class Res
+public class ResUtil
 {
     /**
      * 从资源中获取Drawable
@@ -70,7 +70,7 @@ public class Res
      */
     public static float getDimenFloatToDp(Context context, @DimenRes int id)
     {
-        return Density.px2dp(context, getDimenFloat(context, id));
+        return DensityUtil.px2dp(context, getDimenFloat(context, id));
     }
 
     /**

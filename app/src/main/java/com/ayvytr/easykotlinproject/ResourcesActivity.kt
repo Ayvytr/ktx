@@ -8,7 +8,7 @@ import com.ayvytr.easykotlin.android.ui.fullscreen
 import com.ayvytr.easykotlin.android.ui.hideActionBar
 import com.ayvytr.easykotlin.android.ui.isFullscreen
 import com.ayvytr.easykotlin.android.ui.showActionBar
-import com.ayvytr.easykotlin.customview.global.Res
+import com.ayvytr.easykotlin.customview.util.ResUtil
 import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()
@@ -45,7 +45,7 @@ class ResourcesActivity : AppCompatActivity()
         windowManager.defaultDisplay.getMetrics(m)
         toast("${m.widthPixels}, ${m.heightPixels}")
 
-        val color = Res.getColor(this, R.color.abc_background_cache_hint_selector_material_dark)
+        val color = ResUtil.getColor(this, R.color.abc_background_cache_hint_selector_material_dark)
         btnGetAppName.setBackgroundColor(color)
 
 //        setLandscape()

@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.customview.global;
+package com.ayvytr.easykotlin.customview.util;
 
 import android.content.Context;
 
@@ -10,9 +10,9 @@ import android.content.Context;
  * @since 2.0.0
  */
 
-public class Density
+public class DensityUtil
 {
-    private Density()
+    private DensityUtil()
     {
         throw new UnsupportedOperationException();
     }

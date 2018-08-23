@@ -21,9 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ayvytr.easykotlin.R;
-import com.ayvytr.easykotlin.customview.global.BitmapTool;
-import com.ayvytr.easykotlin.customview.global.Density;
-import com.ayvytr.easykotlin.customview.global.Res;
+import com.ayvytr.easykotlin.customview.util.BitmapUtil;
+import com.ayvytr.easykotlin.customview.util.DensityUtil;
+import com.ayvytr.easykotlin.customview.util.ResUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -166,7 +166,7 @@ public class QuickIndexView extends View
      */
     public void setTopDrawable(@DrawableRes int topDrawableId)
     {
-        setTopDrawable(Res.getDrawable(context, topDrawableId));
+        setTopDrawable(ResUtil.getDrawable(context, topDrawableId));
     }
 
     /**
@@ -193,7 +193,7 @@ public class QuickIndexView extends View
      */
     public void setBottomDrawable(@DrawableRes int bottomDrawableId)
     {
-        setBottomDrawable(Res.getDrawable(context, bottomDrawableId));
+        setBottomDrawable(ResUtil.getDrawable(context, bottomDrawableId));
     }
 
     /**
@@ -312,7 +312,7 @@ public class QuickIndexView extends View
      */
     public void setQuickBackground(@DrawableRes int quickBackgroundId)
     {
-        setQuickBackground(Res.getDrawable(context, quickBackgroundId));
+        setQuickBackground(ResUtil.getDrawable(context, quickBackgroundId));
     }
 
     /**
@@ -398,9 +398,9 @@ public class QuickIndexView extends View
         showToast = typedArray.getBoolean(R.styleable.QuickIndexView_showToast, true);
         quickBackground = typedArray.getDrawable(R.styleable.QuickIndexView_quickBackground);
         quickWidth = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickWidth,
-                Density.dp2px(context, DEFAULT_WIDTH_DP));
+                DensityUtil.dp2px(context, DEFAULT_WIDTH_DP));
         quickHeight = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickHeight,
-                Density.dp2px(context, DEFAULT_WIDTH_DP));
+                DensityUtil.dp2px(context, DEFAULT_WIDTH_DP));
 
         changeToastViewSize();
 
@@ -415,7 +415,7 @@ public class QuickIndexView extends View
         }
         else
         {
-            setLetterArray(Res.getStringArray(context, R.array.defaultQuickIndexViewLetters));
+            setLetterArray(ResUtil.getStringArray(context, R.array.defaultQuickIndexViewLetters));
         }
 
         typedArray.recycle();
@@ -455,7 +455,7 @@ public class QuickIndexView extends View
         int width = MeasureSpec.getSize(widthMeasureSpec);
         if(widthMode == MeasureSpec.AT_MOST)
         {
-            width = Density.dp2px(context, DEFAULT_WIDTH_DP);
+            width = DensityUtil.dp2px(context, DEFAULT_WIDTH_DP);
         }
 
         int height = MeasureSpec.getSize(heightMeasureSpec);
@@ -486,7 +486,7 @@ public class QuickIndexView extends View
 
         if(topDrawable != null)
         {
-            Bitmap topBitmap = BitmapTool.toBitmap(topDrawable);
+            Bitmap topBitmap = BitmapUtil.toBitmap(topDrawable);
             bitmapRect.bottom = topBitmap.getHeight();
             bitmapRect.right = topBitmap.getWidth();
             outRect.left = x - halfLetterLength;
@@ -507,7 +507,7 @@ public class QuickIndexView extends View
 
         if(bottomDrawable != null)
         {
-            Bitmap bottomBitmap = BitmapTool.toBitmap(bottomDrawable);
+            Bitmap bottomBitmap = BitmapUtil.toBitmap(bottomDrawable);
             bitmapRect.bottom = bottomBitmap.getHeight();
             bitmapRect.right = bottomBitmap.getWidth();
             outRect.left = x - halfLetterLength;

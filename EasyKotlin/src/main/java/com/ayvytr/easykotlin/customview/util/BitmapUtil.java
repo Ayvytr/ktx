@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.customview.global;
+package com.ayvytr.easykotlin.customview.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,7 +17,7 @@ import java.io.IOException;
  * @since 2.0.0
  */
 
-public class BitmapTool
+public class BitmapUtil
 {
 
     /**
