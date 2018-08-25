@@ -57,6 +57,7 @@ public class QuickIndexView extends View
      */
     private OnLetterChangeListener onLetterChangeListener;
 
+    //索引文字重心，只有Top，Center，Center_Vertical有效
     private int gravity;
 
     private int bottomTextY;
@@ -139,7 +140,13 @@ public class QuickIndexView extends View
 
     public void setGravity(int gravity)
     {
-        this.gravity = gravity;
+        if(gravity != this.gravity)
+        {
+            if(gravity == Gravity.TOP || gravity == Gravity.CENTER || gravity == Gravity.CENTER_VERTICAL)
+            {
+                this.gravity = gravity;
+            }
+        }
     }
 
     /**
@@ -274,8 +281,6 @@ public class QuickIndexView extends View
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        //点击顶部或者底部Padding时，不响应事件
-//        if(event.getY() < getPaddingTop() || event.getY() > (getHeight() - getPaddingBottom()))
         if(event.getY() < topTextY || event.getY() > bottomTextY)
         {
             return true;
@@ -286,17 +291,7 @@ public class QuickIndexView extends View
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
             {
-                int letterCount = getIndexList().size();
-                int index = 0;
-                for(int i = 0; i < letterCount; i++)
-                {
-                    int y = topTextY + textSize * i;
-                    if(event.getY() > y && event.getY() < y + textSize)
-                    {
-                        index = i;
-                        break;
-                    }
-                }
+                int index = (int) ((event.getY() - topTextY) / textSize);
 
                 if(onLetterChangeListener != null)
                 {
