@@ -1,3 +1,9 @@
+[![jCenter](https://img.shields.io/badge/jCenter-2.1.0-red.svg)](https://bintray.com/ayvytr/maven/EasyKotlin/_latestVersion)
+[![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
+
+## JCenter
+	compile 'com.ayvytr:EasyKotlin:1.1.0'
+
 # EasyKotlin 简化Android开发的Kotlin库
 
 ## Kotlin 语言相比 Java 来说非常简洁，kotlin库依然如此。使用kotlin来充分简化Android开发，非常nice
@@ -28,7 +34,7 @@
     context.getAccountManager()
     ...
     
-### ResCompat.kt, Resources.kt:获取android字符串等资源，两个文件功能相近，都可使用    
+### Res.kt, Resources.kt:获取android字符串等资源，两个文件功能相近，都可使用
 
     context.getStringArray(...)
     //方法名称最后包含数字2的是和原生SDK中弃用的或者有版本限制的方法区分开来

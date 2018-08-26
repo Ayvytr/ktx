@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.ayvytr.easykotlinproject.MainActivity">
 
-    <com.ayvytr.easykotlin.view.custom.SingleTextView
+    <com.ayvytr.easykotlin.customview.SingleTextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="200dp"
         android:text="aaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"/>
 
     <Button
@@ -29,9 +29,23 @@
         app:layout_constraintTop_toBottomOf="@id/tv"/>
 
     <Button
-        android:id="@+id/btnResourceActivity"
-        android:layout_width="match_parent"
+        android:id="@+id/btnLogTestActivity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Resource Activity"
-        app:layout_constraintTop_toBottomOf="@id/btn1"/>
+        android:text="Log测试页面"/>
+
+    <Button
+        android:id="@+id/btnNpv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NumberPickerView"
+        app:layout_constraintTop_toBottomOf="@id/btn2"/>
+
+    <Button
+        android:id="@+id/btnQiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QuickIndexView"
+        app:layout_constraintTop_toBottomOf="@id/btnNpv"/>
+
 </android.support.constraint.ConstraintLayout>

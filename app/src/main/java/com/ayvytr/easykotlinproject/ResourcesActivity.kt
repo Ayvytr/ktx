@@ -3,11 +3,12 @@ package com.ayvytr.easykotlinproject
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
-import com.ayvytr.easykotlin.context.*
-import com.ayvytr.easykotlin.view.activity.fullscreen
-import com.ayvytr.easykotlin.view.activity.hideActionBar
-import com.ayvytr.easykotlin.view.activity.isFullscreen
-import com.ayvytr.easykotlin.view.activity.showActionBar
+import com.ayvytr.easykotlin.android.context.*
+import com.ayvytr.easykotlin.android.ui.fullscreen
+import com.ayvytr.easykotlin.android.ui.hideActionBar
+import com.ayvytr.easykotlin.android.ui.isFullscreen
+import com.ayvytr.easykotlin.android.ui.showActionBar
+import com.ayvytr.easykotlin.customview.util.ResUtil
 import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()
@@ -44,7 +45,7 @@ class ResourcesActivity : AppCompatActivity()
         windowManager.defaultDisplay.getMetrics(m)
         toast("${m.widthPixels}, ${m.heightPixels}")
 
-        val color = ResCompat.getColor(this, R.color.abc_background_cache_hint_selector_material_dark)
+        val color = ResUtil.getColor(this, R.color.abc_background_cache_hint_selector_material_dark)
         btnGetAppName.setBackgroundColor(color)
 
 //        setLandscape()

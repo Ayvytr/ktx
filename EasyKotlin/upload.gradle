@@ -91,6 +91,9 @@ bintray {
 
     user = properties.getProperty('BINTRAY_USER');
     key = properties.getProperty('BINTRAY_KEY');
+    if(user == null || key == null) {
+        throw new NullPointerException("[Message] upload.gradle: User or key is null!")
+    }
 
     configurations = ['archives']
     publications = ['mavenJava']

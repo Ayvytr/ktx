@@ -1,9 +1,9 @@
 package com.ayvytr.easykotlinproject
 
 import android.support.test.rule.ActivityTestRule
-import com.ayvytr.easykotlin.context.getClipboardManager
-import com.ayvytr.easykotlin.context.getText2
-import com.ayvytr.easykotlin.context.setText2
+import com.ayvytr.easykotlin.android.context.getClipboardManager
+import com.ayvytr.easykotlin.android.context.getText2
+import com.ayvytr.easykotlin.android.context.setText2
 import junit.framework.Assert
 import org.junit.Rule
 import org.junit.Test
