@@ -1,6 +1,5 @@
 package com.ayvytr.easykotlin.context
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.annotation.ArrayRes
@@ -10,7 +9,6 @@ import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import com.ayvytr.easykotlin.EasyKotlin
 
-@SuppressLint("StaticFieldLeak")
 /**
  * 这个类是专门用于自定义控件时，需要使用控件的 [Context] 时，专门提供的类，用来做控件的 Context 相关操作
  *
@@ -27,7 +25,7 @@ object Res
      * @param id Drawable资源id
      * @return Drawable
      */
-    fun getDrawable(@DrawableRes id: Int): Drawable
+    fun getDrawable(@DrawableRes id: Int): Drawable?
     {
         return ContextCompat.getDrawable(EasyKotlin.getContext(), id)
     }
