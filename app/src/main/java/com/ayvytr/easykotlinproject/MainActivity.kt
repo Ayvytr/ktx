@@ -41,9 +41,6 @@ class MainActivity : AppCompatActivity()
         btnLogTestActivity.setOnClickListener {
             startActivity(Intent(getContext(), LogTestActivity::class.java))
         }
-        btnNpv.setOnClickListener {
-            startActivity(Intent(getContext(), NumberPickerActivity::class.java))
-        }
         btnQiv.setOnClickListener {
             startActivity(Intent(getContext(), QuickIndexViewActivity::class.java))
         }
@@ -52,26 +49,26 @@ class MainActivity : AppCompatActivity()
 
     private fun testLog()
     {
-//        L.i()
-//        L.d()
-//        L.e()
-//        L.v()
-//        L.w()
-//        L.wtf()
+        L.i()
+        L.d()
+        L.e()
+        L.v()
+        L.w()
+        L.wtf()
 
-//        L.i(1)
-//        L.d(1)
-//        L.e(1)
-//        L.v(1)
-//        L.w(1)
-//        L.wtf(1)
+        L.i(1)
+        L.d(1)
+        L.e(1)
+        L.v(1)
+        L.w(1)
+        L.wtf(1)
 
-//        L.i("String")
-//        L.d("String")
-//        L.e("String")
-//        L.v("String")
-//        L.w("String")
-//        L.wtf("String")
+        L.i("String")
+        L.d("String")
+        L.e("String")
+        L.v("String")
+        L.w("String")
+        L.wtf("String")
 
 
 //        val l = listOf("aa", "bb", "cc")
@@ -96,8 +93,8 @@ class MainActivity : AppCompatActivity()
 //        L.getSettings().isShowThreadInfo = true
 //        L.getSettings().methodCount = 1
 //        L.getSettings().isShowCalledInfo = false
-//        L.getSettings().justShowMsg = true
-        L.getSettings().isShowBottomBorder = true
+        L.getSettings().justShowMsg = true
+//        L.getSettings().isShowBottomBorder = true
 
         val ints = arrayOf(1, 2, 3, 4, 5)
         L.i(ints)

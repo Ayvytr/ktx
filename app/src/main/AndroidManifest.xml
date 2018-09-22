@@ -23,8 +23,6 @@
         </activity>
         <activity android:name=".LogTestActivity">
         </activity>
-        <activity android:name=".NumberPickerActivity">
-        </activity>
         <activity android:name=".QuickIndexViewActivity">
         </activity>
         <activity android:name=".SuperEditTextActivity">

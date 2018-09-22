@@ -35,17 +35,10 @@
         android:text="Log测试页面"/>
 
     <Button
-        android:id="@+id/btnNpv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NumberPickerView"
-        app:layout_constraintTop_toBottomOf="@id/btn2"/>
-
-    <Button
         android:id="@+id/btnQiv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="QuickIndexView"
-        app:layout_constraintTop_toBottomOf="@id/btnNpv"/>
+        app:layout_constraintTop_toBottomOf="@id/btn2"/>
 
 </android.support.constraint.ConstraintLayout>
