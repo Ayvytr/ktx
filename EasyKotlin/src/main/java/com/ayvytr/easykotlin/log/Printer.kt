@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.android.log
+package com.ayvytr.easykotlin.log
 
 import android.os.SystemClock
 import android.util.Log
@@ -43,34 +43,40 @@ class Printer(private val settings: LogSettings)
 
     /**
      * 这里参数不写成可变参数是因为参数通过可变参数传递两次，丢失了类型
-     *  可以尝试，int通过可变参数传递第二次时，使用 is int判断时，结果为false
+     * 可以尝试，int通过可变参数传递第二次时，使用 is int判断时，结果为false
      */
-    fun v(args: Array<out Any?>?)
+//    fun v(args: Array<out Any?>?)
+    fun v(vararg args: Any)
     {
         buildLog(Log.VERBOSE, args)
     }
 
-    fun d(args: Array<out Any?>?)
+//    fun d(args: Array<out Any?>?)
+    fun d(vararg args: Any)
     {
         buildLog(Log.DEBUG, args)
     }
 
-    fun i(args: Array<out Any?>?)
+//    fun i(args: Array<out Any?>?)
+    fun i(vararg args: Any)
     {
         buildLog(Log.INFO, args)
     }
 
-    fun w(args: Array<out Any?>?)
+//    fun w(args: Array<out Any?>?)
+    fun w(vararg args: Any)
     {
         buildLog(Log.WARN, args)
     }
 
-    fun e(args: Array<out Any?>?)
+//    fun e(args: Array<out Any?>?)
+    fun e(vararg args: Any)
     {
         buildLog(Log.ERROR, args)
     }
 
-    fun wtf(args: Array<out Any?>?)
+    fun wtf(vararg args: Any)
+//    fun wtf(args: Array<out Any?>?)
     {
         buildLog(Log.ASSERT, args)
     }

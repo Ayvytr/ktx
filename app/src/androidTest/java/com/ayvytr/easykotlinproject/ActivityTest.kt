@@ -2,10 +2,10 @@ package com.ayvytr.easykotlinproject
 
 import android.support.test.rule.ActivityTestRule
 import android.support.v7.app.AppCompatActivity
-import com.ayvytr.easykotlin.android.ui.fullscreen
-import com.ayvytr.easykotlin.android.ui.hideActionBar
-import com.ayvytr.easykotlin.android.ui.isFullscreen
-import com.ayvytr.easykotlin.android.ui.showActionBar
+import com.ayvytr.easykotlin.ui.fullscreen
+import com.ayvytr.easykotlin.ui.hideActionBar
+import com.ayvytr.easykotlin.ui.isFullscreen
+import com.ayvytr.easykotlin.ui.showActionBar
 import junit.framework.Assert
 import org.junit.Rule
 import org.junit.Test

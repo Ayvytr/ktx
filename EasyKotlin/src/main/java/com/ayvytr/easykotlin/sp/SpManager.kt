@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.android.sp
+package com.ayvytr.easykotlin.sp
 
 import android.content.Context
 import android.os.Build

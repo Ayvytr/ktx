@@ -3,7 +3,9 @@ package com.ayvytr.easykotlinproject;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ayvytr.easykotlin.android.log.L;
+import com.ayvytr.easykotlin.log.L;
+
+import java.util.ArrayList;
 
 public class LogTestActivity extends AppCompatActivity
 {
@@ -24,5 +26,12 @@ public class LogTestActivity extends AppCompatActivity
         L.w(1);
         L.v(1);
         L.wtf(1);
+
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("AA");
+        strings.add("BB");
+        L.e(strings);
+
+        L.e();
     }
 }

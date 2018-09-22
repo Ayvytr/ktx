@@ -1,100 +1,113 @@
 package com.ayvytr.easykotlin.context
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.support.annotation.ArrayRes
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
-import com.ayvytr.easykotlin.EasyKotlin
 
 /**
- * 这个类是专门用于自定义控件时，需要使用控件的 [Context] 时，专门提供的类，用来做控件的 Context 相关操作
+ * 专门为方便 [Context] 类获取字符串等资源提供的方法，部分方法因为和系统弃用方法名相同，所以在类名后跟了数字2，比如 getDrawable2.
  *
  *
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
- * @since 1.0.1
+ * @since 1.0.0
  */
 
-object Res
+/**
+ * @see android.content.res.Resources.getStringArray
+ */
+fun Context.getStringArray(@ArrayRes id: Int): Array<String>
 {
-    /**
-     * 从资源中获取Drawable
-     *
-     * @param id Drawable资源id
-     * @return Drawable
-     */
-    fun getDrawable(@DrawableRes id: Int): Drawable?
+    return resources.getStringArray(id)
+}
+
+/**
+ * @see android.content.res.Resources.getIntArray
+ */
+fun Context.getIntArray(@ArrayRes id: Int): IntArray
+{
+    return resources.getIntArray(id)
+}
+
+/**
+ * @see android.content.res.Resources.getTextArray
+ */
+fun Context.getTextArray(@ArrayRes id: Int): Array<CharSequence>
+{
+    return resources.getTextArray(id)
+}
+
+/**
+ * @see android.content.res.Resources.obtainTypedArray
+ */
+fun Context.getTypedArray(@ArrayRes id: Int): TypedArray
+{
+    return resources.obtainTypedArray(id)
+}
+
+/**
+ * @see ContextCompat.getDrawable
+ */
+fun Context.getDrawable2(@DrawableRes id: Int): Drawable?
+{
+    return ContextCompat.getDrawable(this, id)
+}
+
+/**
+ * @see ContextCompat.getColor
+ */
+fun Context.getColor2(@ColorRes id: Int): Int
+{
+    return ContextCompat.getColor(this, id)
+}
+
+/**
+ * @See android.content.res.Resources.getConfiguration
+ */
+fun Context.getConfiguration() = resources.configuration
+
+/**
+ * @see android.content.res.Resources.getDimension
+ */
+fun Context.getDimen(@DimenRes id: Int) = resources.getDimension(id)
+
+/**
+ * 获取返回 Drawable array
+ * @see getTypedArray
+ */
+fun Context.getDrawableArray(@ArrayRes id: Int): Array<Drawable?>
+{
+    val typedArray = getTypedArray(id)
+    //获取数量需要用这样的方法, TypedArray.getIndexCount() 获取的一直是0.
+    val count = getTextArray(id).size
+    val drawables = arrayOfNulls<Drawable>(count)
+    for (i in drawables.indices)
     {
-        return ContextCompat.getDrawable(EasyKotlin.getContext(), id)
+        drawables[i] = typedArray.getDrawable(i)
     }
+    typedArray.recycle()
 
+    return drawables
+}
 
-    /**
-     * 从资源中获取Dimension并返回
-     *
-     * @param id 尺寸资源id
-     * @return 尺寸像素值
-     */
-    fun getDimen(@DimenRes id: Int): Int
+/**
+ * 获取返回 Drawable id array
+ * @see getTypedArray
+ */
+fun Context.getDrawableIdArray(@ArrayRes id: Int): IntArray
+{
+    val typedArray = getTypedArray(id)
+    val length = getTextArray(id).size
+    val ids = IntArray(length)
+    for (i in ids.indices)
     {
-        return getDimenFloat(id).toInt()
+        ids[i] = typedArray.getResourceId(i, 0)
     }
+    typedArray.recycle()
 
-    /**
-     * 从资源中获取Dimension并返回float类型
-     *
-     * @param id 尺寸资源id
-     * @return 尺寸像素值
-     */
-    fun getDimenFloat(@DimenRes id: Int): Float
-    {
-        return EasyKotlin.getContext().resources.getDimension(id)
-    }
-
-
-    /**
-     * 从资源中获取Color
-     *
-     * @param id 颜色资源id
-     * @return 颜色值
-     */
-    fun getColor(@ColorRes id: Int): Int
-    {
-        return ContextCompat.getColor(EasyKotlin.getContext(), id)
-    }
-
-    /**
-     * 获取返回String array.
-     *
-     * @param id resource id
-     * @return String array
-     */
-    fun getStringArray(@ArrayRes id: Int): Array<String>
-    {
-        return EasyKotlin.getContext().resources.getStringArray(id)
-    }
-
-    /**
-     * 获取返回int array.
-     *
-     * @param id resource id
-     * @return int array
-     */
-    fun getIntArray(@ArrayRes id: Int): IntArray
-    {
-        return EasyKotlin.getContext().resources.getIntArray(id)
-    }
-
-    /**
-     * 获取返回text id.
-     *
-     * @param id resource id
-     * @return text array
-     */
-    fun getTextArray(@ArrayRes id: Int): Array<CharSequence>
-    {
-        return EasyKotlin.getContext().resources.getTextArray(id)
-    }
+    return ids
 }

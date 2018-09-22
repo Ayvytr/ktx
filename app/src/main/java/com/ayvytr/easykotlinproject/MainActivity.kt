@@ -3,11 +3,11 @@ package com.ayvytr.easykotlinproject
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.ayvytr.easykotlin.android.context.getColor2
-import com.ayvytr.easykotlin.android.context.getDrawable2
-import com.ayvytr.easykotlin.android.context.toast
-import com.ayvytr.easykotlin.android.log.L
-import com.ayvytr.easykotlin.android.ui.getContext
+import com.ayvytr.easykotlin.context.getColor2
+import com.ayvytr.easykotlin.context.getDrawable2
+import com.ayvytr.easykotlin.context.toast
+import com.ayvytr.easykotlin.log.L
+import com.ayvytr.easykotlin.ui.getContext
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()
@@ -40,9 +40,6 @@ class MainActivity : AppCompatActivity()
 
         btnLogTestActivity.setOnClickListener {
             startActivity(Intent(getContext(), LogTestActivity::class.java))
-        }
-        btnQiv.setOnClickListener {
-            startActivity(Intent(getContext(), QuickIndexViewActivity::class.java))
         }
         testLog()
     }
@@ -87,14 +84,14 @@ class MainActivity : AppCompatActivity()
 //        L.w(map)
 //        L.wtf(map)
 
-//        L.getSettings().hasLog = false
-//        L.getSettings().tag = "Different Tag"
-//        L.getSettings().methodCount = 10
-//        L.getSettings().isShowThreadInfo = true
-//        L.getSettings().methodCount = 1
-//        L.getSettings().isShowCalledInfo = false
-        L.getSettings().justShowMsg = true
-//        L.getSettings().isShowBottomBorder = true
+//        L.settings.hasLog = false
+//        L.settings.tag = "Different Tag"
+//        L.settings.methodCount = 10
+//        L.settings.isShowThreadInfo = true
+//        L.settings.methodCount = 1
+//        L.settings.isShowCalledInfo = false
+//        L.settings.justShowMsg = true
+        L.settings.isShowBottomBorder = true
 
         val ints = arrayOf(1, 2, 3, 4, 5)
         L.i(ints)

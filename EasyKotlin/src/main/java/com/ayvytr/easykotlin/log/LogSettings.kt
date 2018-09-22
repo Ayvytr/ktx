@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.android.log
+package com.ayvytr.easykotlin.log
 
 /**
  * Log设置类.

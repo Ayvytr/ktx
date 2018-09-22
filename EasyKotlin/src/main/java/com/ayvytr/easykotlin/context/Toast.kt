@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.android.context
+package com.ayvytr.easykotlin.context
 
 import android.content.Context
 import android.support.annotation.StringRes

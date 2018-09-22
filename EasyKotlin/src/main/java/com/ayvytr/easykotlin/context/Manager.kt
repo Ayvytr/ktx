@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.android.context
+package com.ayvytr.easykotlin.context
 
 import android.accounts.AccountManager
 import android.app.*

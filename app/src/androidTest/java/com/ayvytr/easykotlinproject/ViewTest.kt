@@ -4,7 +4,7 @@ package com.ayvytr.easykotlinproject
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.widget.TextView
-import com.ayvytr.easykotlin.android.ui.*
+import com.ayvytr.easykotlin.ui.*
 import junit.framework.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
