@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import com.ayvytr.easykotlin.context.getColor2
 import com.ayvytr.easykotlin.context.getDrawable2
 import com.ayvytr.easykotlin.context.toast
-import com.ayvytr.easykotlin.log.L
 import com.ayvytr.easykotlin.ui.getContext
+import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity()
@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity()
 //        Toast.makeText(this, "Toast1", Toast.LENGTH_SHORT).show()
 //        Toast.makeText(this, "Toast2", Toast.LENGTH_SHORT).show()
 //        Toast.makeText(this, "Toast3", Toast.LENGTH_SHORT).show()
+
+//        L.settings.justShowMsg = true
 
         btn1.setOnClickListener {
             //            Toast.makeText(this, "Toast1", Toast.LENGTH_SHORT).show()
@@ -68,21 +70,21 @@ class MainActivity : AppCompatActivity()
         L.wtf("String")
 
 
-//        val l = listOf("aa", "bb", "cc")
-//        L.i(l)
-//        L.d(l)
-//        L.e(l)
-//        L.v(l)
-//        L.w(l)
-//        L.wtf(l)
-//
-//        val map = mapOf("ka" to 10, "kb" to 20, "kc" to 30)
-//        L.i(map)
-//        L.d(map)
-//        L.e(map)
-//        L.v(map)
-//        L.w(map)
-//        L.wtf(map)
+        val l = listOf("aa", "bb", "cc")
+        L.i(l)
+        L.d(l)
+        L.e(l)
+        L.v(l)
+        L.w(l)
+        L.wtf(l)
+
+        val map = mapOf("ka" to 10, "kb" to 20, "kc" to 30)
+        L.i(map)
+        L.d(map)
+        L.e(map)
+        L.v(map)
+        L.w(map)
+        L.wtf(map)
 
 //        L.settings.hasLog = false
 //        L.settings.tag = "Different Tag"
@@ -91,7 +93,7 @@ class MainActivity : AppCompatActivity()
 //        L.settings.methodCount = 1
 //        L.settings.isShowCalledInfo = false
 //        L.settings.justShowMsg = true
-        L.settings.isShowBottomBorder = true
+        L.settings().showBottomBorder(true)
 
         val ints = arrayOf(1, 2, 3, 4, 5)
         L.i(ints)
