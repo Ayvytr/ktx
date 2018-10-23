@@ -1,12 +1,11 @@
 package com.ayvytr.easykotlinproject
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.ayvytr.easykotlin.context.getColor2
 import com.ayvytr.easykotlin.context.getDrawable2
+import com.ayvytr.easykotlin.context.getStatusBarHeight
 import com.ayvytr.easykotlin.context.toast
-import com.ayvytr.easykotlin.ui.getContext
 import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -40,10 +39,9 @@ class MainActivity : AppCompatActivity()
         getColor2(R.color.abc_background_cache_hint_selector_material_dark)
         getDrawable2(R.drawable.abc_ab_share_pack_mtrl_alpha)
 
-        btnLogTestActivity.setOnClickListener {
-            startActivity(Intent(getContext(), LogTestActivity::class.java))
-        }
         testLog()
+
+        tvStatusBarHeight.setText(getStatusBarHeight().toString())
     }
 
     private fun testLog()
