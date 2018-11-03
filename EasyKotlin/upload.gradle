@@ -2,6 +2,13 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
+def isKotlin = true
+//def isKotlin = false
+
+if (isKotlin) {
+    apply plugin: 'org.jetbrains.dokka-android'
+}
+
 group = PROJ_GROUP
 
 // Both the artifactory and bintray plugins depend on this singular
@@ -20,29 +27,58 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadoc(type: Javadoc) {
-    // Exclude generated files
-    exclude '**/BuildConfig.java'
-    exclude '**/R.java'
-    source = android.sourceSets.main.java.srcDirs
-    failOnError false
-    classpath += configurations.compile
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
+//TODO: support both Java and Kotlin.
+if (isKotlin) {
+    def kdocDir = "$buildDir/javadoc"
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+    task rmdir(type: Delete) {
+        delete kdocDir
+    }
 
-javadoc {
-    options {
-        encoding "UTF-8"
-        charSet 'UTF-8'
-        author true
-        version true
-        links "http://docs.oracle.com/javase/7/docs/api"
-        title PROJ_ARTIFACTID
+//    reason for use dokka.class: https://github.com/Kotlin/dokka/issues/214
+    task javadoc(type: dokka.class, dependsOn: rmdir) {
+        outputFormat = 'javadoc'
+        outputDirectory = kdocDir
+
+        // Do not create index pages for empty packages
+        skipEmptyPackages = true
+
+        //Do not output deprecated members. Applies globally, can be overridden by packageOptions
+        skipDeprecated = false
+
+        //No default documentation link to kotlin-stdlib
+        noStdlibLink = false
+    }
+
+    task javadocJar(overwrite: true, type: Jar, dependsOn: dokka) {
+        classifier = 'javadoc'
+        from kdocDir
+    }
+} else {
+    task javadoc(type: Javadoc) {
+        // Exclude generated files
+        exclude '**/BuildConfig.java'
+        exclude '**/R.java'
+        source = android.sourceSets.main.java.srcDirs
+        failOnError false
+        classpath += configurations.compile
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    javadoc {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            author true
+            version true
+            links "http://docs.oracle.com/javase/7/docs/api"
+            title PROJ_ARTIFACTID
+        }
     }
 }
 
@@ -91,7 +127,7 @@ bintray {
 
     user = properties.getProperty('BINTRAY_USER');
     key = properties.getProperty('BINTRAY_KEY');
-    if(user == null || key == null) {
+    if (user == null || key == null) {
         throw new NullPointerException("[Message] upload.gradle: User or key is null!")
     }
 
