@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+
 /**
  * Context 加载布局方法，包括 [RecyclerView] item 的加载方法 [inflateRv(Int, ViewGroup)]
  * <p>
@@ -145,4 +146,21 @@ fun Context.dp2px(dp: Double): Double
 {
     val scale = resources.displayMetrics.density
     return dp * scale + 0.5F
+}
+
+/**
+ * 获取状态栏高度
+ *
+ * @return 状态栏高度px
+ */
+fun Context.getStatusBarHeight(): Int
+{
+    var result = 0
+    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0)
+    {
+        result = this.resources.getDimensionPixelSize(resourceId)
+    }
+
+    return result
 }
