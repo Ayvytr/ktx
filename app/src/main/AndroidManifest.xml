@@ -23,9 +23,7 @@
         </activity>
         <activity android:name=".LogTestActivity">
         </activity>
-        <activity android:name=".QuickIndexViewActivity">
-        </activity>
-        <activity android:name=".SuperEditTextActivity">
+        <activity android:name=".ext.StatusBarActivity">
         </activity>
     </application>
 

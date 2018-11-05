@@ -9,7 +9,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.ayvytr.easykotlinproject"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -26,8 +26,8 @@ android {
     }
 }
 
-//def testJcenter = false
-def testJcenter = true
+def testJcenter = false
+//def testJcenter = true
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -39,11 +39,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.ayvytr:logger:3.0.0'
+    implementation "org.jetbrains.anko:anko:$anko_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
-    if(testJcenter) {
+    if (testJcenter) {
         implementation 'com.ayvytr:EasyKotlin:2.0.1'
-    }
-    else{
+    } else {
         implementation project(':EasyKotlin')
     }
 }

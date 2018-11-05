@@ -2,12 +2,10 @@ package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.ayvytr.easykotlin.context.getColor2
-import com.ayvytr.easykotlin.context.getDrawable2
-import com.ayvytr.easykotlin.context.getStatusBarHeight
-import com.ayvytr.easykotlin.context.toast
-import com.ayvytr.logger.L
+import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity()
 {
@@ -26,87 +24,28 @@ class MainActivity : AppCompatActivity()
 
 //        L.settings.justShowMsg = true
 
-        btn1.setOnClickListener {
-            //            Toast.makeText(this, "Toast1", Toast.LENGTH_SHORT).show()
-            toast("这是我的Toast，哈哈！1")
-        }
-        btn2.setOnClickListener {
-            //            Toast.makeText(this, "Toast2", Toast.LENGTH_SHORT).show()
-            toast("这是我的Toast，哈哈！2")
-        }
+//        btn1.setOnClickListener {
+//            //            Toast.makeText(this, "Toast1", Toast.LENGTH_SHORT).show()
+//            toast("这是我的Toast，哈哈！1")
+//        }
+//        btn2.setOnClickListener {
+//            //            Toast.makeText(this, "Toast2", Toast.LENGTH_SHORT).show()
+//            toast("这是我的Toast，哈哈！2")
+//        }
 
-        getString(R.string.app_name)
-        getColor2(R.color.abc_background_cache_hint_selector_material_dark)
-        getDrawable2(R.drawable.abc_ab_share_pack_mtrl_alpha)
+//        getString(R.string.app_name)
+//        getColor2(R.color.abc_background_cache_hint_selector_material_dark)
+//        getDrawable2(R.drawable.abc_ab_share_pack_mtrl_alpha)
+//
+//        testLog()
 
-        testLog()
-
-        tvStatusBarHeight.setText(getStatusBarHeight().toString())
+//        tvStatusBarHeight.setText(getStatusBarHeight().toString())
+        initView()
     }
 
-    private fun testLog()
+    private fun initView()
     {
-        L.i()
-        L.d()
-        L.e()
-        L.v()
-        L.w()
-        L.wtf()
-
-        L.i(1)
-        L.d(1)
-        L.e(1)
-        L.v(1)
-        L.w(1)
-        L.wtf(1)
-
-        L.i("String")
-        L.d("String")
-        L.e("String")
-        L.v("String")
-        L.w("String")
-        L.wtf("String")
-
-
-        val l = listOf("aa", "bb", "cc")
-        L.i(l)
-        L.d(l)
-        L.e(l)
-        L.v(l)
-        L.w(l)
-        L.wtf(l)
-
-        val map = mapOf("ka" to 10, "kb" to 20, "kc" to 30)
-        L.i(map)
-        L.d(map)
-        L.e(map)
-        L.v(map)
-        L.w(map)
-        L.wtf(map)
-
-//        L.settings.hasLog = false
-//        L.settings.tag = "Different Tag"
-//        L.settings.methodCount = 10
-//        L.settings.isShowThreadInfo = true
-//        L.settings.methodCount = 1
-//        L.settings.isShowCalledInfo = false
-//        L.settings.justShowMsg = true
-        L.settings().showBottomBorder(true)
-
-        val ints = arrayOf(1, 2, 3, 4, 5)
-        L.i(ints)
-        L.d(ints)
-        L.e(ints)
-        L.v(ints)
-        L.w(ints)
-        L.wtf(ints)
-
-        val strs = arrayOf("aa", "bb", "cc", "dd", "ee")
-        L.i(strs)
-        L.d(strs)
-        L.e(strs)
-        L.v(strs)
-        L.w(strs)
-        L.wtf(strs)
+        btnStatusBar.onClick { startActivity<StatusBarActivity>() }
     }
+
 }
