@@ -35,8 +35,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-apply from: 'upload.gradle'
-
 //def kdocDir = "$buildDir/javadoc"
 //
 //task rmdir(type: Delete) {
@@ -61,3 +59,4 @@ apply from: 'upload.gradle'
 //    classifier = 'javadoc'
 //    from kdocDir
 //}
+apply from: 'https://raw.github.com/Ayvytr/KotlinJavadocMavenPush/master/kdoc_maven_push.gradle'
