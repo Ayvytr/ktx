@@ -1,10 +1,13 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.0.1-red.svg)](https://bintray.com/ayvytr/maven/EasyKotlin/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.0.0-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 ## 推荐使用Kotlin进行Android开发. 
 
 ## JCenter
-	implementation 'com.ayvytr:EasyKotlin:2.0.1'
+	implementation 'com.ayvytr:ktx:1.0.0'
+	
+	如果有编译问题，请加入：
+    maven { url "https://dl.bintray.com/ayvytr/maven" }
 
 # EasyKotlin 简化Android开发的Kotlin库
 
@@ -56,8 +59,6 @@
 ### Toast.kt 最简单的toast使用扩展方法，共享一个Toast实例
     context.toast(...)
     context.toastLong(...)
-    
-### Sp SpManager SharedPreferences 管理类和操作类，简化SharedPreferences使用    
     
 ### Activity.kt Activity扩展方法    
     activity.showActionBar

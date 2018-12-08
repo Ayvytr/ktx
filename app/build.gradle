@@ -26,8 +26,8 @@ android {
     }
 }
 
-def testJcenter = false
-//def testJcenter = true
+//def testJcenter = false
+def testJcenter = true
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.ayvytr:logger:3.0.0'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:EasyKotlin:2.0.2'
+        implementation 'com.ayvytr:ktx:1.0.0'
     } else {
         implementation project(':ktx')
     }
