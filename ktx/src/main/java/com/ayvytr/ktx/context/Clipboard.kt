@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.context
+package com.ayvytr.ktx.context
 
 import android.content.ClipData
 import android.content.ClipboardManager

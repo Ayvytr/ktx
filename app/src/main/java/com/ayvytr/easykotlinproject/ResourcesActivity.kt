@@ -3,11 +3,11 @@ package com.ayvytr.easykotlinproject
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
-import com.ayvytr.easykotlin.context.*
-import com.ayvytr.easykotlin.ui.fullscreen
-import com.ayvytr.easykotlin.ui.hideActionBar
-import com.ayvytr.easykotlin.ui.isFullscreen
-import com.ayvytr.easykotlin.ui.showActionBar
+import com.ayvytr.ktx.context.*
+import com.ayvytr.ktx.ui.fullscreen
+import com.ayvytr.ktx.ui.hideActionBar
+import com.ayvytr.ktx.ui.isFullscreen
+import com.ayvytr.ktx.ui.showActionBar
 import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()

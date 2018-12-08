@@ -5,12 +5,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.ayvytr.easykotlinproject"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -31,20 +31,25 @@ def testJcenter = false
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'com.android.support:design:27.1.1'
+
+    implementation rootProject.ext.support.appcompat_v7
+    implementation rootProject.ext.support.design
+    implementation rootProject.ext.support.constraint
+
+    testImplementation rootProject.ext.test.junit
+    androidTestImplementation rootProject.ext.test.testRunner
+    androidTestImplementation rootProject.ext.test.espresso
+
+    implementation rootProject.ext.kotlin.kotlin_jdk7
+    implementation rootProject.ext.kotlin.anko
+    implementation rootProject.ext.kotlin.anko_commons
+
+
     implementation 'com.ayvytr:logger:3.0.0'
-    implementation "org.jetbrains.anko:anko:$anko_version"
-    implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
     if (testJcenter) {
-        implementation 'com.ayvytr:EasyKotlin:2.0.1'
+        implementation 'com.ayvytr:EasyKotlin:2.0.2'
     } else {
-        implementation project(':EasyKotlin')
+        implementation project(':ktx')
     }
 }

@@ -1,18 +1,14 @@
 [![jCenter](https://img.shields.io/badge/jCenter-2.0.1-red.svg)](https://bintray.com/ayvytr/maven/EasyKotlin/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
+## 推荐使用Kotlin进行Android开发. 
+
 ## JCenter
-	compile 'com.ayvytr:EasyKotlin:2.0.1'
-	or
 	implementation 'com.ayvytr:EasyKotlin:2.0.1'
 
 # EasyKotlin 简化Android开发的Kotlin库
 
-## Kotlin 语言相比 Java 来说非常简洁，kotlin库依然如此。使用kotlin来充分简化Android开发，非常nice
 
-## 更新记录
-
-2.0.1 添加了获取状态栏高度的方法；删除了无用资源
 
 ## 包含内容以及用法
 

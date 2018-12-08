@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlin.bitmap
+package com.ayvytr.ktx.bitmap
 
 import android.content.Context
 import android.graphics.Bitmap
