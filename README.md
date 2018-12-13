@@ -6,8 +6,6 @@
 ## JCenter
 	implementation 'com.ayvytr:ktx:1.0.0'
 	
-	如果有编译问题，请加入：
-    maven { url "https://dl.bintray.com/ayvytr/maven" }
 
 # EasyKotlin 简化Android开发的Kotlin库
 
