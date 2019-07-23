@@ -2,7 +2,7 @@
 apply from: 'https://raw.github.com/Ayvytr/KotlinJavadocMavenPush/master/sdk27.gradle'
 
 buildscript {
-    ext.kotlin_version = '1.2.71'
+    ext.kotlin_version = '1.3.10'
     ext.anko_version = '0.10.6'
     ext.dokka_version = '0.9.17'
     repositories {
@@ -11,7 +11,7 @@ buildscript {
         maven { url "https://dl.bintray.com/ayvytr/maven" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
