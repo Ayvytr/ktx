@@ -1,10 +1,10 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.0.0-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.3.1-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 ## 推荐使用Kotlin进行Android开发. 
 
 ## JCenter
-	implementation 'com.ayvytr:ktx:1.0.0'
+	implementation 'com.ayvytr:ktx:2.3.1'
 	
 
 # EasyKotlin 简化Android开发的Kotlin库
