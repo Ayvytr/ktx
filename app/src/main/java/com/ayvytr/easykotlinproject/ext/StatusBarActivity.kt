@@ -1,7 +1,7 @@
 package com.ayvytr.easykotlinproject.ext
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.easykotlinproject.R
 import com.ayvytr.ktx.context.hideStatusBar
 import com.ayvytr.ktx.context.isStatusBarShowing

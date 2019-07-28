@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.ayvytr.easykotlinproject"
@@ -26,15 +26,13 @@ android {
     }
 }
 
-//def testJcenter = false
-def testJcenter = true
+def testJcenter = false
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation rootProject.ext.support.appcompat_v7
-    implementation rootProject.ext.support.design
-    implementation rootProject.ext.support.constraint
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     testImplementation rootProject.ext.test.junit
     androidTestImplementation rootProject.ext.test.testRunner
@@ -48,8 +46,8 @@ dependencies {
     implementation 'com.ayvytr:logger:3.0.0'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:ktx:1.0.0'
+        implementation 'com.ayvytr:ktx-androidx:2.3.1'
     } else {
-        implementation project(':ktx')
+        implementation project(':ktx-androidx')
     }
 }

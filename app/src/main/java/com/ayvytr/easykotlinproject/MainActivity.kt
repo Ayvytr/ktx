@@ -1,7 +1,7 @@
 package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk27.coroutines.onClick

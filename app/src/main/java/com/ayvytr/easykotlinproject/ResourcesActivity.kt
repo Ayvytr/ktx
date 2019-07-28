@@ -1,8 +1,8 @@
 package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
+import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.ktx.context.*
 import com.ayvytr.ktx.ui.fullscreen
 import com.ayvytr.ktx.ui.hideActionBar

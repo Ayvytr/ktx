@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 14
@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.support.appcompat_v7
+    implementation 'androidx.appcompat:appcompat:1.0.2'
 
     testImplementation rootProject.ext.test.junit
     androidTestImplementation rootProject.ext.test.testRunner

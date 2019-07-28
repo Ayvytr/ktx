@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.ayvytr.easykotlinproject.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -17,13 +17,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResourcesActivity"
+            android:name="com.ayvytr.easykotlinproject.ResourcesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true">
         </activity>
-        <activity android:name=".LogTestActivity">
+        <activity android:name="com.ayvytr.easykotlinproject.LogTestActivity">
         </activity>
-        <activity android:name=".ext.StatusBarActivity">
+        <activity android:name="com.ayvytr.easykotlinproject.ext.StatusBarActivity">
         </activity>
     </application>
 
