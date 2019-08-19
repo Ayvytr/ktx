@@ -13,21 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
  * @since 0.1.0
  */
 
-/**
- * 获取 AppCompatActivity 的 Context（实际获取的是Activity自身）
- */
-fun AppCompatActivity.getContext(): Context
-{
-    return this
-}
-
-/**
- * 获取 AppCompatActivity 自身
- */
-fun AppCompatActivity.getActivity(): AppCompatActivity
-{
-    return this
-}
 
 /**
  * 获取 Activity 的 Context（实际获取的是Activity自身）
@@ -85,6 +70,10 @@ fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true)
     window.attributes = attrs
 }
 
+/**
+ * 判断Activity是不是全屏
+ * @return `true`： 全屏
+ */
 fun Activity.isFullscreen(): Boolean
 {
     return window.attributes.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN == WindowManager.LayoutParams.FLAG_FULLSCREEN

@@ -2,7 +2,6 @@ package com.ayvytr.ktx.ui
 
 import android.view.View
 import android.view.View.*
-import android.widget.EditText
 
 /**
  * View 相关的Kotlin扩展方法
@@ -12,64 +11,38 @@ import android.widget.EditText
  * @since 0.1.0
  */
 
-/**
- * 显示 View
- */
-fun View.show()
-{
-    visibility = View.VISIBLE
-}
 
 /**
  * 隐藏 View
  */
-fun View.hide()
-{
-    visibility = View.GONE
+fun View.hide(isTrue: Boolean = true) {
+    if (isTrue) visibility = GONE else VISIBLE
 }
 
-/**
- * 设置View为 View.INVISIBLE
- */
-fun View.invisible()
-{
-    visibility = View.INVISIBLE
-}
 
 /**
  * 显示/隐藏 View
- * @param isShow {@code true } 显示<br>{@code false} 隐藏
+ * @param isTrue {@code true } 显示<br>{@code false} 隐藏
  */
-fun View.show(isShow: Boolean)
-{
-    if (isShow) show() else hide()
+fun View.show(isTrue: Boolean = true) {
+    if (isTrue) visibility = VISIBLE else GONE
 }
 
 /**
- * 显示/隐藏 View（注意：是 View.INVISIBLE 这个隐藏）
- * @param isShow {@code true} 显示<br>{@code false} 隐藏
+ * invisible/显示 View
+ * @param `true` INVISIBLE, `false` VISIBLE
  */
-fun View.showOrInvisible(isShow: Boolean)
-{
-    if (isShow) show() else invisible()
+fun View.invisible(isTrue: Boolean = true) {
+    if (isTrue) visibility = INVISIBLE else VISIBLE
 }
 
-/**
- * 设置View 可用/不可用
- * @param enable {@code true} 可用<br>{@code false} 不可用
- */
-fun View.enable(enable: Boolean)
-{
-    isEnabled = enable
-}
 
 /**
  * 判断View是不是可见
  *
  * @return `true` 可见([View.getVisibility] == [View.VISIBLE])
  */
-fun View.isVisible(): Boolean
-{
+fun View.isVisible(): Boolean {
     return visibility == VISIBLE
 }
 
@@ -78,9 +51,17 @@ fun View.isVisible(): Boolean
  *
  * @return `true` 可见([View.getVisibility] == [View.VISIBLE])
  */
-fun View.isShow(): Boolean
-{
+fun View.isShow(): Boolean {
     return isVisible()
+}
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] == [View.VISIBLE])
+ */
+fun View.isNotShow(): Boolean {
+    return !isVisible()
 }
 
 /**
@@ -88,8 +69,7 @@ fun View.isShow(): Boolean
  *
  * @return `true` 不可见([View.getVisibility] != [View.VISIBLE])
  */
-fun View.isNotVisible(): Boolean
-{
+fun View.isNotVisible(): Boolean {
     return !isVisible()
 }
 
@@ -118,9 +98,18 @@ fun View.isNotInvisible(): Boolean
  *
  * @return `true` 可见([View.getVisibility] == [View.GONE])
  */
-fun View.isGone(): Boolean
-{
+fun View.isGone(): Boolean {
     return visibility == GONE
+}
+
+
+/**
+ * 判断View是不是可见
+ *
+ * @return `true` 可见([View.getVisibility] == [View.GONE])
+ */
+fun View.isHide(): Boolean {
+    return isGone()
 }
 
 /**
@@ -128,31 +117,78 @@ fun View.isGone(): Boolean
  *
  * @return `true` 可见([View.getVisibility] != [View.GONE])
  */
-fun View.isNotGone(): Boolean
-{
+fun View.isNotHide(): Boolean {
     return !isGone()
 }
 
+
 /**
- * 设置 [EditText] 文本，并且把光标定位到末尾
+ * 将px转换为dp
+ *
+ * @param px 像素值
+ * @return dp值
  */
-fun EditText.setText2(text: CharSequence?)
+fun View.px2dp(px: Int): Int
 {
-    if (text != null)
-    {
-        setText(text)
-        setSelection(getText().length)
-    }
+    return px2dp(px.toFloat()).toInt()
 }
 
 /**
- * 设置 [EditText] 文本，并且全选文本
+ * 将px转换为dp，接收/返回float
+ *
+ * @param px 像素值
+ * @return dp值
  */
-fun EditText.setTextWithSelection(text: CharSequence?)
+fun View.px2dp(px: Float): Float
 {
-    if (text != null)
-    {
-        setText(text)
-        setSelection(0, getText().length)
-    }
+    return px2dp(px.toDouble()).toFloat()
 }
+
+/**
+ * 将px转换为dp，接收/返回double
+ *
+ * @param px 像素值
+ * @return dp值
+ */
+fun View.px2dp(px: Double): Double
+{
+    val scale = resources.displayMetrics.density
+    return px / scale + 0.5F
+}
+
+/**
+ * 将dp转换为px，接收/返回int
+ *
+ * @param dp dp值
+ * @return 像素值
+ */
+fun View.dp2px(dp: Int): Int
+{
+    return dp2px(dp.toFloat()).toInt()
+}
+
+/**
+ * 将dp转换为px，接收/返回float
+ *
+ * @param dp dp值
+ * @return 像素值
+ */
+fun View.dp2px(dp: Float): Float
+{
+    return dp2px(dp.toDouble()).toFloat()
+}
+
+/**
+ * 将dp转换为px，接收/返回double
+ *
+ * @param dp dp值
+ * @return 像素值
+ */
+fun View.dp2px(dp: Double): Double
+{
+    val scale = resources.displayMetrics.density
+    return dp * scale + 0.5F
+}
+
+
+
