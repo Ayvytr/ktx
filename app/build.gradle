@@ -46,7 +46,7 @@ dependencies {
     implementation 'com.ayvytr:logger:3.0.0'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:ktx-androidx:2.3.1'
+        implementation 'com.ayvytr:ktx-androidx:2.4.0'
     } else {
         implementation project(':ktx-androidx')
     }

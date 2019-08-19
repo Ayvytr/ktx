@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 14
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    testImplementation rootProject.ext.test.junit
+    androidTestImplementation rootProject.ext.test.testRunner
+    androidTestImplementation rootProject.ext.test.espresso
+
+    implementation rootProject.ext.kotlin.kotlin_jdk7
+}
+
+
+task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaAndroidTask) {
+    outputFormat = 'javadoc'
+    outputDirectory = "$buildDir/javadoc"
+
+    // Do not create index pages for empty packages
+    skipEmptyPackages = true
+
+    //Do not output deprecated members. Applies globally, can be overridden by packageOptions
+    skipDeprecated = false
+
+    //No default documentation link to kotlin-stdlib
+    noStdlibLink = false
+}
+
+apply from: 'https://raw.github.com/Ayvytr/KotlinJavadocMavenPush/master/kotlin_maven_push.gradle'

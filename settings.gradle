@@ -1,1 +1,3 @@
-include ':app', ':ktx-androidx'
+include ':app'
+include ':ktx-androidx'
+include ':ktx'
