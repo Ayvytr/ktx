@@ -16,7 +16,7 @@ import android.view.View.*
  * 隐藏 View
  */
 fun View.hide(isTrue: Boolean = true) {
-    if (isTrue) visibility = GONE else VISIBLE
+    visibility = if (isTrue) GONE else VISIBLE
 }
 
 
@@ -25,7 +25,7 @@ fun View.hide(isTrue: Boolean = true) {
  * @param isTrue {@code true } 显示<br>{@code false} 隐藏
  */
 fun View.show(isTrue: Boolean = true) {
-    if (isTrue) visibility = VISIBLE else GONE
+    visibility = if (isTrue) VISIBLE else GONE
 }
 
 /**
@@ -33,7 +33,7 @@ fun View.show(isTrue: Boolean = true) {
  * @param `true` INVISIBLE, `false` VISIBLE
  */
 fun View.invisible(isTrue: Boolean = true) {
-    if (isTrue) visibility = INVISIBLE else VISIBLE
+    visibility = if (isTrue) INVISIBLE else VISIBLE
 }
 
 
@@ -58,39 +58,10 @@ fun View.isShow(): Boolean {
 /**
  * 判断View是不是可见
  *
- * @return `true` 可见([View.getVisibility] == [View.VISIBLE])
- */
-fun View.isNotShow(): Boolean {
-    return !isVisible()
-}
-
-/**
- * 判断View是不是可见
- *
- * @return `true` 不可见([View.getVisibility] != [View.VISIBLE])
- */
-fun View.isNotVisible(): Boolean {
-    return !isVisible()
-}
-
-/**
- * 判断View是不是可见
- *
  * @return `true` 可见([View.getVisibility] == [View.INVISIBLE])
  */
-fun View.isInvisible(): Boolean
-{
+fun View.isInvisible(): Boolean {
     return visibility == INVISIBLE
-}
-
-/**
- * 判断View是不是可见
- *
- * @return `true` 可见([View.getVisibility] != [View.INVISIBLE])
- */
-fun View.isNotInvisible(): Boolean
-{
-    return !isInvisible()
 }
 
 /**
@@ -113,23 +84,12 @@ fun View.isHide(): Boolean {
 }
 
 /**
- * 判断View是不是可见
- *
- * @return `true` 可见([View.getVisibility] != [View.GONE])
- */
-fun View.isNotHide(): Boolean {
-    return !isGone()
-}
-
-
-/**
  * 将px转换为dp
  *
  * @param px 像素值
  * @return dp值
  */
-fun View.px2dp(px: Int): Int
-{
+fun View.px2dp(px: Int): Int {
     return px2dp(px.toFloat()).toInt()
 }
 
@@ -139,8 +99,7 @@ fun View.px2dp(px: Int): Int
  * @param px 像素值
  * @return dp值
  */
-fun View.px2dp(px: Float): Float
-{
+fun View.px2dp(px: Float): Float {
     return px2dp(px.toDouble()).toFloat()
 }
 
@@ -150,8 +109,7 @@ fun View.px2dp(px: Float): Float
  * @param px 像素值
  * @return dp值
  */
-fun View.px2dp(px: Double): Double
-{
+fun View.px2dp(px: Double): Double {
     val scale = resources.displayMetrics.density
     return px / scale + 0.5F
 }
@@ -162,8 +120,7 @@ fun View.px2dp(px: Double): Double
  * @param dp dp值
  * @return 像素值
  */
-fun View.dp2px(dp: Int): Int
-{
+fun View.dp2px(dp: Int): Int {
     return dp2px(dp.toFloat()).toInt()
 }
 
@@ -173,8 +130,7 @@ fun View.dp2px(dp: Int): Int
  * @param dp dp值
  * @return 像素值
  */
-fun View.dp2px(dp: Float): Float
-{
+fun View.dp2px(dp: Float): Float {
     return dp2px(dp.toDouble()).toFloat()
 }
 
@@ -184,8 +140,7 @@ fun View.dp2px(dp: Float): Float
  * @param dp dp值
  * @return 像素值
  */
-fun View.dp2px(dp: Double): Double
-{
+fun View.dp2px(dp: Double): Double {
     val scale = resources.displayMetrics.density
     return dp * scale + 0.5F
 }

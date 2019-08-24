@@ -38,4 +38,15 @@
         android:layout_height="wrap_content"
         android:text="EmojiFilter等筛选器" />
 
+    <Button
+        android:id="@+id/btn_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示、隐藏" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:textColor="@color/aero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
