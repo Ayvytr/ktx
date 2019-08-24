@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.ayvytr.easykotlinproject"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -9,22 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.ayvytr.easykotlinproject.MainActivity">
+        <activity android:name=".ext.FiltersActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ayvytr.easykotlinproject.ResourcesActivity"
+            android:name=".ResourcesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="true">
-        </activity>
-        <activity android:name="com.ayvytr.easykotlinproject.LogTestActivity">
-        </activity>
-        <activity android:name="com.ayvytr.easykotlinproject.ext.StatusBarActivity">
-        </activity>
+            android:exported="true"></activity>
+        <activity android:name=".LogTestActivity"></activity>
+        <activity android:name=".ext.StatusBarActivity"></activity>
     </application>
 
 </manifest>

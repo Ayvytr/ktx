@@ -7,6 +7,7 @@ import android.widget.EditText
  * @author ['s GitHub](https://github.com/Ayvytr)
  * @since 2.4.0
  */
+
 /**
  * 设置 [EditText] 文本，并且把光标定位到末尾
  */

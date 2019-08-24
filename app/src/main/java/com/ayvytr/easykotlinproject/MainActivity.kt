@@ -2,9 +2,9 @@ package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity()
@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity()
 
     private fun initView()
     {
-        btnStatusBar.onClick { startActivity<StatusBarActivity>() }
+        btnStatusBar.setOnClickListener{  startActivity<StatusBarActivity>() }
+        btn_filters.setOnClickListener {
+            startActivity<FiltersActivity>()
+        }
     }
 
 }

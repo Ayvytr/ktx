@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Context.*
 import android.content.RestrictionsManager
 import android.content.pm.LauncherApps
+import android.content.pm.ShortcutManager
 import android.hardware.ConsumerIrManager
 import android.hardware.SensorManager
 import android.hardware.camera2.CameraManager
@@ -407,3 +408,9 @@ fun Context.getHardwarePropertiesManager(): HardwarePropertiesManager
 {
     return getSystemService(HARDWARE_PROPERTIES_SERVICE) as HardwarePropertiesManager
 }
+
+/**
+ * @see [ShortcutManager]
+ */
+@RequiresApi(Build.VERSION_CODES.N_MR1)
+fun Context.getShortcutManager(): ShortcutManager = getSystemService(SHORTCUT_SERVICE) as ShortcutManager

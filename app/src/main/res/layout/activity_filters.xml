@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10dp"
+    tools:context=".ext.FiltersActivity">
+
+    <EditText
+        android:id="@+id/et_emoji_filter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:hint="emoji filter" />
+
+    <EditText
+        android:id="@+id/et_password_filter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:hint="password filter" />
+
+    <EditText
+        android:id="@+id/et_email_filter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:hint="email filter" />
+
+    <EditText
+        android:id="@+id/et_chinese_filter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:hint="chinese filter" />
+
+    <EditText
+        android:id="@+id/et_2_digits"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:hint="2位小数限制，实验性，未加入库" />
+</LinearLayout>

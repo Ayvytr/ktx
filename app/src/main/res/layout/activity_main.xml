@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!--<Button-->
     <!--android:id="@+id/btn1"-->
@@ -29,6 +29,13 @@
         android:id="@+id/btnStatusBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="StatusBar"/>
+        android:text="StatusBar" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EmojiFilter等筛选器" />
+
+</LinearLayout>
