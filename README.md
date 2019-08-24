@@ -7,15 +7,25 @@ Ktx：简化Android开发的Kotlin库
 
 android
 
-	implementation 'com.ayvytr:ktx:2.4.0'
+	implementation 'com.ayvytr:ktx:2.4.1'
 
 androidx
 
 ```
-implementation 'com.ayvytr:ktx-androidx:2.4.0'
+implementation 'com.ayvytr:ktx-androidx:2.4.1'
 ```
 
 
+
+## ChangeLog
+
+### 2.4.1
+
+1. BaseTextWatcher
+2. ChineseFilter
+3. EmailFilter
+4. EmojiFilter
+5. PasswordFilter
 
 
 
