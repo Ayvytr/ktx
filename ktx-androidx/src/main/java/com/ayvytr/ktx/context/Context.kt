@@ -34,7 +34,7 @@ fun Context.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
 /**
  * 使用Fragment初始化布局
  */
-fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup?,
+fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
                      attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(context).inflate(id, parent, attachToParent)
 }
