@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.4.1-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.4.2-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 Ktx：简化Android开发的Kotlin库
@@ -7,17 +7,23 @@ Ktx：简化Android开发的Kotlin库
 
 android
 
-	implementation 'com.ayvytr:ktx:2.4.1'
+```
+	implementation 'com.ayvytr:ktx:2.4.2'
+```
 
 androidx
 
 ```
-implementation 'com.ayvytr:ktx-androidx:2.4.1'
+    implementation 'com.ayvytr:ktx-androidx:2.4.2'
 ```
 
 
 
 ## ChangeLog
+
+### 2.4.2
+精简工具类
+增加Fragment getStringArray等方法
 
 ### 2.4.1
 
