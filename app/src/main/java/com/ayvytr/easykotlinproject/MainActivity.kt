@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
+import com.ayvytr.ktx.ui.getContext
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -46,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         btn_filters.setOnClickListener {
             startActivity<FiltersActivity>()
         }
+
+        getContext()
     }
 
 }

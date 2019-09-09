@@ -1,3 +1,6 @@
+@file:JvmName("ResKt")
+@file:JvmMultifileClass
+
 package com.ayvytr.ktx.context
 
 import android.content.Context

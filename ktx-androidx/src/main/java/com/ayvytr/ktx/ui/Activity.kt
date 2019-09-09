@@ -1,7 +1,6 @@
 package com.ayvytr.ktx.ui
 
 import android.app.Activity
-import android.content.Context
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
@@ -17,33 +16,28 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * 获取 Activity 的 Context（实际获取的是Activity自身）
  */
-fun Activity.getContext(): Context
-{
+fun Activity.getContext(): Activity {
     return this
 }
 
 /**
  * 获取 Activity 自身
  */
-fun Activity.getActivity(): Activity
-{
+@Deprecated("废弃，使用getContext代替返回Activity，推荐使用Activity.applicationContext获取Context实例",
+            ReplaceWith("getContext()", "com.ayvytr.ktx.ui"))
+fun Activity.getActivity(): Activity {
     return this
 }
 
-fun Activity.showActionBar()
-{
-    if (this is AppCompatActivity)
-    {
+fun Activity.showActionBar() {
+    if (this is AppCompatActivity) {
         supportActionBar?.show()
-    }
-    else
-    {
+    } else {
         actionBar?.show()
     }
 }
 
-fun Activity.hideActionBar()
-{
+fun Activity.hideActionBar() {
     if (this is AppCompatActivity) supportActionBar?.hide() else actionBar?.hide()
 }
 
@@ -54,16 +48,12 @@ fun Activity.hideActionBar()
  * @param isFullScreen true 是全屏; false 不是全屏
  * @param withActionBar true 伴随全屏和非全屏，ActionBar分别进行隐藏和显示; false ActionBar不进行任何操作
  */
-fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true)
-{
+fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true) {
     val attrs = window.attributes
-    if (isFullScreen)
-    {
+    if (isFullScreen) {
         attrs.flags = attrs.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
         if (withActionBar) hideActionBar()
-    }
-    else
-    {
+    } else {
         attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
         if (withActionBar) showActionBar()
     }
@@ -74,7 +64,6 @@ fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true)
  * 判断Activity是不是全屏
  * @return `true`： 全屏
  */
-fun Activity.isFullscreen(): Boolean
-{
+fun Activity.isFullscreen(): Boolean {
     return window.attributes.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN == WindowManager.LayoutParams.FLAG_FULLSCREEN
 }

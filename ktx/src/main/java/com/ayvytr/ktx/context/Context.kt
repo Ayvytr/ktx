@@ -19,64 +19,30 @@ import android.view.ViewGroup
 /**
  * 使用Context初始化布局
  */
-fun Context.inflate(@LayoutRes id: Int): View
-{
-    return inflate(id, null)
-}
-
-/**
- * 使用Context初始化布局
- */
-fun Context.inflate(@LayoutRes id: Int, parent: ViewGroup?): View
-{
-    return inflate(id, parent, parent != null)
-}
-
-/**
- * 使用Context初始化布局
- */
-fun Context.inflate(@LayoutRes id: Int, parent: ViewGroup?, attachToParent: Boolean = false): View
-{
+fun Context.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
+                    attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(this).inflate(id, parent, attachToParent)
 }
 
 /**
  * 使用Context初始化布局，专为RecyclerView提供
  */
-fun Context.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View
-{
+fun Context.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
     return LayoutInflater.from(this).inflate(id, parent, false)
 }
 
 /**
  * 使用Fragment初始化布局
  */
-fun Fragment.inflate(@LayoutRes id: Int): View
-{
-    return inflate(id, null)
-}
-
-/**
- * 使用Fragment初始化布局
- */
-fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup?): View
-{
-    return inflate(id, parent, parent != null)
-}
-
-/**
- * 使用Fragment初始化布局
- */
-fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup?, attachToParent: Boolean = false): View
-{
+fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup?,
+                     attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(context).inflate(id, parent, attachToParent)
 }
 
 /**
  * 使用Fragment初始化布局，专为RecyclerView提供
  */
-fun Fragment.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View
-{
+fun Fragment.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
     return LayoutInflater.from(context).inflate(id, parent, false)
 }
 
@@ -86,8 +52,7 @@ fun Fragment.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View
  * @param px 像素值
  * @return dp值
  */
-fun Context.px2dp(px: Int): Int
-{
+fun Context.px2dp(px: Int): Int {
     return px2dp(px.toFloat()).toInt()
 }
 
@@ -97,8 +62,7 @@ fun Context.px2dp(px: Int): Int
  * @param px 像素值
  * @return dp值
  */
-fun Context.px2dp(px: Float): Float
-{
+fun Context.px2dp(px: Float): Float {
     return px2dp(px.toDouble()).toFloat()
 }
 
@@ -108,8 +72,7 @@ fun Context.px2dp(px: Float): Float
  * @param px 像素值
  * @return dp值
  */
-fun Context.px2dp(px: Double): Double
-{
+fun Context.px2dp(px: Double): Double {
     val scale = resources.displayMetrics.density
     return px / scale + 0.5F
 }
@@ -120,8 +83,7 @@ fun Context.px2dp(px: Double): Double
  * @param dp dp值
  * @return 像素值
  */
-fun Context.dp2px(dp: Int): Int
-{
+fun Context.dp2px(dp: Int): Int {
     return dp2px(dp.toFloat()).toInt()
 }
 
@@ -131,8 +93,7 @@ fun Context.dp2px(dp: Int): Int
  * @param dp dp值
  * @return 像素值
  */
-fun Context.dp2px(dp: Float): Float
-{
+fun Context.dp2px(dp: Float): Float {
     return dp2px(dp.toDouble()).toFloat()
 }
 
@@ -142,8 +103,7 @@ fun Context.dp2px(dp: Float): Float
  * @param dp dp值
  * @return 像素值
  */
-fun Context.dp2px(dp: Double): Double
-{
+fun Context.dp2px(dp: Double): Double {
     val scale = resources.displayMetrics.density
     return dp * scale + 0.5F
 }
@@ -153,12 +113,10 @@ fun Context.dp2px(dp: Double): Double
  *
  * @return 状态栏高度px
  */
-fun Context.getStatusBarHeight(): Int
-{
+fun Context.getStatusBarHeight(): Int {
     var result = 0
     val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
-    if (resourceId > 0)
-    {
+    if (resourceId > 0) {
         result = this.resources.getDimensionPixelSize(resourceId)
     }
 

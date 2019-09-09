@@ -1,9 +1,8 @@
 @file:JvmName("ResKt")
 @file:JvmMultifileClass
 
-package com.ayvytr.ktx.context
+package com.ayvytr.ktx.fragment
 
-import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import androidx.annotation.ArrayRes
@@ -11,19 +10,16 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 
 /**
- * 专门为方便 [Context] 类获取字符串等资源提供的方法，部分方法因为和系统弃用方法名相同，所以在类名后跟了数字2，比如 getDrawable2.
- *
- *
- * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
- * @since 1.0.0
+ * @author admin
  */
 
 /**
  * @see android.content.res.Resources.getStringArray
  */
-fun Context.getStringArray(@ArrayRes id: Int): Array<String>
+fun Fragment.getStringArray(@ArrayRes id: Int): Array<String>
 {
     return resources.getStringArray(id)
 }
@@ -31,7 +27,7 @@ fun Context.getStringArray(@ArrayRes id: Int): Array<String>
 /**
  * @see android.content.res.Resources.getIntArray
  */
-fun Context.getIntArray(@ArrayRes id: Int): IntArray
+fun Fragment.getIntArray(@ArrayRes id: Int): IntArray
 {
     return resources.getIntArray(id)
 }
@@ -39,7 +35,7 @@ fun Context.getIntArray(@ArrayRes id: Int): IntArray
 /**
  * @see android.content.res.Resources.getTextArray
  */
-fun Context.getTextArray(@ArrayRes id: Int): Array<CharSequence>
+fun Fragment.getTextArray(@ArrayRes id: Int): Array<CharSequence>
 {
     return resources.getTextArray(id)
 }
@@ -47,7 +43,7 @@ fun Context.getTextArray(@ArrayRes id: Int): Array<CharSequence>
 /**
  * @see android.content.res.Resources.obtainTypedArray
  */
-fun Context.getTypedArray(@ArrayRes id: Int): TypedArray
+fun Fragment.getTypedArray(@ArrayRes id: Int): TypedArray
 {
     return resources.obtainTypedArray(id)
 }
@@ -55,34 +51,34 @@ fun Context.getTypedArray(@ArrayRes id: Int): TypedArray
 /**
  * @see ContextCompat.getDrawable
  */
-fun Context.getDrawable2(@DrawableRes id: Int): Drawable?
+fun Fragment.getDrawable2(@DrawableRes id: Int): Drawable?
 {
-    return ContextCompat.getDrawable(this, id)
+    return ContextCompat.getDrawable(context!!, id)
 }
 
 /**
  * @see ContextCompat.getColor
  */
-fun Context.getColor2(@ColorRes id: Int): Int
+fun Fragment.getColor2(@ColorRes id: Int): Int
 {
-    return ContextCompat.getColor(this, id)
+    return ContextCompat.getColor(context!!, id)
 }
 
 /**
  * @See android.content.res.Resources.getConfiguration
  */
-fun Context.getConfiguration() = resources.configuration
+fun Fragment.getConfiguration() = resources.configuration
 
 /**
  * @see android.content.res.Resources.getDimension
  */
-fun Context.getDimen(@DimenRes id: Int) = resources.getDimension(id)
+fun Fragment.getDimen(@DimenRes id: Int) = resources.getDimension(id)
 
 /**
  * 获取返回 Drawable array
  * @see getTypedArray
  */
-fun Context.getDrawableArray(@ArrayRes id: Int): Array<Drawable?>
+fun Fragment.getDrawableArray(@ArrayRes id: Int): Array<Drawable?>
 {
     val typedArray = getTypedArray(id)
     //获取数量需要用这样的方法, TypedArray.getIndexCount() 获取的一直是0.
@@ -101,7 +97,7 @@ fun Context.getDrawableArray(@ArrayRes id: Int): Array<Drawable?>
  * 获取返回 Drawable id array
  * @see getTypedArray
  */
-fun Context.getDrawableIdArray(@ArrayRes id: Int): IntArray
+fun Fragment.getDrawableIdArray(@ArrayRes id: Int): IntArray
 {
     val typedArray = getTypedArray(id)
     val length = getTextArray(id).size
