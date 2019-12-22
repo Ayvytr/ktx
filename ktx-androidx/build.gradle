@@ -6,11 +6,11 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 19
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -29,7 +29,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
     testImplementation rootProject.ext.test.junit
-    androidTestImplementation rootProject.ext.test.testRunner
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation rootProject.ext.test.espresso
 
     implementation rootProject.ext.kotlin.kotlin_jdk7

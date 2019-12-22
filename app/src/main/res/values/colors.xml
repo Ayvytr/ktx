@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="link">#3940c2</color>
+    <color name="tag">#f4f4f4</color>
+    <color name="pressedText">#7dabca</color>
+    <color name="pressedBg">#b57575</color>
 </resources>

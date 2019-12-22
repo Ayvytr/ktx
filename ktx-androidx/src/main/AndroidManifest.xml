@@ -1,2 +1,11 @@
-<manifest package="com.ayvytr.ktx"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ayvytr.ktx">
+
+    <application>
+        <provider
+            android:name=".provider.ContextProvider"
+            android:authorities="${applicationId}.ContextProvider"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+</manifest>

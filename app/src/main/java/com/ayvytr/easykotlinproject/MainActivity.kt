@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
+import com.ayvytr.easykotlinproject.rich.RichActivity
+import com.ayvytr.ktx.provider.ContextProvider
 import com.ayvytr.ktx.ui.getContext
+import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -47,8 +50,13 @@ class MainActivity : AppCompatActivity() {
         btn_filters.setOnClickListener {
             startActivity<FiltersActivity>()
         }
+        btn_rich.setOnClickListener {
+            startActivity<RichActivity>()
+        }
 
         getContext()
+
+        L.e(ContextProvider.getContext())
     }
 
 }
