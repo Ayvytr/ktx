@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.4.3-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.5.0-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 Ktx：简化Android开发的Kotlin库
@@ -8,18 +8,21 @@ Ktx：简化Android开发的Kotlin库
 android
 
 ```
-	implementation 'com.ayvytr:ktx:2.4.3'
+	implementation 'com.ayvytr:ktx:2.5.0'
 ```
 
 androidx
 
 ```
-    implementation 'com.ayvytr:ktx-androidx:2.4.3'
+    implementation 'com.ayvytr:ktx-androidx:2.5.0'
 ```
 
 
 
 ## ChangeLog
+
+### 2.5.0
+增加Spanner工具类，为TextView提供简单易用的SpannableString
 
 ### 2.4.3
 精简工具类

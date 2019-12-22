@@ -1,0 +1,163 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+apply plugin: 'org.jetbrains.dokka'
+
+group = PROJ_GROUP
+
+// Both the artifactory and bintray plugins depend on this singular
+// global `version` variable. As such, we need to configure it based
+// on which task we're running.
+//
+// The solution here is brittle; it just checks whether 'bintrayUpload'
+// was called for execution, otherwise it assumes SNAPSHOT. If we
+// were to wait until the task graph was built, we'd be too late
+// (the plugins would already have used `version`).
+version = PROJ_VERSION
+
+// Create source/javadoc artifacts for publishing
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+//same as your project
+def outputDir = "$buildDir/javadoc"
+
+//append these code under your module 'build.gradle', before
+//apply from: 'https://raw.github.com/Ayvytr/KotlinJavadocMavenPush/master/kotlin_maven_push.gradle'
+//if not, it will be error
+//task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+//    outputFormat = 'javadoc'
+//    outputDirectory = "$buildDir/javadoc"
+//
+//    // Do not create index pages for empty packages
+//    skipEmptyPackages = true
+//
+//    //Do not output deprecated members. Applies globally, can be overridden by packageOptions
+//    skipDeprecated = false
+//
+//    //No default documentation link to kotlin-stdlib
+//    noStdlibLink = false
+//}
+
+dokka {
+    outputDirectory = "$buildDir/javadoc"
+    outputFormat = "javadoc"
+
+    configuration {
+
+        // Disable linking to online kotlin-stdlib documentation
+        noStdlibLink = false
+
+        // Disable linking to online JDK documentation
+        noJdkLink = false
+    }
+}
+
+
+task javadocJar(type: Jar, dependsOn: dokka) {
+	classifier = 'javadoc'
+	from outputDir
+}
+
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Configure android-maven-gradle-plugin
+install {
+    repositories.mavenInstaller.pom.project {
+        name PROJ_NAME
+        description PROJ_DESCRIPTION
+        packaging 'aar'
+        url PROJ_WEBSITEURL
+
+        licenses {
+            license {
+                name POM_LICENCE_NAME
+                url POM_LICENCE_URL
+                distribution POM_LICENCE_DIST
+            }
+        }
+
+        scm {
+            url POM_SCM_URL
+            connection POM_SCM_CONNECTION
+            developerConnection POM_SCM_DEV_CONNECTION
+
+        }
+
+        developers {
+            developer {
+                id DEVELOPER_ID
+                name DEVELOPER_NAME
+                email DEVELOPER_EMAIL
+            }
+        }
+    }
+}
+
+// Configure gradle-bintray-plugin (for publishing releases)
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    user = properties.getProperty('BINTRAY_USER')
+    key = properties.getProperty('BINTRAY_KEY')
+    if (user == null || key == null) {
+        throw new NullPointerException("[Message] upload.gradle: BINTRAY_USER or BINTRAY_KEY in local.properties is null!")
+    }
+
+    configurations = ['archives']
+    publications = ['mavenJava']
+    publish = true
+
+    pkg {
+        repo = 'maven'
+        name = PROJ_NAME
+        desc = PROJ_DESCRIPTION
+        websiteUrl = PROJ_WEBSITEURL
+        issueTrackerUrl = PROJ_ISSUETRACKERURL
+        vcsUrl = PROJ_VCSURL
+        licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
+        labels = [PROJ_NAME]
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+		    pom {
+                packaging 'aar'
+            }
+            pom.withXml {
+			    def dependenciesNode = asNode().appendNode('dependencies')
+                 // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
+                 configurations.implementation.allDependencies.each {
+                     // Ensure dependencies such as fileTree are not included.
+                     if (it.name != 'unspecified') {
+                         def dependencyNode = dependenciesNode.appendNode('dependency')
+                         dependencyNode.appendNode('groupId', it.group)
+                         dependencyNode.appendNode('artifactId', it.name)
+                         dependencyNode.appendNode('version', it.version)
+						 
+						if (it.group.contains("junit") || it.group.contains("com.android.support.test")) {
+                            dependencyNode.appendNode('scope', 'test')
+                        } else if (it.group.contains("com.android.support") || it.group.contains("androidx.")) {
+                            dependencyNode.appendNode('scope', 'runtime')
+                        } else {
+                            dependencyNode.appendNode('scope', 'compile')
+                        }
+//                        if (it instanceof ModuleDependency) {
+//                            dependencyNode.appendNode('scope', 'runtime')
+//                        }
+                     }
+                 }
+             }
+        }
+    }
+}

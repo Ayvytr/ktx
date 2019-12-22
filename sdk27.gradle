@@ -1,0 +1,38 @@
+ext {
+
+    compileSdkVersion = 27
+    targetSdkVersion = 26
+
+    supportLibraryVersion = "27.1.1"
+
+    version = [
+            constraint: "1.1.3",
+            multidex  : "1.0.3",
+    ]
+
+    support = [
+            appcompat_v7: "com.android.support:appcompat-v7:$supportLibraryVersion",
+            recyclerview: "com.android.support:recyclerview-v7:$supportLibraryVersion",
+            constraint  : "com.android.support.constraint:constraint-layout:$version.constraint",
+            design      : "com.android.support:design:$supportLibraryVersion",
+            cardview    : "com.android.support:cardview-v7:$supportLibraryVersion",
+            palette     : "com.android.support:palette-v7:$supportLibraryVersion",
+            support_v4  : "com.android.support:support-v4:$supportLibraryVersion",
+            annotations : "com.android.support:support-annotations:$supportLibraryVersion",
+            multidex    : "com.android.support:multidex:$version.multidex",
+    ]
+
+    test = [
+            junit     : "junit:junit:4.12",
+            testRunner: "com.android.support.test:runner:1.0.2",
+            espresso  : "com.android.support.test.espresso:espresso-core:3.0.2",
+    ]
+
+    kotlin = [
+            kotlin_jdk7        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            anko               : "org.jetbrains.anko:anko:$anko_version",
+            anko_commons       : "org.jetbrains.anko:anko-commons:$anko_version",
+
+            rxlifecycle_android: 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.2.2',
+    ]
+}

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.ayvytr.easykotlinproject"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
