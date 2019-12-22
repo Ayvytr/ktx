@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
     testImplementation rootProject.ext.test.junit
     androidTestImplementation rootProject.ext.test.testRunner
@@ -50,4 +50,4 @@ task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaAndroidTask) {
     noStdlibLink = false
 }
 
-apply from: 'https://raw.github.com/Ayvytr/KotlinJavadocMavenPush/master/kotlin_maven_push.gradle'
+apply from: 'https://raw.github.com/Ayvytr/GlobalConfig/master/gradle/kotlin_maven_push.gradle'
