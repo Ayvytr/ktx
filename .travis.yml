@@ -11,18 +11,39 @@ android:            # 配置信息
     - build-tools-27.1.1              
     - android-27             
     - extra-android-m2repository     # Android Support Repository
+    - extra-google-m2repository
     - extra-android-support          # Support Library
 
-before_install:     
- - chmod +x gradlew  # 改变 gradlew 的访问权限
+
+  licenses:
+   - 'android-sdk-license-.+'
+
+env:
+  global:
+   # install timeout in minutes (2 minutes by default)
+    - ADB_INSTALL_TIMEOUT=8
+
+# Emulator Management: Create, Start and Wait
+before_script:
+  - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  # - adb shell input keyevent 82 &
+
 
 script:              # 执行:下面的命令
-  - ./gradlew assembleRelease  
+  - android list target
+  - ./gradlew test
+  - ./gradlew connectedAndroidTest
+  # - ./gradlew assembleRelease
 
 # before_deploy:       # 部署之前
   # 使用 mv 命令进行修改 apk 文件的名字
-  # - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/buff.apk  
- 
+  # - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/buff.apk
+
+before_install:
+ - chmod +x gradlew  # 改变 gradlew 的访问权限
+
 deploy:              # 部署
   provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
   api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
