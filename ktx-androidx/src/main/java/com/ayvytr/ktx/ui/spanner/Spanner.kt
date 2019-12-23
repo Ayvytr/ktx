@@ -179,7 +179,7 @@ class Spanner private constructor(private val context: Context, text: CharSequen
      * 设置选中字体背景色.注意：需要同时设置 [.textColor]
      */
     @JvmOverloads
-    private fun backgroundColor(@ColorInt color: Int, @ColorInt pressedBackgroundColor: Int = color,
+    fun backgroundColor(@ColorInt color: Int, @ColorInt pressedBackgroundColor: Int = color,
                                 radiusDp: Int = 0): Spanner {
         this.pressedBackgroundColor = pressedBackgroundColor
         this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
@@ -255,7 +255,7 @@ class Spanner private constructor(private val context: Context, text: CharSequen
         return pressedBackgroundColor(color, 0)
     }
 
-    private fun pressedBackgroundColor(@ColorInt color: Int, radiusDp: Int): Spanner {
+    fun pressedBackgroundColor(@ColorInt color: Int, radiusDp: Int): Spanner {
         this.pressedBackgroundColor = color
         this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
         return this
