@@ -12,13 +12,15 @@ android:            # 配置信息
     - tools
     - build-tools-27.1.1              
     - android-27             
+    - android-22
     - extra-android-m2repository     # Android Support Repository
     # - extra-google-m2repository
     - extra-android-support          # Support Library
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-27
+    # - sys-img-armeabi-v7a-android-27
+    - sys-img-armeabi-v7a-android-22
     # - sys-img-x86-android-17
 
   # licenses:
@@ -31,11 +33,10 @@ android:            # 配置信息
 
 before_script:
   # Create and start emulator
-  - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
-
 
 script:              # 执行:下面的命令
   - android list target
