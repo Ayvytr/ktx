@@ -104,9 +104,19 @@ install {
 bintray {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//    boolean isHasFile = false
+//    if (project.rootProject.findProject('local.properties') != null){
+//        isHasFile = true
+//        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//    }
 
     user = properties.getProperty('BINTRAY_USER')
     key = properties.getProperty('BINTRAY_KEY')
+    if(user == null || key == null) {
+        user = System.getenv("BINTRAY_USER")
+        key = System.getenv("BINTRAY_KEY")
+    }
+
     if (user == null || key == null) {
         throw new NullPointerException("[Message] upload.gradle: BINTRAY_USER or BINTRAY_KEY in local.properties is null!")
     }
