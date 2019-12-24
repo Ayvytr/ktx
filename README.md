@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Ayvytr/ktx.svg?branch=master)](https://travis-ci.org/Ayvytr/ktx)
+
 [![jCenter](https://img.shields.io/badge/jCenter-2.5.0-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 

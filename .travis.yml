@@ -34,6 +34,14 @@ android:            # 配置信息
   # global:
    # install timeout in minutes (2 minutes by default)
     # - ADB_INSTALL_TIMEOUT=8
+before_cache:
+ - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+ - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+ directories:
+ - $HOME/.gradle/caches/
+ - $HOME/.gradle/wrapper/
 
 before_script:
   # Create and start emulator
@@ -47,8 +55,9 @@ script:              # 执行:下面的命令
   - chmod +x gradlew  # 改变 gradlew 的访问权限
   - ./gradlew test 
   - ./gradlew connectedAndroidTest 
-  - ./gradlew install && ./gradlew bintrayUpload
-  # - ./gradlew assembleRelease
+  # - ./gradlew install && ./gradlew bintrayUpload
+  - ./gradlew install 
+  - ./gradlew assembleRelease
 
 # before_deploy:       # 部署之前
   # 使用 mv 命令进行修改 apk 文件的名字
@@ -57,14 +66,15 @@ script:              # 执行:下面的命令
 # before_install:
 #  - chmod +x gradlew  # 改变 gradlew 的访问权限
 
-# deploy:              # 部署
-#   provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
-#   api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
-#     secure: 7f4dc45a19f742dce39cbe4d1e5852xxxxxxxxx 
-#   file: app/build/outputs/apk/app-release.apk   # 部署文件路径
-#   skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
-#   on:     # 发布时机           
-#     tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
-#     branches:
-#       only:
-#         master
+deploy:              # 部署
+  provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
+  # api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
+    # secure: 7f4dc45a19f742dce39cbe4d1e5852xxxxxxxxx 
+# 部署文件路径
+  file: app/build/outputs/apk/app-release.apk 
+  skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
+  on:     # 发布时机           
+    tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
+    branches:
+      only:
+        master
