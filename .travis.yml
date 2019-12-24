@@ -1,4 +1,5 @@
 language: android   # 声明构建语言环境
+dist: trusty
 
 notifications:      # 每次构建的时候是否通知，如果不想收到通知邮箱（个人感觉邮件贼烦），那就设置 false 吧
   email: false
@@ -27,12 +28,12 @@ env:
    # install timeout in minutes (2 minutes by default)
     - ADB_INSTALL_TIMEOUT=8
 
-# Emulator Management: Create, Start and Wait
 before_script:
+  # Create and start emulator
   - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
-  # - adb shell input keyevent 82 &
+  - adb shell input keyevent 82 &
 
 
 script:              # 执行:下面的命令
