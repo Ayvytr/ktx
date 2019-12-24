@@ -78,9 +78,8 @@ deploy:              # 部署
   api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
     secure: ${GITHUB_TOKEN}
 # 部署文件路径
-  file: app/build/outputs/apk/app-release.apk 
-  file: ktx-androidx/build/libs/ktx-androidx-2.5.0-javadoc.jar
-  # file: ktx-androidx/build/libs/* ktx-androidx/build/outputs/aar/* ktx/build/libs/* ktx/build/outputs/aar/*
+  file: app/build/outputs/apk/app-release.apk,  ktx-androidx/build/libs/* ,ktx-androidx/build/outputs/aar/* ,ktx/build/libs/* ,ktx/build/outputs/aar/*
+# ktx-androidx/build/libs/ktx-androidx-2.5.0-javadoc.jar,
 
 
   skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
