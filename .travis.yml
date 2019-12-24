@@ -10,8 +10,8 @@ android:            # 配置信息
   components:
     - platform-tools
     - tools
-    - build-tools-27.1.1              
-    - android-27             
+    - build-tools-28.0.3              
+    - android-28             
     - android-22
     - extra-android-m2repository     # Android Support Repository
     # - extra-google-m2repository
