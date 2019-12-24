@@ -53,9 +53,9 @@ before_script:
 script:              # 执行:下面的命令
   # - android list target
   - chmod +x gradlew  # 改变 gradlew 的访问权限
-  - ./gradlew test 
-  - ./gradlew testDebugUnitTest
-  - ./gradlew connectedAndroidTest 
+  # - ./gradlew test 
+  # - ./gradlew testDebugUnitTest
+  # - ./gradlew connectedAndroidTest 
   # - ./gradlew install && ./gradlew bintrayUpload
   - ./gradlew install 
   - ./gradlew assembleRelease
@@ -72,15 +72,13 @@ before_deploy:
   - ls ktx-androidx/build/libs
   - ls ktx/build
   - ls ktx/build/libs
-  - ls /home/.m2/repository/com/ayvytr/ktx/2.5.0
-  - ls /home/.m2/repository/com/ayvytr/ktx-androidx/2.5.0
 
 deploy:              # 部署
   provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
   api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
     secure: ${GITHUB_TOKEN}
 # 部署文件路径
-  file: app/build/outputs/apk/app-release-unsigned.apk /home/.m2/repository/com/ayvytr/ktx/2.5.0/*.aar /home/.m2/repository/com/ayvytr/ktx/2.5.0/*.jar /home/.m2/repository/com/ayvytr/ktx-androidx/2.5.0/*.aar /home/.m2/repository/com/ayvytr/ktx-androidx/2.5.0/*.jar
+  file: app/build/outputs/apk/app-release-unsigned.apk ktx-androidx/build/libs/* ktx-androidx/build/outputs/aar/* ktx/build/libs/* ktx/build/outputs/aar/*
 
 
   skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
