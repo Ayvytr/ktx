@@ -67,10 +67,10 @@ script:              # 执行:下面的命令
 # before_install:
 #  - chmod +x gradlew  # 改变 gradlew 的访问权限
 before_deploy:
-  - ls /app/build/outputs/apk/release
-  - ls /app/build
-  - ls /app/build/javadoc
-  - ls /app/build/
+  - ls app/build/outputs/apk/release
+  - ls app/build
+  - ls app/build/javadoc
+  - ls app/build/
 
 deploy:              # 部署
   provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
