@@ -1,7 +1,7 @@
 language: android   # 声明构建语言环境
 # dist: trusty
 
-notifications:      
+notifications:
 # 每次构建的时候是否通知，如果不想收到通知邮箱，那就设置 false 吧
   # email: false
   email:
@@ -57,8 +57,10 @@ cache:
 script:              # 执行:下面的命令
   - chmod +x gradlew  # 改变 gradlew 的访问权限
   - ./gradlew testDebugUnitTest
-  - ./gradlew connectedAndroidTest 
-  - ./gradlew install && ./gradlew bintrayUpload
+  - ./gradlew connectedAndroidTest
+#  下一版打开bintrayUpload
+#  - ./gradlew install && ./gradlew bintrayUpload
+  - ./gradlew install
   - ./gradlew assembleRelease
 
 # before_deploy:       # 部署之前
