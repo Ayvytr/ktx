@@ -80,11 +80,11 @@ deploy:              # 部署
 # 通配符
   file_glob: true
 # 部署文件路径
-  file: 
-    - app/build/outputs/apk/app-release.apk,  
-    # - ktx-androidx/build/libs/*.jar, 
-    # - ktx-androidx/build/outputs/aar/*.aar, 
-    - ktx*/build/libs/*.jar, 
+  file:
+    - app/build/outputs/apk/app-release.apk,
+    # - ktx-androidx/build/libs/*.jar,
+    # - ktx-androidx/build/outputs/aar/*.aar,
+    - ktx*/build/libs/*.jar,
     - ktx*/build/outputs/aar/*.aar
 
 
