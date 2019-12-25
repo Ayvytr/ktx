@@ -58,9 +58,7 @@ script:              # 执行:下面的命令
   - chmod +x gradlew  # 改变 gradlew 的访问权限
   - ./gradlew testDebugUnitTest
   - ./gradlew connectedAndroidTest
-#  下一版打开bintrayUpload
-#  - ./gradlew install && ./gradlew bintrayUpload
-  - ./gradlew install
+  - ./gradlew install && ./gradlew bintrayUpload
   - ./gradlew assembleRelease
 
 # before_deploy:       # 部署之前

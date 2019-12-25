@@ -172,7 +172,7 @@ task checkBintrayUserAndKey {
 
 
     if (user == null || key == null) {
-        throw new NullPointerException("[Message] bintrayUpload: BINTRAY_USER or BINTRAY_KEY is null!")
+        System.out.println("[Message] bintrayUpload: BINTRAY_USER or BINTRAY_KEY is null!")
     }
 
     bintray.user = user
