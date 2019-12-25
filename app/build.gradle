@@ -26,8 +26,8 @@ android {
     }
 }
 
-def testJcenter = false
-//def testJcenter = true
+//def testJcenter = false
+def testJcenter = true
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.ayvytr:base-coroutine-activity-androidx:0.2.0'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:ktx-androidx:2.4.0'
+        implementation 'com.ayvytr:ktx-androidx:2.5.0'
     } else {
         implementation project(':ktx-androidx')
     }
