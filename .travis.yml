@@ -1,8 +1,12 @@
 language: android   # 声明构建语言环境
 # dist: trusty
 
-notifications:      # 每次构建的时候是否通知，如果不想收到通知邮箱（个人感觉邮件贼烦），那就设置 false 吧
-  email: failed 
+notifications:      
+# 每次构建的时候是否通知，如果不想收到通知邮箱，那就设置 false 吧
+  # email: false
+  email:
+    on_failure: always # default: always
+
 
 branches:
   only:
@@ -51,13 +55,10 @@ cache:
 #   - adb shell input keyevent 82 &
 
 script:              # 执行:下面的命令
-  # - android list target
   - chmod +x gradlew  # 改变 gradlew 的访问权限
-  # - ./gradlew test 
-  # - ./gradlew testDebugUnitTest
-  # - ./gradlew connectedAndroidTest 
-  # - ./gradlew install && ./gradlew bintrayUpload
-  - ./gradlew install 
+  - ./gradlew testDebugUnitTest
+  - ./gradlew connectedAndroidTest 
+  - ./gradlew install && ./gradlew bintrayUpload
   - ./gradlew assembleRelease
 
 # before_deploy:       # 部署之前
@@ -66,12 +67,6 @@ script:              # 执行:下面的命令
 
 # before_install:
 #  - chmod +x gradlew  # 改变 gradlew 的访问权限
-before_deploy:
-  - ls app/build/outputs/apk/release
-  - ls ktx-androidx/build
-  - ls ktx-androidx/build/libs
-  - ls ktx/build
-  - ls ktx/build/libs
 
 deploy:              # 部署
   provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
@@ -81,16 +76,13 @@ deploy:              # 部署
   file_glob: true
 # 部署文件路径
   file:
-    - app/build/outputs/apk/app-release.apk,
-    # - ktx-androidx/build/libs/*.jar,
-    # - ktx-androidx/build/outputs/aar/*.aar,
-    - ktx*/build/libs/*.jar,
+    - app/build/outputs/apk/release/*.apk
+    - ktx*/build/libs/*.jar
     - ktx*/build/outputs/aar/*.aar
-
 
   skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
   on:     # 发布时机           
-    # tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
+    tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
     branches:
       only:
         master
