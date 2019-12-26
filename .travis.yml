@@ -1,6 +1,3 @@
-import:
-  - javadoc.yml
-
 language: android   # 声明构建语言环境
 # dist: trusty
 
@@ -72,20 +69,32 @@ script:              # 执行:下面的命令
 #  - chmod +x gradlew  # 改变 gradlew 的访问权限
 
 deploy:              # 部署
-  provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
-  api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
-    secure: ${GITHUB_TOKEN}
-# 通配符
-  file_glob: true
-# 部署文件路径
-  file:
-    - app/build/outputs/apk/release/*.apk
-    - ktx*/build/libs/*.jar
-    - ktx*/build/outputs/aar/*.aar
+  - provider: releases # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
+      api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
+        secure: ${GITHUB_TOKEN}
+    # 通配符
+      file_glob: true
+    # 部署文件路径
+      file:
+        - app/build/outputs/apk/release/*.apk
+        - ktx*/build/libs/*.jar
+        - ktx*/build/outputs/aar/*.aar
 
-  skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
-  on:     # 发布时机           
-    tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
-    branches:
-      only:
-        master
+      skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
+      on:     # 发布时机           
+        tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
+        branches:
+          only:
+            master
+
+  - provider: pages # 部署到 GitHub Release，除此之外，Travis CI 还支持发布到 fir.im、AWS、Google App Engine 等
+      api_key:           # 填写 GitHub 的 token （Settings -> Personal access tokens -> Generate new token）
+        secure: ${GITHUB_TOKEN}
+      local-dir: ./ktx-androidx/build/javadoc/ ## 根据情况自定义到静态文件输出目录
+      skip_cleanup: true     # 设置为 true 以跳过清理,不然 apk 文件就会被清理
+      target-branch: gh-pages
+      on:     # 发布时机           
+        # tags: true       # tags 设置为 true 表示只有在有 tag 的情况下才部署
+        branches:
+          only:
+            master
