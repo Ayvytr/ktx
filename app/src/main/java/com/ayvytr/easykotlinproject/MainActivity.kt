@@ -1,11 +1,16 @@
 package com.ayvytr.easykotlinproject
 
 import android.os.Bundle
+import android.text.InputFilter
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import com.ayvytr.easykotlinproject.rich.RichActivity
 import com.ayvytr.ktx.provider.ContextProvider
+import com.ayvytr.ktx.ui.addFilters
+import com.ayvytr.ktx.ui.edittext.ChineseFilter
+import com.ayvytr.ktx.ui.edittext.EmojiFilter
 import com.ayvytr.ktx.ui.getContext
 import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
@@ -57,6 +62,9 @@ class MainActivity : AppCompatActivity() {
         getContext()
 
         L.e(ContextProvider.getContext())
+
+        val et = EditText(this)
+        et.addFilters(arrayOf<InputFilter>(EmojiFilter(), ChineseFilter()).toList())
     }
 
 }
