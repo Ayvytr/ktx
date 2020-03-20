@@ -50,6 +50,12 @@
         android:layout_height="wrap_content"
         android:text="Rich Spannable效果" />
 
+    <Button
+        android:id="@+id/btn_to_night"
+        android:text="切换到黑夜模式"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"

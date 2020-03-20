@@ -1,17 +1,22 @@
 package com.ayvytr.easykotlinproject
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.InputFilter
+import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import com.ayvytr.easykotlinproject.rich.RichActivity
+import com.ayvytr.ktx.context.isNightMode
 import com.ayvytr.ktx.provider.ContextProvider
 import com.ayvytr.ktx.ui.addFilters
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
 import com.ayvytr.ktx.ui.getContext
+import com.ayvytr.ktx.ui.toNightMode
 import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
@@ -65,6 +70,13 @@ class MainActivity : AppCompatActivity() {
 
         val et = EditText(this)
         et.addFilters(arrayOf<InputFilter>(EmojiFilter(), ChineseFilter()).toList())
+
+        btn_to_night.text = if(isNightMode()) "切换到白天模式" else "切换到黑夜模式"
+        L.e(isNightMode(), delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES)
+        btn_to_night.setOnClickListener{
+            toNightMode(!isNightMode())
+        }
+
     }
 
 }

@@ -1,10 +1,14 @@
 package com.ayvytr.ktx.context
 
+import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 
 
@@ -121,4 +125,17 @@ fun Context.getStatusBarHeight(): Int {
     }
 
     return result
+}
+
+/**
+ * 判断是不是黑夜模式
+ * @return `true`: 黑夜模式
+ */
+fun Context.isNightMode(): Boolean {
+    if(this is AppCompatActivity) {
+        return delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES
+    }
+
+    return resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK) ==
+            Configuration.UI_MODE_NIGHT_YES
 }
