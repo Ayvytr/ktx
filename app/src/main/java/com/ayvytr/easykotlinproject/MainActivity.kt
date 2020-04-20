@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.ayvytr.easykotlinproject.activitystack.StackActivity
 import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import com.ayvytr.easykotlinproject.rich.RichActivity
@@ -66,17 +67,19 @@ class MainActivity : AppCompatActivity() {
 
         getContext()
 
-        L.e(ContextProvider.getContext())
+//        L.e(ContextProvider.getContext())
 
         val et = EditText(this)
         et.addFilters(arrayOf<InputFilter>(EmojiFilter(), ChineseFilter()).toList())
 
         btn_to_night.text = if(isNightMode()) "切换到白天模式" else "切换到黑夜模式"
-        L.e(isNightMode(), delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES)
+//        L.e(isNightMode(), delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES)
         btn_to_night.setOnClickListener{
             toNightMode(!isNightMode())
         }
-
+        btn_activity_stack.setOnClickListener {
+            startActivity<StackActivity>()
+        }
     }
 
 }

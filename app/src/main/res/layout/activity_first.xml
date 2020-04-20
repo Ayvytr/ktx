@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_close_me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭我" />
+
+    <Button
+        android:id="@+id/btn_close_others"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭除我之外其他的Activity" />
+
+    <Button
+        android:id="@+id/btn_close_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭所有Activity" />
+
+    <Button
+        android:id="@+id/btn_close_top_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭当前Activity" />
+
+    <Button
+        android:id="@+id/btn_start_and_close_others"
+        android:text="启动SecondActivity并且关闭其他Activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

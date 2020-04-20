@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Ayvytr/ktx.svg?branch=master)](https://travis-ci.org/Ayvytr/ktx)
 
-[![jCenter](https://img.shields.io/badge/jCenter-2.5.0-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.5.1-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 Ktx：简化Android开发的Kotlin库
@@ -10,18 +10,22 @@ Ktx：简化Android开发的Kotlin库
 android
 
 ```
-	implementation 'com.ayvytr:ktx:2.5.0'
+	implementation 'com.ayvytr:ktx:2.5.1'
 ```
 
 androidx
 
 ```
-    implementation 'com.ayvytr:ktx-androidx:2.5.0'
+    implementation 'com.ayvytr:ktx-androidx:2.5.1'
 ```
 
 
 
 ## ChangeLog
+
+### 2.5.1
+
+增加ActivityStack，可以实现打开和关闭指定Activity，关闭所有Activity，关闭除指定Activity外所有Activity，终止进程等功能.
 
 ### 2.5.0
 增加Spanner工具类，为TextView提供简单易用的SpannableString
@@ -41,6 +45,27 @@ androidx
 
 
 ## 包含内容以及用法
+
+### ActivityStack
+
+```kotlin
+registerCallback()
+unregisterCallback()
+getRunningActivityCount()
+isForeground()
+getCurrentActivity()
+finish()
+finishCurrent()
+finishAll()
+finishAllExcept()
+start()
+startAndFinishOthers()
+forceClose()
+```
+
+
+
+
 
 ### Clipboard.kt 剪贴板操作常用方法
     val clipboardManager = getClipboardManager()
