@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Ayvytr/ktx.svg?branch=master)](https://travis-ci.org/Ayvytr/ktx)
 
-[![jCenter](https://img.shields.io/badge/jCenter-2.5.2-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.5.3-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 Ktx：简化Android开发的Kotlin库
@@ -10,18 +10,21 @@ Ktx：简化Android开发的Kotlin库
 android
 
 ```
-	implementation 'com.ayvytr:ktx:2.5.2'
+	implementation 'com.ayvytr:ktx:2.5.3'
 ```
 
 androidx
 
 ```
-    implementation 'com.ayvytr:ktx-androidx:2.5.2'
+    implementation 'com.ayvytr:ktx-androidx:2.5.3'
 ```
 
 
 
 ## ChangeLog
+
+### 2.5.3
+修改dp，sp，px转换功能，摆脱依赖Context调用，提供Int，Float扩展属性进行dp，sp，px转换，且统一返回Int类型的扩展属性：.dp, .sp, .dp2px, sp2px, px2dp, px2sp
 
 ### 2.5.1
 
@@ -45,6 +48,26 @@ androidx
 
 
 ## 包含内容以及用法
+
+### dp.kt
+
+```kotlin
+Int.dp
+Int.sp
+Float.dp
+Float.sp
+Int.dp2px
+Float.dp2px
+Int.sp2px
+Float.sp2px
+Int.px2dp
+Float.px2dp
+Int.px2sp
+Float.px2sp
+
+```
+
+
 
 ### ActivityStack
 
