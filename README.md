@@ -108,10 +108,6 @@ forceClose()
     //RecyclerView 子 item加载的方法
     Context.inflateRv(...)
 
-### Density.kt  dp,sp相互转化，在Context子类中调用最方便
-    context.dp2px(...)
-    context.px2dp(...)
-
 ### Managers.kt Android常用管理类一个方法直接获取，免去类型转换的累赘
     context.getAccountManager()
     ...
