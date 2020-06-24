@@ -241,7 +241,7 @@ fun Context.getTelecomManager(): TelecomManager
  */
 fun Context.getInputMethodManager(): InputMethodManager
 {
-    return getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+    return applicationContext.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
 }
 
 /**
