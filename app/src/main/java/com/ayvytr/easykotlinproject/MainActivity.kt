@@ -9,11 +9,9 @@ import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import com.ayvytr.easykotlinproject.rich.RichActivity
 import com.ayvytr.ktx.context.*
-import com.ayvytr.ktx.ui.addFilters
+import com.ayvytr.ktx.ui.*
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
-import com.ayvytr.ktx.ui.getContext
-import com.ayvytr.ktx.ui.toNightMode
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -83,6 +81,10 @@ class MainActivity : AppCompatActivity() {
 
         println("densityutil: dp2px:${DensityUtil.dip2px(this, f)}")
         println("me: dp=${f.dp} dp2px=${f.dp2px}")
+
+        btn_show.setOnClickListener {
+            btnStatusBar.show(btnStatusBar.isShow().not())
+        }
     }
 
 }

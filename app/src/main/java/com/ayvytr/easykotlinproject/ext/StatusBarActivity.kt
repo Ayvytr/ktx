@@ -21,7 +21,7 @@ class StatusBarActivity : AppCompatActivity()
 
     private fun initView()
     {
-        btnShowOrHideStatusBar.onClick {
+        btnShowOrHideStatusBar.setOnClickListener {
             if (isStatusBarShowing())
             {
                 hideStatusBar()
