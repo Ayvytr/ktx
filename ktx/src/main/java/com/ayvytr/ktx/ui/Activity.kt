@@ -1,6 +1,8 @@
 package com.ayvytr.ktx.ui
 
 import android.app.Activity
+import android.support.annotation.StringRes
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 
@@ -66,4 +68,37 @@ fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true) {
  */
 fun Activity.isFullscreen(): Boolean {
     return window.attributes.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN == WindowManager.LayoutParams.FLAG_FULLSCREEN
+}
+
+fun Fragment.setActivityTitle(@StringRes resId: Int) {
+    setActivityTitle(getString(resId))
+}
+
+/**
+ * 设置Activity标题，直接调用[Fragment.requireActivity.setTitle]，不起作用（使用了Navigation）.
+ */
+fun Fragment.setActivityTitle(title: String) {
+    val activity = requireActivity()
+    when (activity) {
+        is AppCompatActivity -> {
+            activity.supportActionBar?.setTitle(title)
+        }
+        else -> activity.actionBar?.title = title
+    }
+}
+
+fun Activity.setActivityTitle(@StringRes resId: Int) {
+    setActivityTitle(getString(resId))
+}
+
+/**
+ * 设置Activity标题，直接调用[Activity.setTitle]，不起作用（使用了Navigation）.
+ */
+fun Activity.setActivityTitle(title: String) {
+    when (this) {
+        is AppCompatActivity -> {
+            supportActionBar?.setTitle(title)
+        }
+        else -> actionBar?.title = title
+    }
 }

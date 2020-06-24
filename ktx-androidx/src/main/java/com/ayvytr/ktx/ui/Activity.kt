@@ -2,7 +2,9 @@ package com.ayvytr.ktx.ui
 
 import android.app.Activity
 import android.view.WindowManager
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 /**
  * Activity 相关的Kotlin扩展方法
@@ -66,4 +68,37 @@ fun Activity.fullscreen(isFullScreen: Boolean, withActionBar: Boolean = true) {
  */
 fun Activity.isFullscreen(): Boolean {
     return window.attributes.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN == WindowManager.LayoutParams.FLAG_FULLSCREEN
+}
+
+fun Fragment.setActivityTitle(@StringRes resId: Int) {
+    setActivityTitle(getString(resId))
+}
+
+/**
+ * 设置Activity标题，直接调用[Fragment.requireActivity.setTitle]，不起作用（使用了Navigation）.
+ */
+fun Fragment.setActivityTitle(title: String) {
+    val activity = requireActivity()
+    when (activity) {
+        is AppCompatActivity -> {
+            activity.supportActionBar?.setTitle(title)
+        }
+        else -> activity.actionBar?.title = title
+    }
+}
+
+fun Activity.setActivityTitle(@StringRes resId: Int) {
+    setActivityTitle(getString(resId))
+}
+
+/**
+ * 设置Activity标题，直接调用[Activity.setTitle]，不起作用（使用了Navigation）.
+ */
+fun Activity.setActivityTitle(title: String) {
+    when (this) {
+        is AppCompatActivity -> {
+            supportActionBar?.setTitle(title)
+        }
+        else -> actionBar?.title = title
+    }
 }
