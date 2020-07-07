@@ -1,7 +1,9 @@
 package com.ayvytr.ktx.ui
 
 import android.text.InputFilter
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.ayvytr.ktx.context.getInputMethodManager
 
 /**
  * @author ['s GitHub](https://github.com/Ayvytr)
@@ -47,4 +49,28 @@ fun EditText.addFilters(filters: List<InputFilter>) {
     val list = filters.toMutableList()
     list.addAll(getFilters())
     setFilters(list.toTypedArray())
+}
+
+/**
+ * 显示软键盘，[isShow]:显示
+ */
+fun EditText.showInputMethod(isShow: Boolean = true) {
+    if (isShow) {
+        postDelayed({
+                        isFocusable = true
+                        requestFocus()
+                        val imm = context.getInputMethodManager()
+                        imm.showSoftInput(this, InputMethodManager.SHOW_FORCED)
+                    }, 100)
+    } else {
+        hideInputMethod()
+    }
+}
+
+/**
+ * 隐藏软键盘
+ */
+fun EditText.hideInputMethod() {
+    val imm = context.getInputMethodManager()
+    imm.hideSoftInputFromWindow(windowToken, 0)
 }
