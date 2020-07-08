@@ -21,7 +21,7 @@ class FiltersActivity : BaseCoroutineActivity() {
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
-        et_emoji_filter.setFilters(EmojiFilter())
+        et_emoji_filter.setFilters(EmojiFilter(true))
         et_password_filter.setFilters(PasswordFilter())
         et_email_filter.setFilters(EmailFilter())
         et_chinese_filter.setFilters(ChineseFilter())
