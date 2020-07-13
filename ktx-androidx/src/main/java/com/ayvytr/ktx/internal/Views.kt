@@ -1,6 +1,9 @@
 package com.ayvytr.ktx.internal
 
+import android.text.Editable
 import android.view.View
+import android.widget.EditText
+import com.ayvytr.ktx.ui.edittext.BaseTextWatcher
 import com.ayvytr.ktx.ui.getViewId
 
 /**
@@ -48,6 +51,25 @@ internal object Views {
                 }
             }
         }
+    }
+
+    private val textChangeMap = hashMapOf<Int, Runnable>()
+
+    fun textChange(et: EditText,
+                   timeout: Int,
+                   action: (text: String) -> Unit) {
+        val viewId = et.getViewId()
+        et.addTextChangedListener(object: BaseTextWatcher() {
+            override fun afterTextChanged(s: Editable) {
+                if (!textChangeMap.containsKey(viewId)) {
+                    textChangeMap[viewId] = Runnable { action.invoke(s.toString()) }
+                }
+
+                val runnable = textChangeMap[viewId]!!
+                et.handler.removeCallbacks(runnable)
+                et.handler.postDelayed(runnable, timeout.toLong())
+            }
+        })
     }
 }
 

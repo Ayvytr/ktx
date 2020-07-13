@@ -60,7 +60,7 @@
         android:id="@+id/btn_activity_stack"
         android:text="测试Activity Stack"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv"
@@ -72,5 +72,11 @@
         android:id="@+id/btn_test_click"
         android:text="测试重复点击"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_test_text_change"
+        android:text="测试textChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -89,6 +89,10 @@ class MainActivity : AppCompatActivity() {
         btn_test_click.setOnClickListener {
             startActivity<TestRepeatClickActivity>()
         }
+
+        btn_test_text_change.setOnClickListener {
+            startActivity<TextChangeActivity>()
+        }
     }
 
 }

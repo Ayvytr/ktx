@@ -4,6 +4,7 @@ import android.text.InputFilter
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.ayvytr.ktx.context.getInputMethodManager
+import com.ayvytr.ktx.internal.Views
 
 /**
  * @author ['s GitHub](https://github.com/Ayvytr)
@@ -73,4 +74,9 @@ fun EditText.showInputMethod(isShow: Boolean = true) {
 fun EditText.hideInputMethod() {
     val imm = context.getInputMethodManager()
     imm.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun EditText.textChange(timeout: Int,
+                        action: (text: String) -> Unit) {
+    Views.textChange(this, timeout, action)
 }
