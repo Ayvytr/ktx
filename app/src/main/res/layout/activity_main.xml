@@ -67,4 +67,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/aero" />
+
+    <Button
+        android:id="@+id/btn_test_click"
+        android:text="测试重复点击"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

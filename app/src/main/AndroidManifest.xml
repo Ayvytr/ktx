@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ayvytr.easykotlinproject">
+    package="com.ayvytr.easykotlinproject"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".App"
@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitystack.SecondActivity"></activity>
+        <activity android:name=".TestRepeatClickActivity"></activity>
+        <activity android:name=".activitystack.SecondActivity" />
         <activity android:name=".activitystack.FirstActivity" />
         <activity android:name=".activitystack.StackActivity" />
         <activity android:name=".ext.FiltersActivity" />

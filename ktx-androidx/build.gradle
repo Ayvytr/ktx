@@ -33,6 +33,8 @@ dependencies {
     androidTestImplementation rootProject.ext.test.espresso
 
     implementation rootProject.ext.kotlin.kotlin_jdk7
+    
+    compileOnly "com.ayvytr:logger:+"
 }
 
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestRepeatClickActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100dp">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:background="@color/light_gray"
+            android:padding="@dimen/_5dp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/_100dp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn1"
+        android:text="测试重复点击"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:text="测试重复点击2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:text="测试2次点击"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:text="测试3次点击"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

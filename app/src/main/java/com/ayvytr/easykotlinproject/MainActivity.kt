@@ -85,6 +85,10 @@ class MainActivity : AppCompatActivity() {
         btn_show.setOnClickListener {
             btnStatusBar.show(btnStatusBar.isShow().not())
         }
+
+        btn_test_click.setOnClickListener {
+            startActivity<TestRepeatClickActivity>()
+        }
     }
 
 }
