@@ -1,6 +1,13 @@
 package com.ayvytr.ktx.internal
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
+import android.support.v4.app.FragmentActivity
+import android.text.Editable
 import android.view.View
+import android.widget.EditText
+import com.ayvytr.ktx.ui.edittext.BaseTextWatcher
 import com.ayvytr.ktx.ui.getViewId
 
 /**
@@ -47,6 +54,63 @@ internal object Views {
                     }
                 }
             }
+        }
+    }
+
+    private val textChangeMap
+            by lazy { hashMapOf<EditText, Pair<BaseTextWatcher, Runnable>>() }
+
+    private val textChangeObserver by lazy {
+        object: LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroyed() {
+                textChangeMap.forEach {
+                    val et = it.key
+                    val triple = textChangeMap[et]
+                    et.removeCallbacks(triple?.second)
+                    et.removeTextChangedListener(triple?.first)
+                }
+                if (textChangeMap.isNotEmpty()) {
+                    val et = textChangeMap.keys.first()
+                    (et.context as? FragmentActivity)?.lifecycle?.removeObserver(this)
+                    textChangeMap.clear()
+                }
+            }
+        }
+    }
+
+    fun textChange(et: EditText,
+                   timeout: Int,
+                   ignoreEmpty: Boolean,
+                   action: (text: String) -> Unit) {
+        if (!textChangeMap.containsKey(et)) {
+            (et.context as? FragmentActivity)?.lifecycle?.addObserver(textChangeObserver)
+
+            val textWatcher = object: BaseTextWatcher() {
+                override fun afterTextChanged(s: Editable) {
+                    val runnable =
+                            if (!textChangeMap.containsKey(et))
+                                Runnable { action.invoke(s.toString()) }
+                            else textChangeMap[et]!!.second
+
+                    if (!textChangeMap.containsKey(et)) {
+                        textChangeMap[et] = Pair(this, runnable)
+                    }
+
+                    et.handler.removeCallbacks(runnable)
+
+                    /**
+                     * 写在这里，不是只排除[s]内容为空的情况，而是这次时间间隔所有的输入，所以之前的
+                     * removeCallbacks必不可少
+                     */
+                    if (ignoreEmpty && s.toString().isEmpty()) {
+                        //no op
+                    } else {
+                        et.handler.postDelayed(runnable, timeout.toLong())
+                    }
+                }
+            }
+            et.addTextChangedListener(textWatcher)
         }
     }
 }

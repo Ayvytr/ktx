@@ -1,9 +1,11 @@
 package com.ayvytr.ktx.ui
 
+import android.support.annotation.IntRange
 import android.text.InputFilter
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.ayvytr.ktx.context.getInputMethodManager
+import com.ayvytr.ktx.internal.Views
 
 /**
  * @author ['s GitHub](https://github.com/Ayvytr)
@@ -73,4 +75,16 @@ fun EditText.showInputMethod(isShow: Boolean = true) {
 fun EditText.hideInputMethod() {
     val imm = context.getInputMethodManager()
     imm.hideSoftInputFromWindow(windowToken, 0)
+}
+
+/**
+ * [EditText]文本变化监听器，文本变化后，以[timeout]为时间间隔触发[action]，[ignoreEmpty]=true: 输入文本为
+ * 空时，不触发[action].
+ * @since 3.0.0
+ * 灵感：RxBinding TextView.textChanges。这里直接以[EditText]实现，[android.widget.TextView]没有必要.
+ */
+fun EditText.textChange(@IntRange(from = 1L, to = Long.MAX_VALUE) timeout: Int = 300,
+                        ignoreEmpty: Boolean = true,
+                        action: (text: String) -> Unit) {
+    Views.textChange(this, timeout, ignoreEmpty, action)
 }
