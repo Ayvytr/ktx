@@ -1,6 +1,7 @@
 package com.ayvytr.ktx.ui
 
 import android.os.Build
+import android.support.annotation.IntRange
 import android.view.View
 import android.view.View.*
 import com.ayvytr.ktx.internal.Views
@@ -88,10 +89,15 @@ fun View.isHide(): Boolean {
 
 /**
  * [View]点击事件，点击[doActionAfterTimes]次后执行[action]，如果[doActionAfterTimes]==1,
- * [millisecondInterval]是防止重复点击的间隔；如果[doActionAfterTimes]>1，相当于双击，多次点击，以
- * [millisecondInterval]内点击记录点击次数，点击次数到[doActionAfterTimes]，触发[action].
+ * [millisecondInterval]是防止重复点击的间隔；如果[doActionAfterTimes]>1，相当于双击，多次点击，
+ * 以[millisecondInterval]内点击记录点击次数，点击次数到[doActionAfterTimes]，触发[action].
+ *
+ * [doActionAfterTimes]默认为1 [millisecondInterval]默认500ms.
+ * @since 3.0.0
  */
-fun View.onClick(doActionAfterTimes: Int = 1, millisecondInterval: Int = 500, action: () -> Unit) {
+fun View.onClick(@IntRange(from = 1, to = Long.MAX_VALUE) doActionAfterTimes: Int = 1,
+                 @IntRange(from = 1, to = Long.MAX_VALUE) millisecondInterval: Int = 500,
+                 action: () -> Unit) {
     Views.onClick(this, doActionAfterTimes, millisecondInterval, action)
 }
 
