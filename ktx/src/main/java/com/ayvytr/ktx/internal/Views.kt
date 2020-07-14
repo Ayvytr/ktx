@@ -16,7 +16,7 @@ import com.ayvytr.ktx.ui.getViewId
  */
 
 internal object Views {
-    private val clickMap = hashMapOf<Int, Triple<Int, Int, Long>>()
+    private val clickMap by lazy { hashMapOf<Int, Triple<Int, Int, Long>>() }
 
     fun onClick(view: View,
                 doActionAfterTimes: Int = 1,
