@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.ayvytr:logger:3.0.0'
     implementation 'com.ayvytr:base-coroutine-activity-androidx:0.2.0'
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+
     if (testJcenter) {
         implementation 'com.ayvytr:ktx-androidx:2.5.2'
     } else {

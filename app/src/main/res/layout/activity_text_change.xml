@@ -10,4 +10,11 @@
         android:hint="测试textChange"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50dp" />
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_marginTop="@dimen/_10dp"
+        android:hint="测试textChange2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp" />
 </LinearLayout>

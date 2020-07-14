@@ -14,8 +14,12 @@ class TextChangeActivity: AppCompatActivity() {
     }
 
     private fun initView() {
-        et.textChange(1000) {
+        et.textChange(3000) {
             toast("即将搜索：$it")
+        }
+
+        et2.textChange(3000) {
+            toast("测试文本变化2：$it")
         }
     }
 }

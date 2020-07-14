@@ -3,6 +3,10 @@ package com.ayvytr.ktx.internal
 import android.text.Editable
 import android.view.View
 import android.widget.EditText
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.ayvytr.ktx.ui.edittext.BaseTextWatcher
 import com.ayvytr.ktx.ui.getViewId
 
@@ -53,23 +57,51 @@ internal object Views {
         }
     }
 
-    private val textChangeMap = hashMapOf<Int, Runnable>()
+    private val textChangeMap
+            by lazy { hashMapOf<EditText, Pair<BaseTextWatcher, Runnable>>() }
+
+    private val textChangeObserver by lazy {
+        object: LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroyed() {
+                textChangeMap.forEach {
+                    val et = it.key
+                    val triple = textChangeMap[et]
+                    et.removeCallbacks(triple?.second)
+                    et.removeTextChangedListener(triple?.first)
+                }
+                if (textChangeMap.isNotEmpty()) {
+                    val et = textChangeMap.keys.first()
+                    (et.context as? FragmentActivity)?.lifecycle?.removeObserver(this)
+                    textChangeMap.clear()
+                }
+            }
+        }
+    }
 
     fun textChange(et: EditText,
                    timeout: Int,
                    action: (text: String) -> Unit) {
-        val viewId = et.getViewId()
-        et.addTextChangedListener(object: BaseTextWatcher() {
-            override fun afterTextChanged(s: Editable) {
-                if (!textChangeMap.containsKey(viewId)) {
-                    textChangeMap[viewId] = Runnable { action.invoke(s.toString()) }
-                }
+        if (!textChangeMap.containsKey(et)) {
+            (et.context as? FragmentActivity)?.lifecycle?.addObserver(textChangeObserver)
 
-                val runnable = textChangeMap[viewId]!!
-                et.handler.removeCallbacks(runnable)
-                et.handler.postDelayed(runnable, timeout.toLong())
+            val textWatcher = object: BaseTextWatcher() {
+                override fun afterTextChanged(s: Editable) {
+                    val runnable =
+                            if (!textChangeMap.containsKey(et))
+                                Runnable { action.invoke(s.toString()) }
+                            else textChangeMap[et]!!.second
+
+                    if (!textChangeMap.containsKey(et)) {
+                        textChangeMap[et] = Pair(this, runnable)
+                    }
+
+                    et.handler.removeCallbacks(runnable)
+                    et.handler.postDelayed(runnable, timeout.toLong())
+                }
             }
-        })
+            et.addTextChangedListener(textWatcher)
+        }
     }
 }
 
