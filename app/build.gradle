@@ -52,7 +52,7 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
     if (testJcenter) {
-        implementation 'com.ayvytr:ktx-androidx:2.5.2'
+        implementation 'com.ayvytr:ktx-androidx:3.0.0'
     } else {
         implementation project(':ktx-androidx')
     }
