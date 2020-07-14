@@ -18,5 +18,8 @@ class SecondActivity : AppCompatActivity() {
         btn_kill.setOnClickListener {
             ActivityStack.forceClose(true)
         }
+        btn_finish_except_top.setOnClickListener {
+            ActivityStack.finishExceptTop()
+        }
     }
 }

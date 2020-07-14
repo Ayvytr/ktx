@@ -18,37 +18,39 @@ import kotlin.system.exitProcess
  */
 object ActivityStack {
     private var isForceClose: Boolean = false
-    private val list = LinkedList<Activity>()
+    private val list by lazy { LinkedList<Activity>() }
     private var foregroundActivityCount = 0
 
-    private val callback = object : Application.ActivityLifecycleCallbacks {
-        override fun onActivityPaused(activity: Activity) {
-        }
-
-        override fun onActivityResumed(activity: Activity) {
-        }
-
-        override fun onActivityStarted(activity: Activity) {
-            foregroundActivityCount++
-        }
-
-        override fun onActivityDestroyed(activity: Activity) {
-            list.remove(activity)
-            if (list.isEmpty() && isForceClose) {
-                isForceClose = false
-                killSelf()
+    private val callback by lazy {
+        object: Application.ActivityLifecycleCallbacks {
+            override fun onActivityPaused(activity: Activity) {
             }
-        }
 
-        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
-        }
+            override fun onActivityResumed(activity: Activity) {
+            }
 
-        override fun onActivityStopped(activity: Activity) {
-            foregroundActivityCount--
-        }
+            override fun onActivityStarted(activity: Activity) {
+                foregroundActivityCount++
+            }
 
-        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-            list.add(activity)
+            override fun onActivityDestroyed(activity: Activity) {
+                list.remove(activity)
+                if (list.isEmpty() && isForceClose) {
+                    isForceClose = false
+                    killSelf()
+                }
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+                foregroundActivityCount--
+            }
+
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                list.add(activity)
+            }
         }
     }
 
@@ -185,6 +187,17 @@ object ActivityStack {
         intent.component?.let {
             start(intent)
             finishAllExcept(Class.forName(it.className) as Class<out Activity>)
+        }
+    }
+
+    /**
+     * 关闭除顶部Activity外的其他所有activity.
+     */
+    fun finishExceptTop() {
+        val last = list.last
+        while (list[0] != last) {
+            list[0].finish()
+            list.removeAt(0)
         }
     }
 

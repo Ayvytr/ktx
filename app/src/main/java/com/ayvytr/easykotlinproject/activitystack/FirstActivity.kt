@@ -34,7 +34,7 @@ class FirstActivity : AppCompatActivity() {
         }
         btn_start_and_close_others.setOnClickListener {
 //            ActivityStack.startAndFinishOthers(SecondActivity::class.java)
-            ActivityStack.startAndFinishOthers(Intent(this, SecondActivity::class.java))
+            ActivityStack.start(Intent(this, SecondActivity::class.java))
         }
     }
 }
