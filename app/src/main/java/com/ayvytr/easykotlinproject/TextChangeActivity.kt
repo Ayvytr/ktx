@@ -14,12 +14,12 @@ class TextChangeActivity: AppCompatActivity() {
     }
 
     private fun initView() {
-        et.textChange(3000) {
-            toast("即将搜索：$it")
+        et.textChange(ignoreEmpty = false) {
+            toast("我：默认延迟，触发空格：$it")
         }
 
         et2.textChange(3000) {
-            toast("测试文本变化2：$it")
+            toast("我：3s延迟，不触发空格：$it")
         }
     }
 }

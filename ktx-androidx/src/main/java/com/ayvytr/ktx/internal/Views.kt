@@ -81,6 +81,7 @@ internal object Views {
 
     fun textChange(et: EditText,
                    timeout: Int,
+                   ignoreEmpty: Boolean,
                    action: (text: String) -> Unit) {
         if (!textChangeMap.containsKey(et)) {
             (et.context as? FragmentActivity)?.lifecycle?.addObserver(textChangeObserver)
@@ -97,7 +98,16 @@ internal object Views {
                     }
 
                     et.handler.removeCallbacks(runnable)
-                    et.handler.postDelayed(runnable, timeout.toLong())
+
+                    /**
+                     * 写在这里，不是只排除[s]内容为空的情况，而是这次时间间隔所有的输入，所以之前的
+                     * removeCallbacks必不可少
+                     */
+                    if (ignoreEmpty && s.toString().isEmpty()) {
+                        //no op
+                    } else {
+                        et.handler.postDelayed(runnable, timeout.toLong())
+                    }
                 }
             }
             et.addTextChangedListener(textWatcher)
