@@ -14,13 +14,10 @@ import android.net.Uri
  * @since 1.0.0
  */
 
-const val PLAIN_TEXT_LABEL = "PLAIN_TEXT_LABEL"
-const val URI_LABEL = "URI_LABEL"
-const val INTENT_LABEL = "INTENT_LABEL"
 
 fun ClipboardManager.setText2(text: CharSequence)
 {
-    primaryClip = ClipData.newPlainText(PLAIN_TEXT_LABEL, text)
+    primaryClip = ClipData.newPlainText(null, text)
 }
 
 fun ClipboardManager.getText2(context: Context): String
@@ -35,7 +32,7 @@ fun ClipboardManager.getText2(context: Context): String
 
 fun ClipboardManager.setUri(context: Context, uri: Uri)
 {
-    primaryClip = ClipData.newUri(context.contentResolver, URI_LABEL, uri)
+    primaryClip = ClipData.newUri(context.contentResolver, null, uri)
 }
 
 fun ClipboardManager.getUri(): Uri?
@@ -50,7 +47,7 @@ fun ClipboardManager.getUri(): Uri?
 
 fun ClipboardManager.setIntent(intent: Intent)
 {
-    primaryClip = ClipData.newIntent(INTENT_LABEL, intent)
+    primaryClip = ClipData.newIntent(null, intent)
 }
 
 fun ClipboardManager.getIntent(): Intent?
