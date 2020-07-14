@@ -71,7 +71,7 @@ fun EditText.hideInputMethod() {
 /**
  * [EditText]文本变化监听器，文本变化后，以[timeout]为时间间隔触发[action]，[ignoreEmpty]=true: 输入文本为
  * 空时，不触发[action].
- * [timeout]默认300ms，默认[ignoreEmpty]=true，忽略空格.
+ * [timeout]默认300ms，默认[ignoreEmpty]=true，忽略空字符串.
  * @since 3.0.0
  * 灵感：RxBinding TextView.textChanges。这里直接以[EditText]实现，[android.widget.TextView]没有必要.
  */
