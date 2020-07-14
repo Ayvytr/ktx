@@ -21,6 +21,7 @@ import android.media.AudioManager
 import android.media.MediaRouter
 import android.media.midi.MidiManager
 import android.media.session.MediaSessionManager
+import android.net.ConnectivityManager
 import android.net.nsd.NsdManager
 import android.nfc.NfcManager
 import android.os.*
@@ -414,3 +415,10 @@ fun Context.getHardwarePropertiesManager(): HardwarePropertiesManager
  */
 @RequiresApi(Build.VERSION_CODES.N_MR1)
 fun Context.getShortcutManager(): ShortcutManager = getSystemService(SHORTCUT_SERVICE) as ShortcutManager
+
+/**
+ * @see [ConnectivityManager]
+ */
+fun Context.getConnectivityManager(): ConnectivityManager {
+    return getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+}
