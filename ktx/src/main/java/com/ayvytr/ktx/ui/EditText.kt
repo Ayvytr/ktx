@@ -28,18 +28,9 @@ fun EditText.setTextWithSelection(text: CharSequence) {
     setSelection(0, getText().length)
 }
 
-@Deprecated("弃用", ReplaceWith("addFilters(filters.toList())", "com.ayvytr.ktx.ui"))
-fun EditText.setFilters(vararg filters: InputFilter) {
-    val list = mutableListOf<InputFilter>()
-    getFilters().forEach {
-        list.add(it)
-    }
-    filters.forEach {
-        list.add(it)
-    }
-    setFilters(list.toTypedArray())
-}
-
+/**
+ * 增加[EditText] [filter]
+ */
 fun EditText.addFilters(filter: InputFilter) {
     addFilters(listOf(filter))
 }
@@ -54,7 +45,7 @@ fun EditText.addFilters(filters: List<InputFilter>) {
 }
 
 /**
- * 显示软键盘，[isShow]:显示
+ * 显示软键盘，[isShow]:显示，在[android.app.Activity.onCreate]中使用也可以弹出键盘.
  */
 fun EditText.showInputMethod(isShow: Boolean = true) {
     if (isShow) {
