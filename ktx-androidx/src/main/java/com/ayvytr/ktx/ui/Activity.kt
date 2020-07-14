@@ -16,18 +16,9 @@ import androidx.fragment.app.Fragment
 
 
 /**
- * 获取 Activity 的 Context（实际获取的是Activity自身）
+ * 获取Activity本身，因为Dialog等都要用Activity实例，需要的话可以使用[Activity.getApplicationContext].
  */
 fun Activity.getContext(): Activity {
-    return this
-}
-
-/**
- * 获取 Activity 自身
- */
-@Deprecated("废弃，使用getContext代替返回Activity，推荐使用Activity.applicationContext获取Context实例",
-            ReplaceWith("getContext()", "com.ayvytr.ktx.ui"))
-fun Activity.getActivity(): Activity {
     return this
 }
 
