@@ -1,78 +1,7 @@
 package com.ayvytr.ktx.context
 
-import android.content.Context
 import com.ayvytr.ktx.provider.ContextProvider
 
-/**
- * 将px转换为dp
- *
- * @param px 像素值
- * @return dp值
- * @since 2.5.3
- */
-@Deprecated("推荐使用Int或Float扩展属性", replaceWith = ReplaceWith("px.px2dp"))
-fun Context.px2dp(px: Int): Int {
-    return px2dp(px.toFloat())
-}
-
-/**
- * 将px转换为dp，接收/返回float
- *
- * @param px 像素值
- * @return dp值
- */
-@Deprecated("推荐使用Int或Float扩展属性", replaceWith = ReplaceWith("px.px2dp"))
-fun Context.px2dp(px: Float): Int {
-    val scale = resources.displayMetrics.density
-    return (px / scale + 0.5F).toInt()
-}
-
-/**
- * 将px转换为dp，接收/返回double
- *
- * @param px 像素值
- * @return dp值
- */
-@Deprecated("弃用Double转换")
-fun Context.px2dp(px: Double): Double {
-    val scale = resources.displayMetrics.density
-    return px / scale + 0.5F
-}
-
-/**
- * 将dp转换为px，接收/返回int
- *
- * @param dp dp值
- * @return 像素值
- */
-@Deprecated("推荐使用Int或Float扩展属性", replaceWith = ReplaceWith("dp.dp2px"))
-fun Context.dp2px(dp: Int): Int {
-    return dp2px(dp.toFloat())
-}
-
-/**
- * 将dp转换为px，接收/返回float
- *
- * @param dp dp值
- * @return 像素值
- */
-@Deprecated("推荐使用Int或Float扩展属性", replaceWith = ReplaceWith("px.dp2px"))
-fun Context.dp2px(dp: Float): Int {
-    val scale = resources.displayMetrics.density
-    return (dp * scale + 0.5F).toInt()
-}
-
-/**
- * 将dp转换为px，接收/返回double
- *
- * @param dp dp值
- * @return 像素值
- */
-@Deprecated("弃用Double转换")
-fun Context.dp2px(dp: Double): Double {
-    val scale = resources.displayMetrics.density
-    return dp * scale + 0.5F
-}
 
 /**
  * dp转px
