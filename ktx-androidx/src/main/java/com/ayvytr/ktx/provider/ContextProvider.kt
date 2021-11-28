@@ -39,10 +39,10 @@ class ContextProvider : ContentProvider() {
 
     companion object {
         @SuppressLint("StaticFieldLeak")
-        private var applicationContext: Context? = null
+        private lateinit var applicationContext: Context
 
         fun getContext(): Context {
-            return applicationContext!!
+            return applicationContext
         }
     }
 }

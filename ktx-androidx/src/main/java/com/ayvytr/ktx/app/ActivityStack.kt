@@ -17,10 +17,16 @@ import kotlin.system.exitProcess
  * @since 2.5.1
  */
 object ActivityStack {
+    @JvmStatic
     private var isForceClose: Boolean = false
+
+    @JvmStatic
     private val list by lazy { LinkedList<Activity>() }
+
+    @JvmStatic
     private var foregroundActivityCount = 0
 
+    @JvmStatic
     private val callback by lazy {
         object: Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity) {
@@ -57,6 +63,7 @@ object ActivityStack {
     /**
      * 注册Activity Lifecycle callback.
      */
+    @JvmStatic
     fun registerCallback(app: Application) {
         app.registerActivityLifecycleCallbacks(callback)
     }
@@ -64,6 +71,7 @@ object ActivityStack {
     /**
      * 取消注册Activity Lifecycle callback.
      */
+    @JvmStatic
     fun unregisterCallback(app: Application) {
         list.clear()
         app.unregisterActivityLifecycleCallbacks(callback)
@@ -72,6 +80,7 @@ object ActivityStack {
     /**
      * 返回已启动的Activity数量.
      */
+    @JvmStatic
     fun getRunningActivityCount(): Int {
         return list.size
     }
@@ -79,6 +88,7 @@ object ActivityStack {
     /**
      * 判断Activity是否在前台
      */
+    @JvmStatic
     fun isForeground(): Boolean {
         return foregroundActivityCount != 0
     }
@@ -86,6 +96,7 @@ object ActivityStack {
     /**
      * 获取当前Activity.
      */
+    @JvmStatic
     fun getCurrentActivity(): Activity? {
         if (list.isEmpty()) {
             return null
@@ -97,6 +108,7 @@ object ActivityStack {
     /**
      * 关闭[clazz] Activity.
      */
+    @JvmStatic
     fun finish(clazz: Class<out Activity>) {
         list.reversed().forEach {
             if (it.javaClass == clazz) {
@@ -109,6 +121,7 @@ object ActivityStack {
     /**
      * 关闭当前Activity.
      */
+    @JvmStatic
     fun finishCurrent() {
         if (list.size > 0) {
             list.last.finish()
@@ -118,6 +131,7 @@ object ActivityStack {
     /**
      * 关闭所有Activity.
      */
+    @JvmStatic
     fun finishAll() {
         list.reversed().forEach {
             it.finish()
@@ -127,6 +141,7 @@ object ActivityStack {
     /**
      * 关闭除[clazz]外的所有Activity.
      */
+    @JvmStatic
     fun finishAllExcept(clazz: Class<out Activity>) {
         var find = false
         list.reversed().forEach {
@@ -141,6 +156,7 @@ object ActivityStack {
     /**
      * 启动[clazz],[map]是附带参数.
      */
+    @JvmStatic
     fun start(clazz: Class<out Activity>, map: Map<String, Serializable>? = null) {
         val currentActivity = getCurrentActivity()
         val context = ContextProvider.getContext()
@@ -160,6 +176,7 @@ object ActivityStack {
     /**
      * 通过[intent]启动Activity.
      */
+    @JvmStatic
     fun start(intent: Intent) {
         intent.component?.let {
             val currentActivity = getCurrentActivity()
@@ -175,6 +192,7 @@ object ActivityStack {
     /**
      * 启动[clazz], [map]是附带参数，并且关闭其他所有Activity.
      */
+    @JvmStatic
     fun startAndFinishOthers(clazz: Class<out Activity>, map: Map<String, Serializable>? = null) {
         start(clazz, map)
         finishAllExcept(clazz)
@@ -183,6 +201,7 @@ object ActivityStack {
     /**
      * [intent]方式启动Activity，并且关闭其他所有Activity.
      */
+    @JvmStatic
     fun startAndFinishOthers(intent: Intent) {
         intent.component?.let {
             start(intent)
@@ -193,11 +212,11 @@ object ActivityStack {
     /**
      * 关闭除顶部Activity外的其他所有activity.
      */
+    @JvmStatic
     fun finishExceptTop() {
         val last = list.last
         while (list[0] != last) {
             list[0].finish()
-            list.removeAt(0)
         }
     }
 
@@ -206,6 +225,7 @@ object ActivityStack {
      * @param closeImmediately true:直接调用[Process.killProcess]和[exitProcess]终止进程; false:关闭
      * 已打开的Activity, 在后台终止进程.
      */
+    @JvmStatic
     fun forceClose(closeImmediately: Boolean = false) {
         if (closeImmediately) {
             killSelf()
@@ -215,7 +235,18 @@ object ActivityStack {
         }
     }
 
-    private fun killSelf() {
+    @Deprecated("Replace with killApp.",
+                replaceWith = ReplaceWith("killApp()"))
+    @JvmStatic
+    fun killSelf() {
+        killApp()
+    }
+
+    /**
+     * @since 3.0.1
+     */
+    @JvmStatic
+    fun killApp() {
         Process.killProcess(Process.myPid())
         exitProcess(0)
     }

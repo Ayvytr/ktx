@@ -4,6 +4,7 @@ import android.text.InputFilter
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.IntRange
+import androidx.annotation.StringRes
 import com.ayvytr.ktx.context.getInputMethodManager
 import com.ayvytr.ktx.internal.Views
 
@@ -13,8 +14,31 @@ import com.ayvytr.ktx.internal.Views
  */
 
 /**
+ * 设置文本，并且当[selectAllText]=true时，选择所有文本([EditText.setSelection, EditText.text.length])；
+ * 当[selectAllText]=false时，移动光标到文字末尾.
+ * @since 3.0.1
+ */
+fun EditText.selectText(@StringRes stringId: Int, selectAllText: Boolean = false) {
+    selectText(context.getString(stringId), selectAllText)
+}
+
+/**
+ * @since 3.0.1
+ */
+fun EditText.selectText(text: CharSequence, selectAllText: Boolean = false) {
+    setText(text)
+    if (selectAllText) {
+        setSelection(0, length())
+    } else {
+        setSelection(length())
+    }
+}
+
+/**
  * 设置 [EditText] 文本，并且把光标定位到末尾
  */
+@Deprecated("Deprecated. replace with selectText. Will Delete after version 4.0.0.",
+            replaceWith = ReplaceWith("selectText(text)"))
 fun EditText.setText2(text: CharSequence) {
     setText(text)
     setSelection(getText().length)
@@ -23,6 +47,8 @@ fun EditText.setText2(text: CharSequence) {
 /**
  * 设置 [EditText] 文本，并且全选文本
  */
+@Deprecated("Deprecated. replace with selectText. Will Delete after version 4.0.0.",
+            replaceWith = ReplaceWith("selectText(text, true)"))
 fun EditText.setTextWithSelection(text: CharSequence) {
     setText(text)
     setSelection(0, getText().length)
