@@ -48,16 +48,30 @@ fun Context.getTypedArray(@ArrayRes id: Int): TypedArray {
 
 /**
  * @see ContextCompat.getDrawable
+ * @since 3.0.1
  */
-fun Context.getDrawable2(@DrawableRes id: Int): Drawable? {
+fun Context.getDrawableCompat(@DrawableRes id: Int): Drawable? {
     return ContextCompat.getDrawable(this, id)
+}
+
+@Deprecated("Deprecated, replace with getDrawableCompat.",
+            replaceWith = ReplaceWith("getDrawableCompat(id)"))
+fun Context.getDrawable2(@DrawableRes id: Int): Drawable? {
+    return getDrawableCompat(id)
 }
 
 /**
  * @see ContextCompat.getColor
+ * @since 3.0.1
  */
-fun Context.getColor2(@ColorRes id: Int): Int {
+fun Context.getColorCompat(@ColorRes id: Int): Int {
     return ContextCompat.getColor(this, id)
+}
+
+@Deprecated("Deprecated, replace with getColorCompat.",
+            replaceWith = ReplaceWith("getColorCompat(id)"))
+fun Context.getColor2(@ColorRes id: Int): Int {
+    return getColorCompat(id)
 }
 
 /**
@@ -133,16 +147,31 @@ fun Fragment.getTypedArray(@ArrayRes id: Int): TypedArray {
 
 /**
  * @see ContextCompat.getDrawable
+ * @since 3.0.1
  */
-fun Fragment.getDrawable2(@DrawableRes id: Int): Drawable? {
+fun Fragment.getDrawableCompat(@DrawableRes id: Int): Drawable? {
     return ContextCompat.getDrawable(context!!, id)
+}
+
+
+@Deprecated("Deprecated, replace with getDrawableCompat.",
+            replaceWith = ReplaceWith("getDrawableCompat(id)"))
+fun Fragment.getDrawable2(@DrawableRes id: Int): Drawable? {
+    return getDrawableCompat(id)
 }
 
 /**
  * @see ContextCompat.getColor
+ * @since 3.0.1
  */
-fun Fragment.getColor2(@ColorRes id: Int): Int {
+fun Fragment.getColorCompat(@ColorRes id: Int): Int {
     return ContextCompat.getColor(context!!, id)
+}
+
+@Deprecated("Deprecated, replace with getColorCompat.",
+            replaceWith = ReplaceWith("getColorCompat(id)"))
+fun Fragment.getColor2(@ColorRes id: Int): Int {
+    return getColorCompat(id)
 }
 
 /**

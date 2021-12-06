@@ -1,8 +1,6 @@
 package com.ayvytr.ktx.context
 
-import android.app.Activity
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Point
 import android.util.DisplayMetrics
@@ -18,8 +16,7 @@ import android.util.DisplayMetrics
 /**
  * @see [android.view.Display.getMetrics]
  */
-fun Context.getDisplayMetrics(): DisplayMetrics
-{
+fun Context.getDisplayMetrics(): DisplayMetrics {
     val dm = DisplayMetrics()
     getWindowManager().defaultDisplay.getMetrics(dm)
     return dm
@@ -43,16 +40,6 @@ fun Context.isLandscape(): Boolean
 fun Context.isPortrait(): Boolean
 {
     return resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
-}
-
-fun Activity.setLandscape()
-{
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-}
-
-fun Activity.setPortrait()
-{
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
 
 fun Context.getScreenWidth(): Int

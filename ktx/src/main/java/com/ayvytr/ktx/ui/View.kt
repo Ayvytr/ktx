@@ -1,7 +1,6 @@
 package com.ayvytr.ktx.ui
 
 import android.os.Build
-import android.support.annotation.IntRange
 import android.view.View
 import android.view.View.*
 import com.ayvytr.ktx.internal.Views
@@ -95,14 +94,14 @@ fun View.isHide(): Boolean {
  * [doActionAfterTimes]默认为1 [millisecondInterval]默认500ms.
  * @since 3.0.0
  */
-fun View.onClick(@IntRange(from = 1, to = Long.MAX_VALUE) doActionAfterTimes: Int = 1,
-                 @IntRange(from = 1, to = Long.MAX_VALUE) millisecondInterval: Int = 500,
+fun View.onClick(doActionAfterTimes: Int = 1,
+                 millisecondInterval: Int = 500,
                  action: () -> Unit) {
     Views.onClick(this, doActionAfterTimes, millisecondInterval, action)
 }
 
 /**
- * 获取[View] id，如果没有id：SDK>17, 使用[View.generateViewId]；否则使用[View.hashCode]
+ * 获取[View] id，如果没有id：如果SDK>17, 使用[View.generateViewId]；否则使用[View.hashCode]
  */
 fun View.getViewId(): Int {
     var id = id

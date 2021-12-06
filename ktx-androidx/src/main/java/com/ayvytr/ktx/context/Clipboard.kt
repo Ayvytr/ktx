@@ -2,7 +2,6 @@ package com.ayvytr.ktx.context
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import com.ayvytr.ktx.provider.ContextProvider

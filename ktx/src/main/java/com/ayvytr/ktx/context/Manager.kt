@@ -405,8 +405,7 @@ fun Context.getMidiManager(): MidiManager
  * @see [HardwarePropertiesManager]
  */
 @RequiresApi(Build.VERSION_CODES.N)
-fun Context.getHardwarePropertiesManager(): HardwarePropertiesManager
-{
+fun Context.getHardwarePropertiesManager(): HardwarePropertiesManager {
     return getSystemService(HARDWARE_PROPERTIES_SERVICE) as HardwarePropertiesManager
 }
 

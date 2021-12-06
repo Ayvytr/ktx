@@ -1,6 +1,7 @@
 package com.ayvytr.ktx.ui
 
 import android.app.Activity
+import android.content.pm.ActivityInfo
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -33,6 +34,15 @@ fun Activity.showActionBar() {
 fun Activity.hideActionBar() {
     if (this is AppCompatActivity) supportActionBar?.hide() else actionBar?.hide()
 }
+
+fun Activity.setLandscape() {
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+}
+
+fun Activity.setPortrait() {
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+}
+
 
 /**
  * Activity切换为全屏/非全屏
