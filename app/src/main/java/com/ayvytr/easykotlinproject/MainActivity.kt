@@ -5,10 +5,13 @@ import android.text.InputFilter
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.easykotlinproject.activitystack.StackActivity
+import com.ayvytr.easykotlinproject.et.EditTextActivity
 import com.ayvytr.easykotlinproject.ext.FiltersActivity
 import com.ayvytr.easykotlinproject.ext.StatusBarActivity
 import com.ayvytr.easykotlinproject.rich.RichActivity
-import com.ayvytr.ktx.context.*
+import com.ayvytr.ktx.context.dp
+import com.ayvytr.ktx.context.dp2px
+import com.ayvytr.ktx.context.isNightMode
 import com.ayvytr.ktx.ui.*
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
@@ -50,6 +53,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        btn_et.onClick {
+            startActivity<EditTextActivity>()
+        }
         btnStatusBar.setOnClickListener { startActivity<StatusBarActivity>() }
         btn_filters.setOnClickListener {
             startActivity<FiltersActivity>()

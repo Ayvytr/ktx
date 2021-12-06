@@ -6,6 +6,9 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Point
 import android.util.DisplayMetrics
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import com.ayvytr.ktx.provider.ContextProvider
 
 /**
  * 为 [Context] 类提供的获取屏幕尺寸，判断横竖屏，设置横竖屏提供的方法.
@@ -15,11 +18,25 @@ import android.util.DisplayMetrics
  * @since 1.0.0
  */
 
+
+/**
+ * 判断是不是黑夜模式
+ * @return `true`: 黑夜模式
+ */
+fun Context.isNightMode(): Boolean {
+    if (this is AppCompatActivity) {
+        return delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES
+    }
+
+    return resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK) ==
+            Configuration.UI_MODE_NIGHT_YES
+}
+
+
 /**
  * @see [android.view.Display.getMetrics]
  */
-fun Context.getDisplayMetrics(): DisplayMetrics
-{
+fun Context.getDisplayMetrics(): DisplayMetrics {
     val dm = DisplayMetrics()
     getWindowManager().defaultDisplay.getMetrics(dm)
     return dm
@@ -43,16 +60,6 @@ fun Context.isLandscape(): Boolean
 fun Context.isPortrait(): Boolean
 {
     return resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
-}
-
-fun Activity.setLandscape()
-{
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-}
-
-fun Activity.setPortrait()
-{
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
 
 fun Context.getScreenWidth(): Int

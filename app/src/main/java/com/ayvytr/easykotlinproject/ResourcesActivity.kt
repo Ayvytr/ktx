@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.ktx.context.*
-import com.ayvytr.ktx.ui.fullscreen
-import com.ayvytr.ktx.ui.hideActionBar
-import com.ayvytr.ktx.ui.isFullscreen
-import com.ayvytr.ktx.ui.showActionBar
+import com.ayvytr.ktx.ui.*
 import kotlinx.android.synthetic.main.activity_resources.*
 
 class ResourcesActivity : AppCompatActivity()

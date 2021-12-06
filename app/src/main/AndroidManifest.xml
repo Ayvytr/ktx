@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.ayvytr.easykotlinproject"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ayvytr.easykotlinproject">
 
     <application
         android:name=".App"
@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TextChangeActivity"></activity>
+        <activity android:name=".et.EditTextActivity"></activity>
+        <activity android:name=".TextChangeActivity" />
         <activity android:name=".TestRepeatClickActivity" />
         <activity android:name=".activitystack.SecondActivity" />
         <activity android:name=".activitystack.FirstActivity" />

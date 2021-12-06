@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment
 /**
  * 使用Context初始化布局
  */
+@Deprecated("Deprecated next big version")
 fun Context.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
                     attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(this).inflate(id, parent, attachToParent)
@@ -31,6 +32,7 @@ fun Context.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
 /**
  * 使用Context初始化布局，专为RecyclerView提供
  */
+@Deprecated("Deprecated next big version")
 fun Context.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
     return LayoutInflater.from(this).inflate(id, parent, false)
 }
@@ -38,6 +40,7 @@ fun Context.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
 /**
  * 使用Fragment初始化布局
  */
+@Deprecated("Deprecated next big version")
 fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
                      attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(context).inflate(id, parent, attachToParent)
@@ -46,36 +49,8 @@ fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
 /**
  * 使用Fragment初始化布局，专为RecyclerView提供
  */
+@Deprecated("Deprecated next big version")
 fun Fragment.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
     return LayoutInflater.from(context).inflate(id, parent, false)
 }
 
-
-
-/**
- * 获取状态栏高度
- *
- * @return 状态栏高度px
- */
-fun Context.getStatusBarHeight(): Int {
-    var result = 0
-    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
-    if (resourceId > 0) {
-        result = this.resources.getDimensionPixelSize(resourceId)
-    }
-
-    return result
-}
-
-/**
- * 判断是不是黑夜模式
- * @return `true`: 黑夜模式
- */
-fun Context.isNightMode(): Boolean {
-    if(this is AppCompatActivity) {
-        return delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES
-    }
-
-    return resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK) ==
-            Configuration.UI_MODE_NIGHT_YES
-}

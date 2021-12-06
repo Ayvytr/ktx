@@ -57,13 +57,16 @@ fun EditText.setTextWithSelection(text: CharSequence) {
 /**
  * 增加[EditText] [filter]
  */
-fun EditText.addFilters(filter: InputFilter) {
-    addFilters(listOf(filter))
+fun EditText.addFilters(vararg filter: InputFilter) {
+    val list = filters.toMutableList()
+    list.addAll(filter)
+    filters = list.toTypedArray()
 }
 
 /**
  * 设置 [EditText] filters, 先获取原有filters，和[filters]一并设置到[EditText]
  */
+@Deprecated("Deprecated, replace with add filters by vararg")
 fun EditText.addFilters(filters: List<InputFilter>) {
     val list = filters.toMutableList()
     list.addAll(getFilters())

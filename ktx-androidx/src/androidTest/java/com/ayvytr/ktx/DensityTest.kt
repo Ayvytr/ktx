@@ -1,6 +1,6 @@
 package com.ayvytr.ktx
 
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.ayvytr.ktx.context.*
 import com.ayvytr.ktx.provider.ContextProvider
 import org.junit.Assert

@@ -20,14 +20,14 @@ const val URI_LABEL = "URI_LABEL"
 const val INTENT_LABEL = "INTENT_LABEL"
 
 /**
- * @sincie 3.0.1
+ * @since 3.0.1
  */
 fun ClipboardManager.setPlainText(text: CharSequence, label: CharSequence = PLAIN_TEXT_LABEL) {
     primaryClip = ClipData.newPlainText(label, text)
 }
 
 /**
- * @sincie 3.0.1
+ * @since 3.0.1
  */
 fun ClipboardManager.getPlainText(): String? {
     if (primaryClip.itemCount > 0) {

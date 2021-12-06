@@ -47,11 +47,11 @@ object ActivityStack {
                 }
             }
 
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
-            }
-
             override fun onActivityStopped(activity: Activity) {
                 foregroundActivityCount--
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
