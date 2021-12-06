@@ -10,7 +10,7 @@ import com.ayvytr.ktx.provider.ContextProvider
  * ClipboardManager 相关的Kotlin扩展方法，包含设置/获取剪贴板文本/Uri/Intent.
  * <p>
  *
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 1.0.0
  */
 

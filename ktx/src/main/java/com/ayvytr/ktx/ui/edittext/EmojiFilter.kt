@@ -5,7 +5,7 @@ import android.text.Spanned
 
 /**
  * Emoji表情筛选器.
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 2.4.1
  */
 open class EmojiFilter(val isMultiLine: Boolean = false) : InputFilter {

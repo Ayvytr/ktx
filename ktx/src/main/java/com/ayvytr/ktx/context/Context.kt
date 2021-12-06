@@ -12,7 +12,7 @@ import android.view.ViewGroup
  * Context 加载布局方法，包括 [RecyclerView] item 的加载方法 [inflateRv(Int, ViewGroup)]
  * <p>
  *
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 1.0.0
  */
 

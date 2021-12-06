@@ -4,7 +4,7 @@ import android.text.TextWatcher
 
 /**
  * Base text watcher.
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 2.4.1
  */
 abstract class BaseTextWatcher : TextWatcher {

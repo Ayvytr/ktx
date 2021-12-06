@@ -9,7 +9,7 @@ import com.ayvytr.ktx.internal.Views
  * View 相关的Kotlin扩展方法
  * <p>
  *
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 0.1.0
  */
 

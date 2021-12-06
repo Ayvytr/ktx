@@ -11,7 +11,7 @@ import com.ayvytr.ktx.ui.edittext.BaseTextWatcher
 import com.ayvytr.ktx.ui.getViewId
 
 /**
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 3.0.0
  */
 

@@ -43,7 +43,7 @@ import android.view.textservice.TextServicesManager
  * 各种管理类的获取，在Context类中可直接调用获取管理类实例.
  * <p>
  *
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 1.0.0
  */
 

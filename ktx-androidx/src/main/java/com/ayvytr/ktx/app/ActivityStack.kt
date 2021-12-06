@@ -13,7 +13,7 @@ import kotlin.system.exitProcess
 /**
  * Activity管理任务栈，内部通过[Application.registerActivityLifecycleCallbacks]实现，可以打开和关闭指定
  * Activity，关闭所有Activity，关闭除指定Activity外所有Activity，终止进程等功能.
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 2.5.1
  */
 object ActivityStack {

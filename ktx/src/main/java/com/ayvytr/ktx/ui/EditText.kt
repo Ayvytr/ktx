@@ -9,7 +9,7 @@ import com.ayvytr.ktx.context.getInputMethodManager
 import com.ayvytr.ktx.internal.Views
 
 /**
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 2.4.0
  */
 

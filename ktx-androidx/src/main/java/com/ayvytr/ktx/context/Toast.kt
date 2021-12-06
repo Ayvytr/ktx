@@ -9,7 +9,7 @@ import com.ayvytr.ktx.provider.ContextProvider
 /**
  * Context 的扩展显示Toast方法，一个方法创建并显示Toast，内部采用一个全局Toast实例.
  *
- * @author ['s GitHub](https://github.com/Ayvytr)
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 0.2.0
  */
 
