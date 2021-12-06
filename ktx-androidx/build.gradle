@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: '../kotlin_maven_push.gradle'
 
 android {
     compileSdkVersion 28
@@ -32,24 +33,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    
+
     compileOnly "com.ayvytr:logger:+"
+
+    dokkaJavadocPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0")
 }
 
 
-//task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaAndroidTask) {
-//    outputFormat = 'javadoc'
-//    outputDirectory = "$buildDir/javadoc"
-//
-//    // Do not create index pages for empty packages
-//    skipEmptyPackages = true
-//
-//    //Do not output deprecated members. Applies globally, can be overridden by packageOptions
-//    skipDeprecated = false
-//
-//    //No default documentation link to kotlin-stdlib
-//    noStdlibLink = false
-//}
-
-//apply from: 'https://raw.githubusercontent.com/Ayvytr/GlobalConfig/master/gradle/kotlin_maven_push.gradle'
-apply from: '../maven_push.gradle'
