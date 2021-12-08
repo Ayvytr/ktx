@@ -254,7 +254,7 @@ onLongClick
     view.isShow()
 
 
-  
+
     
     // 设置EditText文本，并且移动光标到文本末尾，第二个参数默认为false
     editText.selectText(text, false)
