@@ -1,27 +1,69 @@
 [![Build Status](https://travis-ci.org/Ayvytr/ktx.svg?branch=master)](https://travis-ci.org/Ayvytr/ktx)
 
-[![jCenter](https://img.shields.io/badge/jCenter-3.0.0-red.svg)](https://bintray.com/ayvytr/maven/ktx/_latestVersion)
+ktx-androidx[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx)
+
+ktx[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx)
+
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 Ktx：简化Android开发的Kotlin库
 
-## JCenter
+## 使用
 
-android
+3.0.6+：
+
+mavenCentral()
 
 ```
+//androidx
+implementation 'io.github.ayvytr:ktx-androidx:3.0.6'
+//android
+implementation 'io.github.ayvytr:ktx:3.0.6'
+```
+
+
+
+3.0.0之前：
+
+jcenter()
+
+```
+//androidx
+implementation 'com.ayvytr:ktx-androidx:3.0.0'
+//android
 implementation 'com.ayvytr:ktx:3.0.0'
 ```
 
-androidx
 
-```
-implementation 'com.ayvytr:ktx-androidx:3.0.0'
-```
+
+## 说明
+
+3.0.6之后，将只更新androidx库
 
 
 
 ## ChangeLog
+
+### 3.0.6
+
+1. 方法弃用和改名：
+
+   | 文件名        | 原方法         | 新方法            |
+   | ------------- | -------------- | ----------------- |
+   | Clipboard     | getText2()     | getPalinText()    |
+   | Clipboard     | setText2()     | setPalinText()    |
+   | Res           | getDrawable2() | getDrawableCompat |
+   | Res           | getColor2()    | getColorCompat    |
+   | Context       | inflate()      | -                 |
+   | Context       | inflateRv()    | -                 |
+   | ActivityStack | killSelf()     | killApp()         |
+   | EditText      | setText2       | selectText        |
+
+2. 代码分类和优化（部分方法移动了文件，需要重新导包）
+
+
+
+### *跳过3.0.1-3.0.5（失误：版本号改错了）*
 
 ### 3.0.0
 
@@ -153,8 +195,8 @@ onLongClick
 
 ### Clipboard.kt 剪贴板操作常用方法
     val clipboardManager = getClipboardManager()
-    clibboardManager.getText2()
-    clibboardManager.setText2()
+    clibboardManager.setPlainText()
+    clibboardManager.getPlainText()
     clibboardManager.getUri()
     clibboardManager.setUri()
     clibboardManager.getIntent()
@@ -179,8 +221,8 @@ onLongClick
 
     context.getStringArray()
     //方法名称最后包含数字2的是和原生SDK中弃用的或者有版本限制的方法区分开来
-    context.getDrawable2()
-    context.getColor2()
+    context.getDrawableCompat()
+    context.getColorCompat()
     context.getDrawableArray()
     context.getDrawableIdArray()
     ...
@@ -210,10 +252,11 @@ onLongClick
     view.hide()
     view.invisible()
     view.isShow()
+
+
+  
     
-    
-    // 设置EditText文本，并且移动光标到文本末尾
-    editText.setText2(...)
-    
+    // 设置EditText文本，并且移动光标到文本末尾，第二个参数默认为false
+    editText.selectText(text, false)
     // 设置EditText文本，并且全选文字
-    editText.setTextWithSelection(...)
+    editText.selectText(text, true)
