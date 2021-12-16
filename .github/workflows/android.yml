@@ -21,10 +21,6 @@ jobs:
         distribution: 'adopt'
         cache: gradle
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x ./gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
     - name: "Build Android project"
       uses: vgaidarji/android-github-actions-build@v1.0.1
       with:
