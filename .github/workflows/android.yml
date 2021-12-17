@@ -33,8 +33,4 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 6.7.1
-          arguments: checkstyle
-      - uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: 6.7.1
           arguments: assembleRelease
