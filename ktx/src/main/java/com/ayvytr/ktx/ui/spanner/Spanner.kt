@@ -3,14 +3,10 @@ package com.ayvytr.ktx.ui.spanner
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextUtils
 import android.text.style.*
-import android.util.ArrayMap
 import android.widget.TextView
 import com.ayvytr.ktx.provider.ContextProvider
 import java.util.*
@@ -25,7 +21,7 @@ import java.util.regex.Pattern
 class Spanner private constructor(private val context: Context, text: CharSequence) :
     SpannableString(text) {
     private val rangeList = ArrayList<Range>()
-    private val tagsMap = ArrayMap<Range, Any?>()
+    private val tagsMap = HashMap<Range, Any?>()
     private var textColor: Int = 0
     private var pressedTextColor: Int = 0
     private var pressedBackgroundColor: Int = 0
@@ -179,8 +175,8 @@ class Spanner private constructor(private val context: Context, text: CharSequen
      * 设置选中字体背景色.注意：需要同时设置 [.textColor]
      */
     @JvmOverloads
-    fun backgroundColor(@ColorInt color: Int, @ColorInt pressedBackgroundColor: Int = color,
-                                radiusDp: Int = 0): Spanner {
+    fun backgroundColor(color: Int, pressedBackgroundColor: Int = color,
+                        radiusDp: Int = 0): Spanner {
         this.pressedBackgroundColor = pressedBackgroundColor
         this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
 
@@ -193,21 +189,21 @@ class Spanner private constructor(private val context: Context, text: CharSequen
     }
 
     @JvmOverloads
-    fun backgroundColorRes(@ColorRes colorRes: Int, @ColorRes pressedBackgroundColorRes: Int = colorRes,
+    fun backgroundColorRes(colorRes: Int, pressedBackgroundColorRes: Int = colorRes,
                            radiusDp: Int = 0): Spanner {
-        val color = ContextCompat.getColor(context, colorRes)
-        val pressedBackgroundColor = ContextCompat.getColor(context, pressedBackgroundColorRes)
+        val color = context.resources.getColor(colorRes)
+        val pressedBackgroundColor = context.resources.getColor(pressedBackgroundColorRes)
         return backgroundColor(color, pressedBackgroundColor, radiusDp)
     }
 
     @JvmOverloads
-    fun textColorRes(@ColorRes colorRes: Int, @ColorRes pressedTextColorRes: Int = colorRes): Spanner {
-        return textColor(ContextCompat.getColor(context, colorRes),
-                         ContextCompat.getColor(context, pressedTextColorRes))
+    fun textColorRes(colorRes: Int, pressedTextColorRes: Int = colorRes): Spanner {
+        return textColor(context.resources.getColor(colorRes),
+                         context.resources.getColor(pressedTextColorRes))
     }
 
     @JvmOverloads
-    fun textColor(@ColorInt color: Int, @ColorInt pressedTextColor: Int = color): Spanner {
+    fun textColor(color: Int, pressedTextColor: Int = color): Spanner {
         textColor = color
         this.pressedTextColor = pressedTextColor
         for (range in rangeList) {
@@ -251,19 +247,19 @@ class Spanner private constructor(private val context: Context, text: CharSequen
         return this
     }
 
-    fun pressedBackgroundColor(@ColorInt color: Int): Spanner {
+    fun pressedBackgroundColor(color: Int): Spanner {
         return pressedBackgroundColor(color, 0)
     }
 
-    fun pressedBackgroundColor(@ColorInt color: Int, radiusDp: Int): Spanner {
+    fun pressedBackgroundColor(color: Int, radiusDp: Int): Spanner {
         this.pressedBackgroundColor = color
         this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
         return this
     }
 
     @JvmOverloads
-    fun pressedBackgroundRes(@ColorRes colorRes: Int, radiusDp: Int = 0): Spanner {
-        this.pressedBackgroundColor = ContextCompat.getColor(context, colorRes)
+    fun pressedBackgroundRes(colorRes: Int, radiusDp: Int = 0): Spanner {
+        this.pressedBackgroundColor = context.resources.getColor(colorRes)
         this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
         return this
     }
