@@ -9,7 +9,6 @@ on:
 
 jobs:
   build-and-deploy:
-    # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
     steps:
       # 拉取代码
