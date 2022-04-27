@@ -1,8 +1,4 @@
-[![Build Status](https://travis-ci.org/Ayvytr/ktx.svg?branch=master)](https://travis-ci.org/Ayvytr/ktx)
-
 ktx-androidx[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx)
-
-ktx[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx)
 
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
@@ -16,8 +12,10 @@ mavenCentral()
 
 ```
 //androidx
-implementation 'io.github.ayvytr:ktx-androidx:3.0.6'
-//android
+implementation 'io.github.ayvytr:ktx-androidx:3.0.7'
+
+
+//注意：android最后一个版本是3.0.6
 implementation 'io.github.ayvytr:ktx:3.0.6'
 ```
 
@@ -43,6 +41,12 @@ implementation 'com.ayvytr:ktx:3.0.0'
 
 
 ## ChangeLog
+
+### 3.0.7
+
+1. 只支持androidx
+2. 修改[EditText.textChange](https://github.com/Ayvytr/ktx/blob/master/ktx-androidx/src/main/java/com/ayvytr/ktx/ui/EditText.kt).handler空指针问题
+3. 增加DecimalDigitsInputFilter，支持小数位数筛选
 
 ### 3.0.6
 
@@ -255,7 +259,7 @@ onLongClick
 
 
 
-    
+
     // 设置EditText文本，并且移动光标到文本末尾，第二个参数默认为false
     editText.selectText(text, false)
     // 设置EditText文本，并且全选文字
