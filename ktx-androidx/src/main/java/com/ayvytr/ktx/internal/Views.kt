@@ -97,7 +97,7 @@ internal object Views {
                         textChangeMap[et] = Pair(this, runnable)
                     }
 
-                    et.handler.removeCallbacks(runnable)
+                    et.handler?.removeCallbacks(runnable)
 
                     /**
                      * 写在这里，不是只排除[s]内容为空的情况，而是这次时间间隔所有的输入，所以之前的
@@ -106,7 +106,7 @@ internal object Views {
                     if (ignoreEmpty && s.toString().isEmpty()) {
                         //no op
                     } else {
-                        et.handler.postDelayed(runnable, timeout.toLong())
+                        et.handler?.postDelayed(runnable, timeout.toLong())
                     }
                 }
             }
