@@ -1,8 +1,9 @@
 package com.ayvytr.easykotlinproject.ext
 
 import android.os.Bundle
+import android.text.InputType
 import com.ayvytr.coroutine.BaseCoroutineActivity
-import com.ayvytr.easykotlinproject.DecimalDigitsInputFilter
+import com.ayvytr.ktx.ui.edittext.DecimalDigitsInputFilter
 import com.ayvytr.easykotlinproject.R
 import com.ayvytr.ktx.ui.addFilters
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
@@ -26,5 +27,6 @@ class FiltersActivity : BaseCoroutineActivity() {
         et_email_filter.addFilters(EmailFilter())
         et_chinese_filter.addFilters(ChineseFilter())
         et_2_digits.addFilters(DecimalDigitsInputFilter())
+        et_2_digits.setRawInputType(InputType.TYPE_CLASS_NUMBER)
     }
 }

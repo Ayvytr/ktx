@@ -36,5 +36,6 @@
         android:id="@+id/et_2_digits"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50dp"
+        android:digits="0123456789.-"
         android:hint="2位小数限制，实验性，未加入库" />
 </LinearLayout>
