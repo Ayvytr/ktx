@@ -12,27 +12,23 @@ internal class LinkTouchMovementMethod(pressedTextColor: Int,
                                        pressedBackgroundColor: Int,
                                        backgroundRadius: Int) : LinkMovementMethod() {
     private var isLongClicked: Boolean = false
-    private val longClickHandler: Handler?
+    private val longClickHandler: Handler = Handler()
     private var customClickSpan: CustomClickableSpan? = null
     private val backgroundSpan: RoundedBackgroundSpan = RoundedBackgroundSpan(pressedTextColor, pressedBackgroundColor,
                                                                           backgroundRadius)
-
-    init {
-        longClickHandler = Handler()
-    }
 
     override fun onTouchEvent(textView: TextView, spannable: Spannable,
                               event: MotionEvent): Boolean {
         val action = event.action
 
-        if (action == MotionEvent.ACTION_CANCEL && longClickHandler != null) {
+        if (action == MotionEvent.ACTION_CANCEL) {
             longClickHandler.removeCallbacksAndMessages(null)
         }
 
         if (action == MotionEvent.ACTION_DOWN) {
             customClickSpan = getPressedSpan(textView, spannable, event)
 
-            longClickHandler!!.postDelayed({
+            longClickHandler.postDelayed({
                                                if (customClickSpan != null) {
                                                    customClickSpan!!.onLongClick(textView)
                                                    isLongClicked = true
@@ -46,7 +42,7 @@ internal class LinkTouchMovementMethod(pressedTextColor: Int,
         } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
             isLongClicked = false
 
-            longClickHandler?.removeCallbacksAndMessages(null)
+            longClickHandler.removeCallbacksAndMessages(null)
 
             if (!isLongClicked && customClickSpan != null && action == MotionEvent.ACTION_UP) {
                 customClickSpan!!.onClick(textView)
