@@ -13,12 +13,12 @@ allprojects {
 def dokkaOutputDir = "$buildDir/javadoc"
 
 tasks.named("dokkaHtml") {
-    outputDirectory.set(new File(dokkaOutputDir))
+    outputDirectory.set(file(dokkaOutputDir))
     offlineMode.set(true)
 }
 
 tasks.named("dokkaJavadoc") {
-    outputDirectory.set(new File(dokkaOutputDir))
+    outputDirectory.set(file(dokkaOutputDir))
     offlineMode.set(true)
 }
 
