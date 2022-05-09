@@ -32,9 +32,28 @@ class FirstActivity : AppCompatActivity() {
         btn_close_top_activity.setOnClickListener {
             ActivityStack.finishCurrent()
         }
+
         btn_start_and_close_others.setOnClickListener {
-//            ActivityStack.startAndFinishOthers(SecondActivity::class.java)
             ActivityStack.start(Intent(this, SecondActivity::class.java))
+        }
+
+        btn_finish_except_top.setOnClickListener {
+            ActivityStack.finishExceptTop()
+        }
+
+        btn_finish_by_name.setOnClickListener{
+            ActivityStack.finishByName(FirstActivity::class.java.name)
+        }
+
+        btn_finish_by_simple_name.setOnClickListener{
+            ActivityStack.finishBySimpleName(FirstActivity::class.java.simpleName)
+        }
+
+        btn_finish_except_name.setOnClickListener {
+            ActivityStack.finishAllExceptName(FirstActivity::class.java.name)
+        }
+        btn_finish_except_simple_name.setOnClickListener {
+            ActivityStack.finishAllExceptSimpleName(FirstActivity::class.java.simpleName)
         }
     }
 }

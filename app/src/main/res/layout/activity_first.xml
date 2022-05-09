@@ -6,6 +6,13 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/btn_start_and_close_others"
+        android:text="启动SecondActivity"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_10dp"
+        android:layout_height="wrap_content"/>
+
+    <Button
         android:id="@+id/btn_close_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="关闭除我之外其他的Activity" />
+
+    <Button
+        android:id="@+id/btn_finish_except_top"
+        android:text="关闭除顶部Activity外所有Activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
     <Button
         android:id="@+id/btn_close_all"
@@ -29,9 +43,28 @@
         android:layout_height="wrap_content"
         android:text="关闭当前Activity" />
 
+
     <Button
-        android:id="@+id/btn_start_and_close_others"
-        android:text="启动SecondActivity"
+        android:id="@+id/btn_finish_by_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="finishByName 关闭当前Activity"/>
+
+    <Button
+        android:id="@+id/btn_finish_by_simple_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="finishBySimpleName 关闭当前Activity"/>
+
+    <Button
+        android:id="@+id/btn_finish_except_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="finishExceptName 关闭其他Activity"/>
+
+    <Button
+        android:id="@+id/btn_finish_except_simple_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="finishExceptSimpleName 关闭其他Activity"/>
 </LinearLayout>

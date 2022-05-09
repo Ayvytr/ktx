@@ -9,6 +9,7 @@
         android:id="@+id/btn_goto_first_activity"
         android:text="打开FirstActivity"
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_10dp"
         android:layout_height="wrap_content"/>
 
     <Button

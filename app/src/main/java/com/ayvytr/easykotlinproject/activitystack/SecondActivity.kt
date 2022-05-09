@@ -13,13 +13,11 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
         setTitle("SecondActivity")
         btn_close_all_background_kill.setOnClickListener {
-            ActivityStack.forceClose()
+            ActivityStack.finishAllAndKillApp()
         }
         btn_kill.setOnClickListener {
-            ActivityStack.forceClose(true)
+            ActivityStack.killApp()
         }
-        btn_finish_except_top.setOnClickListener {
-            ActivityStack.finishExceptTop()
-        }
+
     }
 }

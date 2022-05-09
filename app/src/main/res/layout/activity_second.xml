@@ -11,11 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btn_finish_except_top"
-        android:text="关闭除顶部Activity外所有Activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_kill"

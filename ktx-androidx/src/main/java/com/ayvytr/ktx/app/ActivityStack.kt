@@ -43,7 +43,7 @@ object ActivityStack {
                 list.remove(activity)
                 if (list.isEmpty() && isForceClose) {
                     isForceClose = false
-                    killSelf()
+                    killApp()
                 }
             }
 
@@ -119,6 +119,30 @@ object ActivityStack {
     }
 
     /**
+     * 关闭类名为[name]的Activity.
+     */
+    @JvmStatic
+    fun finishByName(name: String) {
+        for (activity in list.reversed()) {
+            if (activity.javaClass.name == name) {
+                activity.finish()
+            }
+        }
+    }
+
+    /**
+     * 关闭简单类名为[name]的Activity.
+     */
+    @JvmStatic
+    fun finishBySimpleName(name: String) {
+        for (activity in list.reversed()) {
+            if (activity.javaClass.simpleName == name) {
+                activity.finish()
+            }
+        }
+    }
+
+    /**
      * 关闭当前Activity.
      */
     @JvmStatic
@@ -143,11 +167,33 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishAllExcept(clazz: Class<out Activity>) {
-        var find = false
         list.reversed().forEach {
-            if (it.javaClass == clazz && !find) {
-                find = true
-            } else {
+            if (it.javaClass.name != clazz.name) {
+                it.finish()
+            }
+        }
+    }
+
+    /**
+     * 关闭除类名为[name]外的所有Activity.
+     */
+    @JvmStatic
+    fun finishAllExceptName(name: String) {
+        list.reversed().forEach {
+            if (it.javaClass.name != name) {
+                it.finish()
+            }
+        }
+    }
+
+    /**
+     * 关闭除简单类名为[name]外的所有Activity.
+     * @see [Class.getSimpleName]
+     */
+    @JvmStatic
+    fun finishAllExceptSimpleName(name: String) {
+        list.reversed().forEach {
+            if (it.javaClass.simpleName != name) {
                 it.finish()
             }
         }
@@ -211,12 +257,14 @@ object ActivityStack {
 
     /**
      * 关闭除顶部Activity外的其他所有activity.
+     * @since 3.1.0 修复了死循环问题
      */
     @JvmStatic
     fun finishExceptTop() {
-        val last = list.last
-        while (list[0] != last) {
-            list[0].finish()
+        if (list.isNotEmpty()) {
+            list.subList(0, list.size - 1).forEach {
+                it.finish()
+            }
         }
     }
 
@@ -225,24 +273,40 @@ object ActivityStack {
      * @param closeImmediately true:直接调用[Process.killProcess]和[exitProcess]终止进程; false:关闭
      * 已打开的Activity, 在后台终止进程.
      */
+    @Deprecated(
+        "弃用。推荐使用finishAllAndKillApp()。请慎重使用killApp()",
+        replaceWith = ReplaceWith("finishAllAndKillApp()"),
+        DeprecationLevel.ERROR
+    )
     @JvmStatic
     fun forceClose(closeImmediately: Boolean = false) {
         if (closeImmediately) {
-            killSelf()
+            killApp()
         } else {
             isForceClose = true
             finishAll()
         }
     }
 
-    @Deprecated("Replace with killApp.",
-                replaceWith = ReplaceWith("killApp()"))
+    /**
+     * 关闭所有页面后，终止进程。推荐使用这个方法终止进程.
+     */
+    fun finishAllAndKillApp() {
+        isForceClose = true
+        finishAll()
+    }
+
+    @Deprecated(
+        "Replace with killApp.",
+        replaceWith = ReplaceWith("killApp()")
+    )
     @JvmStatic
     fun killSelf() {
         killApp()
     }
 
     /**
+     * 强杀进程. 慎重使用：直接调用这个方法可能有app自动重新打开的问题.
      * @since 3.0.1
      */
     @JvmStatic

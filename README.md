@@ -12,7 +12,7 @@ mavenCentral()
 
 ```
 //androidx
-implementation 'io.github.ayvytr:ktx-androidx:3.0.7'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.0'
 
 
 //注意：android最后一个版本是3.0.6
@@ -41,6 +41,12 @@ implementation 'com.ayvytr:ktx:3.0.0'
 
 
 ## ChangeLog
+
+### 3.1.0
+
+1. 修复了ActivityStack.finishExceptTop()死循环问题
+2. ActivityStack新增了通过类名/类简单名关闭Activity的方法，便于跨模块关闭Activity：finishByName(), finishBySimpleName(), finishAllExceptName(), finishAllExceptSimpleName()
+3. ActivityStack废弃了~~forceClose()~~，并新增了finishAllAndKillApp()来做替代
 
 ### 3.0.7
 
@@ -173,6 +179,12 @@ start()
 startAndFinishOthers()
 finishExceptTop()
 forceClose()
+
+//@since 3.1.0
+finishByName()
+finishBySimpleName()
+finishAllExceptName()
+finishAllExceptSimpleName()
 ```
 
 ### Spanner SpannableString操作工具类
