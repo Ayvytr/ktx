@@ -1,8 +1,8 @@
-ktx-androidx[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ayvytr/ktx-androidx)
 
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-Ktx：简化Android开发的Kotlin库
+# Ktx：简化Android开发的Kotlin库
 
 ## 使用
 
