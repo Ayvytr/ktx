@@ -40,7 +40,7 @@ abstract class BaseDialog(context: Context, themeResId: Int = R.style.Transparen
     }
 
     /**
-     * 设置对话框宽度占满屏幕宽度，解决MIUI等某些定制系统手机的Dialog宽度很窄的问题. 需要对话框左右有间距，
+     * 设置对话框宽度占满屏幕宽度，解决了MIUI等某些定制系统手机的Dialog宽度很窄的问题. 需要对话框左右有间距，
      * 直接给布局加margin.
      */
     fun setFullWidth(isFullWidth: Boolean = true) {

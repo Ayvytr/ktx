@@ -12,24 +12,11 @@ mavenCentral()
 
 ```
 //androidx
-implementation 'io.github.ayvytr:ktx-androidx:3.1.0'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.1'
 
 
 //注意：android最后一个版本是3.0.6
 implementation 'io.github.ayvytr:ktx:3.0.6'
-```
-
-
-
-3.0.0之前：
-
-jcenter()
-
-```
-//androidx
-implementation 'com.ayvytr:ktx-androidx:3.0.0'
-//android
-implementation 'com.ayvytr:ktx:3.0.0'
 ```
 
 
@@ -41,6 +28,10 @@ implementation 'com.ayvytr:ktx:3.0.0'
 
 
 ## ChangeLog
+
+### 3.1.1
+
+1. 增加了**BaseDialog**，**.setFullWidth()**解决了MIUI等某些定制系统手机的Dialog宽度很窄的问题
 
 ### 3.1.0
 
