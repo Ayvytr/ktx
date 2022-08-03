@@ -45,10 +45,10 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
 
-    implementation 'com.ayvytr:logger:3.0.0'
+    implementation 'io.github.ayvytr:Logger:+'
     implementation 'com.ayvytr:base-coroutine-activity-androidx:0.2.0'
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:+'
 
     if (testJcenter) {
         implementation 'com.ayvytr:ktx-androidx:3.0.0'
