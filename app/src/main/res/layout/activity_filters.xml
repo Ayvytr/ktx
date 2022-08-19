@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/_10dp"
-    tools:context=".ext.FiltersActivity">
+    tools:context="com.ayvytr.ktxapp.ext.FiltersActivity">
 
     <EditText
         android:id="@+id/et_emoji_filter"

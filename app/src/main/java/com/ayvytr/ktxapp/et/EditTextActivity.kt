@@ -1,10 +1,10 @@
-package com.ayvytr.easykotlinproject.et
+package com.ayvytr.ktxapp.et
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ayvytr.easykotlinproject.R
 import com.ayvytr.ktx.ui.onClick
 import com.ayvytr.ktx.ui.selectText
+import com.ayvytr.ktxapp.R
 import kotlinx.android.synthetic.main.activity_edit_text.*
 
 class EditTextActivity: AppCompatActivity() {

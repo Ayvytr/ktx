@@ -1,9 +1,9 @@
-package com.ayvytr.easykotlinproject.activitystack
+package com.ayvytr.ktxapp.activitystack
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ayvytr.easykotlinproject.R
 import com.ayvytr.ktx.app.ActivityStack
+import com.ayvytr.ktxapp.R
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {

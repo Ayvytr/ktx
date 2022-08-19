@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlinproject;
+package com.ayvytr.ktxapp;
 
 import android.os.Bundle;
 

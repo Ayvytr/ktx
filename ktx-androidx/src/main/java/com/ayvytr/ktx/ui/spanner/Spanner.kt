@@ -1,7 +1,6 @@
 package com.ayvytr.ktx.ui.spanner
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.Spanned
@@ -13,6 +12,9 @@ import androidx.annotation.ColorRes
 import androidx.collection.ArrayMap
 import androidx.core.content.ContextCompat
 import com.ayvytr.ktx.provider.ContextProvider
+import com.ayvytr.ktx.ui.spanner.span.BgColorSpan
+import com.ayvytr.ktx.ui.spanner.span.ClickSpan
+import com.ayvytr.ktx.ui.spanner.span.TextColorSpan
 import java.util.*
 import java.util.regex.Pattern
 
@@ -20,22 +22,19 @@ import java.util.regex.Pattern
  * 简化富文本上色，点击，加粗等功能的SpannableString.
  *
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 3.1.3
+ * 1. 取消长按点击事件
+ * 2. 修改点击时的字体自动换行问题
+ * 3. 取消点击时的背景色圆角
+ * 4. 修改点击时的字体颜色和背景色为[TextColorSpan] [BgColorSpan]保存
  * @since 0.1.0
  */
 class Spanner private constructor(private val context: Context, text: CharSequence) :
     SpannableString(text) {
     private val rangeList = ArrayList<Range>()
     private val tagsMap = ArrayMap<Range, Any?>()
-    private var textColor: Int = 0
-    private var pressedTextColor: Int = 0
-    private var pressedBackgroundColor: Int = 0
-    private var pressedBackgroundRadius: Int = 0
 
     fun first(target: String): Spanner {
-        if (TextUtils.isEmpty(target)) {
-            return this
-        }
-
         rangeList.clear()
         val index = toString().indexOf(target)
         val range = Range.create(index, index + target.length)
@@ -44,10 +43,6 @@ class Spanner private constructor(private val context: Context, text: CharSequen
     }
 
     fun last(target: String): Spanner {
-        if (TextUtils.isEmpty(target)) {
-            return this
-        }
-
         rangeList.clear()
         val index = toString().lastIndexOf(target)
         val range = Range.create(index, index + target.length)
@@ -176,46 +171,58 @@ class Spanner private constructor(private val context: Context, text: CharSequen
     }
 
     /**
-     * 设置选中字体背景色.注意：需要同时设置 [.textColor]
+     * 设置字体背景色和点击时的背景色
+     * @see [BgColorSpan]
+     * @see [ClickLinkMovementMethod]
      */
     @JvmOverloads
-    fun backgroundColor(@ColorInt color: Int, @ColorInt pressedBackgroundColor: Int = color,
-                                radiusDp: Int = 0): Spanner {
-        this.pressedBackgroundColor = pressedBackgroundColor
-        this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
-
-        val radiusPx = SpannerUtils.dp2px(context, radiusDp)
+    fun backgroundColor(@ColorInt bgColor: Int, @ColorInt pressedBgColor: Int = bgColor): Spanner {
         for (range in rangeList) {
-            setSpan(RoundedBackgroundSpan(textColor, color, radiusPx), range.from, range.to,
-                    SPAN_MODE)
+            setSpan(BgColorSpan(bgColor, pressedBgColor), range.from, range.to, SPAN_MODE)
         }
         return this
     }
 
+    /**
+     * @see [backgroundColor]
+     */
     @JvmOverloads
-    fun backgroundColorRes(@ColorRes colorRes: Int, @ColorRes pressedBackgroundColorRes: Int = colorRes,
-                           radiusDp: Int = 0): Spanner {
-        val color = ContextCompat.getColor(context, colorRes)
-        val pressedBackgroundColor = ContextCompat.getColor(context, pressedBackgroundColorRes)
-        return backgroundColor(color, pressedBackgroundColor, radiusDp)
+    fun backgroundColorRes(
+        @ColorRes bgColorRes: Int,
+        @ColorRes pressedBgColorRes: Int = bgColorRes
+    ): Spanner {
+        val color = ContextCompat.getColor(context, bgColorRes)
+        val pressedBackgroundColor = ContextCompat.getColor(context, pressedBgColorRes)
+        return backgroundColor(color, pressedBackgroundColor)
     }
 
-    @JvmOverloads
-    fun textColorRes(@ColorRes colorRes: Int, @ColorRes pressedTextColorRes: Int = colorRes): Spanner {
-        return textColor(ContextCompat.getColor(context, colorRes),
-                         ContextCompat.getColor(context, pressedTextColorRes))
-    }
 
+    /**
+     * 设置字体颜色和点击时的字体颜色
+     * @see [TextColorSpan]
+     * @see [ClickLinkMovementMethod]
+     */
     @JvmOverloads
-    fun textColor(@ColorInt color: Int, @ColorInt pressedTextColor: Int = color): Spanner {
-        textColor = color
-        this.pressedTextColor = pressedTextColor
+    fun textColor(@ColorInt textColor: Int, @ColorInt pressedTextColor: Int = textColor): Spanner {
         for (range in rangeList) {
-            setSpan(ForegroundColorSpan(textColor), range.from, range.to, SPAN_MODE)
+            setSpan(TextColorSpan(textColor, pressedTextColor), range.from, range.to, SPAN_MODE)
         }
         return this
     }
 
+    /**
+     * @see [textColor]
+     */
+    @JvmOverloads
+    fun textColorRes(
+        @ColorRes textColorRes: Int,
+        @ColorRes pressedTextColorRes: Int = textColorRes
+    ): Spanner {
+        return textColor(
+            ContextCompat.getColor(context, textColorRes),
+            ContextCompat.getColor(context, pressedTextColorRes)
+        )
+    }
 
     fun subscript(): Spanner {
         for (range in rangeList) {
@@ -231,70 +238,34 @@ class Spanner private constructor(private val context: Context, text: CharSequen
         return this
     }
 
-    fun url(url: String): Spanner {
-        if (TextUtils.isEmpty(url)) {
-            return this
-        }
-
+    fun onClick(textView: TextView, action: (CharSequence, Range) -> Unit): Spanner {
         for (range in rangeList) {
-            val span = CustomClickableSpan(
+            val span = ClickSpan(
                 subSequence(range.from, range.to),
-                url,
                 range,
-                object : OnTextClickListener {
-                    override fun onClicked(text: CharSequence, range: Range, tag: Any?) {
-                        SpannerUtils.openURL(context, url)
-                    }
-                })
-            setSpan(span, range.from, range.to, SPAN_MODE)
-        }
-        return this
-    }
-
-    fun pressedBackgroundColor(@ColorInt color: Int): Spanner {
-        return pressedBackgroundColor(color, 0)
-    }
-
-    fun pressedBackgroundColor(@ColorInt color: Int, radiusDp: Int): Spanner {
-        this.pressedBackgroundColor = color
-        this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
-        return this
-    }
-
-    @JvmOverloads
-    fun pressedBackgroundRes(@ColorRes colorRes: Int, radiusDp: Int = 0): Spanner {
-        this.pressedBackgroundColor = ContextCompat.getColor(context, colorRes)
-        this.pressedBackgroundRadius = SpannerUtils.dp2px(context, radiusDp)
-        return this
-    }
-
-    fun onClick(textView: TextView,
-                onTextClickListener: OnTextClickListener): Spanner {
-        for (range in rangeList) {
-            val span = CustomClickableSpan(
-                subSequence(range.from, range.to),
-                tagsMap[range],
-                range,
-                onTextClickListener)
+                action
+            )
             setSpan(span, range.from, range.to, SPAN_MODE)
         }
         linkify(textView)
         return this
     }
 
-    fun onLongClick(textView: TextView,
-                    onTextLongClickListener: OnTextLongClickListener): Spanner {
-        for (range in rangeList) {
-            val span = CustomClickableSpan(
-                subSequence(range.from, range.to),
-                tagsMap[range],
-                range,
-                onTextLongClickListener)
-            setSpan(span, range.from, range.to, SPAN_MODE)
-        }
-        linkify(textView)
-        return this
-    }
+//    fun onLongClick(textView: TextView,
+//                    onTextLongClickListener: OnTextLongClickListener): Spanner {
+//        for (range in rangeList) {
+//            val span = CustomClickableSpan(
+//                textView,
+//                subSequence(range.from, range.to),
+//                range,
+//                tagsMap[range],
+//                onTextLongClickListener
+//            )
+//            setSpan(span, range.from, range.to, SPAN_MODE)
+//        }
+//        linkify(textView)
+//        return this
+//    }
 
     fun tag(tag: Any): Spanner {
         val lastRange = rangeList[rangeList.size - 1]
@@ -309,26 +280,24 @@ class Spanner private constructor(private val context: Context, text: CharSequen
     fun tags(tags: List<Any>): Spanner {
         var i = 0
         for (tag in tags) {
-            if (tag != null) {
-                tagsMap[rangeList[i++]] = tag
-            }
+            tagsMap[rangeList[i++]] = tag
         }
         return this
     }
 
+    fun tagOf(range: Range): Any? {
+        return tagsMap[range]
+    }
+
     private fun linkify(textView: TextView) {
-        textView.highlightColor = Color.TRANSPARENT
-        textView.movementMethod = LinkTouchMovementMethod(pressedTextColor, pressedBackgroundColor,
-                                                          pressedBackgroundRadius)
+        textView.movementMethod = ClickLinkMovementMethod.INSTANCE
     }
 
     companion object {
-
-        private val SPAN_MODE = Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        internal val SPAN_MODE = Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
 
         @JvmStatic
         fun from(text: CharSequence): Spanner {
-            checkNotNull(text)
             return Spanner(ContextProvider.getContext(), text)
         }
     }

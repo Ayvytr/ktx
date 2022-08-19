@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.ayvytr.easykotlinproject"
+        applicationId "com.ayvytr.ktx"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.ayvytr:base-coroutine-activity-androidx:0.2.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:+'
+    implementation 'com.tencent.bugly:crashreport:+'
 
     if (testJcenter) {
         implementation 'io.github.ayvytr:ktx-androidx:3.1.1'

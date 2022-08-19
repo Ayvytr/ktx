@@ -42,4 +42,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:textSize="@dimen/_16sp"
+        android:padding="5dp" />
 </LinearLayout>

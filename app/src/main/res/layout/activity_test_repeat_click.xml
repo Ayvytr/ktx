@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TestRepeatClickActivity">
+    tools:context="com.ayvytr.ktxapp.TestRepeatClickActivity">
 
     <ScrollView
         android:id="@+id/scrollView"

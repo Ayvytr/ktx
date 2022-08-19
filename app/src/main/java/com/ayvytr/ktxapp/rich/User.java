@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlinproject.rich;
+package com.ayvytr.ktxapp.rich;
 
 public class User {
 

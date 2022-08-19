@@ -1,13 +1,12 @@
-package com.ayvytr.easykotlinproject.ext
+package com.ayvytr.ktxapp.ext
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ayvytr.easykotlinproject.R
 import com.ayvytr.ktx.context.hideStatusBar
 import com.ayvytr.ktx.context.isStatusBarShowing
 import com.ayvytr.ktx.context.showStatusBar
+import com.ayvytr.ktxapp.R
 import kotlinx.android.synthetic.main.activity_status_bar.*
-import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class StatusBarActivity : AppCompatActivity()
 {

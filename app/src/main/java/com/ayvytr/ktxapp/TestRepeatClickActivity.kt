@@ -1,8 +1,7 @@
-package com.ayvytr.easykotlinproject
+package com.ayvytr.ktxapp
 
 import android.os.Bundle
 import android.widget.ScrollView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.ktx.ui.getViewId
 import com.ayvytr.ktx.ui.onClick

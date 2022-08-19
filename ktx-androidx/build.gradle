@@ -34,7 +34,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    compileOnly "com.ayvytr:logger:+"
+//    compileOnly "com.ayvytr:logger:+"
 
     dokkaJavadocPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0")
 }
