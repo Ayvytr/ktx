@@ -14,7 +14,7 @@ import com.ayvytr.ktx.R
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 3.1.1
  */
-abstract class BaseDialog(context: Context, themeResId: Int = R.style.TransparentDialog):
+abstract class BaseDialog(context: Context, themeResId: Int = R.style.TransparentDialog_DimBg):
     Dialog(context, themeResId) {
 
     private var mGravity = Gravity.NO_GRAVITY

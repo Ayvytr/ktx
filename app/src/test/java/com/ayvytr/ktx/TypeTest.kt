@@ -1,4 +1,4 @@
-package com.ayvytr.easykotlinproject
+package com.ayvytr.ktx
 
 import org.junit.Test
 

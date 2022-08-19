@@ -7,11 +7,12 @@
         <item name="android:windowIsTranslucent">false</item><!--半透明-->
         <item name="android:windowNoTitle">true</item><!--无标题-->
         <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <!-- Dialog以外的区域模糊效果 -->
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
     <style name="TransparentDialog.DimBg" parent="TransparentDialog">
-        <!-- Dialog以外的区域模糊效果 -->
-        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
     </style>
 
 </resources>
