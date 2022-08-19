@@ -12,7 +12,7 @@ mavenCentral()
 
 ```
 //androidx
-implementation 'io.github.ayvytr:ktx-androidx:3.1.2'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.3'
 
 
 //注意：android最后一个版本是3.0.6
@@ -28,6 +28,10 @@ implementation 'io.github.ayvytr:ktx:3.0.6'
 
 
 ## ChangeLog
+
+### 3.1.3
+
+1. 修改Spanner
 
 ### 3.1.2
 
