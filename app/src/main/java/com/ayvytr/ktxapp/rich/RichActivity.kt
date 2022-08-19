@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.ktx.ui.getContext
 import com.ayvytr.ktx.ui.onClick
 import com.ayvytr.ktx.ui.spanner.Range
+import com.ayvytr.ktx.ui.spanner.Spanner
 import com.ayvytr.ktx.ui.spanner.Spanner.Companion.from
 import com.ayvytr.ktxapp.R
 import com.ayvytr.logger.L
@@ -100,7 +101,7 @@ class RichActivity: AppCompatActivity() {
         //                         .boldItalic();
         tv3.text = spanner3
         val tv4 = findViewById<TextView>(R.id.tv4)
-        val spanner4 = from("测试点击颜色，不同颜色测试xxxxxxxx xxxxxxxxxxxxxxxxxxx")
+        val spanner4 = Spanner("测试点击颜色，不同颜色测试xxxxxxxx xxxxxxxxxxxxxxxxxxx")
             .all("点击颜色")
             .textColor(Color.BLUE, Color.RED)
             .onClick(tv4) { text: CharSequence, range: Range ->

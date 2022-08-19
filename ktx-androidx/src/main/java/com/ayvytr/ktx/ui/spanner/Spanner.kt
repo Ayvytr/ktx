@@ -1,6 +1,5 @@
 package com.ayvytr.ktx.ui.spanner
 
-import android.content.Context
 import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.Spanned
@@ -29,7 +28,7 @@ import java.util.regex.Pattern
  * 4. 修改点击时的字体颜色和背景色为[TextColorSpan] [BgColorSpan]保存
  * @since 0.1.0
  */
-class Spanner private constructor(private val context: Context, text: CharSequence) :
+class Spanner(text: CharSequence):
     SpannableString(text) {
     private val rangeList = ArrayList<Range>()
     private val tagsMap = ArrayMap<Range, Any?>()
@@ -191,6 +190,7 @@ class Spanner private constructor(private val context: Context, text: CharSequen
         @ColorRes bgColorRes: Int,
         @ColorRes pressedBgColorRes: Int = bgColorRes
     ): Spanner {
+        val context = ContextProvider.getContext()
         val color = ContextCompat.getColor(context, bgColorRes)
         val pressedBackgroundColor = ContextCompat.getColor(context, pressedBgColorRes)
         return backgroundColor(color, pressedBackgroundColor)
@@ -218,6 +218,7 @@ class Spanner private constructor(private val context: Context, text: CharSequen
         @ColorRes textColorRes: Int,
         @ColorRes pressedTextColorRes: Int = textColorRes
     ): Spanner {
+        val context = ContextProvider.getContext()
         return textColor(
             ContextCompat.getColor(context, textColorRes),
             ContextCompat.getColor(context, pressedTextColorRes)
@@ -296,9 +297,12 @@ class Spanner private constructor(private val context: Context, text: CharSequen
     companion object {
         internal val SPAN_MODE = Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
 
+        /**
+         * [Spanner]入口.
+         */
         @JvmStatic
         fun from(text: CharSequence): Spanner {
-            return Spanner(ContextProvider.getContext(), text)
+            return Spanner(text)
         }
     }
 
