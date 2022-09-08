@@ -10,7 +10,8 @@ import com.ayvytr.ktx.ui.spanner.span.BgColorSpan
 import com.ayvytr.ktx.ui.spanner.span.TextColorSpan
 
 /**
- * @author Administrator
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 3.1.3
  */
 class ClickLinkMovementMethod: LinkMovementMethod() {
     override fun onTouchEvent(widget: TextView?, buffer: Spannable?, event: MotionEvent?): Boolean {

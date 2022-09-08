@@ -20,6 +20,7 @@ class EditTextActivity: AppCompatActivity() {
         }
         btn_select_text1.onClick {
             et.selectText("select text")
+//            et.selectText(null)
         }
         btn_select_text2.onClick {
             et.selectText("select text for all", true)

@@ -7,7 +7,8 @@ import androidx.annotation.ColorInt
 import com.ayvytr.ktx.ui.spanner.Spanner
 
 /**
- * @author Administrator
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 3.1.3
  */
 internal class TextColorSpan(@ColorInt textColor: Int, @ColorInt val pressedTextColor: Int):
     ForegroundColorSpan(textColor) {

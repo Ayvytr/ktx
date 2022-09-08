@@ -1,7 +1,6 @@
 package com.ayvytr.ktx.context
 
 import android.net.ConnectivityManager
-import androidx.annotation.RequiresPermission
 import com.ayvytr.ktx.provider.ContextProvider
 
 /**

@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.WindowManager
 
 /**
- * @author Ayvytr
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  */
 
 

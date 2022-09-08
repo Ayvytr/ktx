@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:3.1.4'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.5'
 ```
 
 
@@ -21,6 +21,10 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.4'
 
 
 ## ChangeLog
+
+### 3.1.5
+
+* 
 
 ### 3.1.4
 

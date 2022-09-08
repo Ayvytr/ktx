@@ -1,14 +1,11 @@
 package com.ayvytr.ktx.context
 
-import android.app.Activity
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Point
 import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.ayvytr.ktx.provider.ContextProvider
 
 /**
  * 为 [Context] 类提供的获取屏幕尺寸，判断横竖屏，设置横竖屏提供的方法.

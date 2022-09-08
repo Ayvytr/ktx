@@ -4,7 +4,6 @@ import android.text.InputFilter
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.IntRange
-import androidx.annotation.Nullable
 import androidx.annotation.StringRes
 import com.ayvytr.ktx.context.getInputMethodManager
 import com.ayvytr.ktx.internal.Views
@@ -26,7 +25,7 @@ fun EditText.selectText(@StringRes stringId: Int, selectAllText: Boolean = false
 /**
  * @since 3.0.1
  */
-fun EditText.selectText(@Nullable text: CharSequence, selectAllText: Boolean = false) {
+fun EditText.selectText(text: CharSequence?, selectAllText: Boolean = false) {
     setText(text)
     if (selectAllText) {
         setSelection(0, length())
@@ -38,9 +37,11 @@ fun EditText.selectText(@Nullable text: CharSequence, selectAllText: Boolean = f
 /**
  * 设置 [EditText] 文本，并且把光标定位到末尾
  */
-@Deprecated("Deprecated. replace with selectText. Will Delete after version 4.0.0.",
-            replaceWith = ReplaceWith("selectText(text)"))
-fun EditText.setText2(@Nullable text: CharSequence) {
+@Deprecated(
+    "Deprecated. replace with selectText. Will Delete after version 4.0.0.",
+    replaceWith = ReplaceWith("selectText(text)")
+)
+fun EditText.setText2(text: CharSequence?) {
     setText(text)
     setSelection(getText().length)
 }
@@ -48,9 +49,11 @@ fun EditText.setText2(@Nullable text: CharSequence) {
 /**
  * 设置 [EditText] 文本，并且全选文本
  */
-@Deprecated("Deprecated. replace with selectText. Will Delete after version 4.0.0.",
-            replaceWith = ReplaceWith("selectText(text, true)"))
-fun EditText.setTextWithSelection(@Nullable text: CharSequence) {
+@Deprecated(
+    "Deprecated. replace with selectText. Will Delete after version 4.0.0.",
+    replaceWith = ReplaceWith("selectText(text, true)")
+)
+fun EditText.setTextWithSelection(text: CharSequence?) {
     setText(text)
     setSelection(0, getText().length)
 }
@@ -80,11 +83,11 @@ fun EditText.addFilters(filters: List<InputFilter>) {
 fun EditText.showInputMethod(isShow: Boolean = true) {
     if (isShow) {
         postDelayed({
-                        isFocusable = true
-                        requestFocus()
-                        val imm = context.getInputMethodManager()
-                        imm.showSoftInput(this, InputMethodManager.SHOW_FORCED)
-                    }, 100)
+            isFocusable = true
+            requestFocus()
+            val imm = context.getInputMethodManager()
+            imm.showSoftInput(this, InputMethodManager.SHOW_FORCED)
+        }, 100)
     } else {
         hideInputMethod()
     }

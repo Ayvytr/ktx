@@ -5,6 +5,10 @@ import android.text.style.ClickableSpan
 import android.view.View
 import com.ayvytr.ktx.ui.spanner.Range
 
+/**
+ * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 3.1.3
+ */
 internal class ClickSpan(
     private val text: CharSequence,
     private val range: Range,
