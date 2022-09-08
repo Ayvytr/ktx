@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment
 /**
  * 使用Context初始化布局
  */
-@Deprecated("Deprecated next big version")
 fun Context.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
                     attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(this).inflate(id, parent, attachToParent)
@@ -36,7 +35,6 @@ fun Context.inflateRv(@LayoutRes id: Int, parent: ViewGroup?): View {
 /**
  * 使用Fragment初始化布局
  */
-@Deprecated("Deprecated next big version")
 fun Fragment.inflate(@LayoutRes id: Int, parent: ViewGroup? = null,
                      attachToParent: Boolean = parent != null): View {
     return LayoutInflater.from(context).inflate(id, parent, attachToParent)

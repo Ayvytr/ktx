@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:+'
 
     if (testJcenter) {
-        implementation 'io.github.ayvytr:ktx-androidx:3.1.1'
+        implementation 'io.github.ayvytr:ktx-androidx:+'
     } else {
         implementation project(':ktx-androidx')
     }

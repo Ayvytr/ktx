@@ -4,6 +4,7 @@ import android.text.InputFilter
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.IntRange
+import androidx.annotation.Nullable
 import androidx.annotation.StringRes
 import com.ayvytr.ktx.context.getInputMethodManager
 import com.ayvytr.ktx.internal.Views
@@ -25,7 +26,7 @@ fun EditText.selectText(@StringRes stringId: Int, selectAllText: Boolean = false
 /**
  * @since 3.0.1
  */
-fun EditText.selectText(text: CharSequence, selectAllText: Boolean = false) {
+fun EditText.selectText(@Nullable text: CharSequence, selectAllText: Boolean = false) {
     setText(text)
     if (selectAllText) {
         setSelection(0, length())
@@ -39,7 +40,7 @@ fun EditText.selectText(text: CharSequence, selectAllText: Boolean = false) {
  */
 @Deprecated("Deprecated. replace with selectText. Will Delete after version 4.0.0.",
             replaceWith = ReplaceWith("selectText(text)"))
-fun EditText.setText2(text: CharSequence) {
+fun EditText.setText2(@Nullable text: CharSequence) {
     setText(text)
     setSelection(getText().length)
 }
@@ -49,7 +50,7 @@ fun EditText.setText2(text: CharSequence) {
  */
 @Deprecated("Deprecated. replace with selectText. Will Delete after version 4.0.0.",
             replaceWith = ReplaceWith("selectText(text, true)"))
-fun EditText.setTextWithSelection(text: CharSequence) {
+fun EditText.setTextWithSelection(@Nullable text: CharSequence) {
     setText(text)
     setSelection(0, getText().length)
 }

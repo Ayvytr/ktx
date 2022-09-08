@@ -6,28 +6,25 @@
 
 ## 使用
 
-3.0.6+：
-
 mavenCentral()
 
 ```
-//androidx
-implementation 'io.github.ayvytr:ktx-androidx:3.1.3'
-
-
-//注意：android最后一个版本是3.0.6
-implementation 'io.github.ayvytr:ktx:3.0.6'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.4'
 ```
 
 
 
 ## 说明
 
-3.0.6之后，将只更新androidx库
+3.0.6适配了androidx
 
 
 
 ## ChangeLog
+
+### 3.1.4
+
+* 修改**EditText.selectText()**空指针问题
 
 ### 3.1.3
 

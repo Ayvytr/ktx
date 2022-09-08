@@ -8,6 +8,13 @@ allprojects {
             sonatypeHost = "S01"
         }
     }
+
+    android {
+        buildFeatures {
+            //java generated BuildConfig不会生成
+            buildConfig = false
+        }
+    }
 }
 
 def dokkaOutputDir = "$buildDir/javadoc"
