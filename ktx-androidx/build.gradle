@@ -22,6 +22,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -34,7 +38,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-//    compileOnly "com.ayvytr:logger:+"
+    implementation "io.github.ayvytr:logger:+"
 
     dokkaJavadocPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0")
 }

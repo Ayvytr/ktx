@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleObserver
 import com.ayvytr.ktxapp.activitystack.StackActivity
 import com.ayvytr.ktxapp.et.EditTextActivity
 import com.ayvytr.ktxapp.ext.FiltersActivity
@@ -15,6 +16,7 @@ import com.ayvytr.ktx.context.isNightMode
 import com.ayvytr.ktx.ui.*
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
+import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         //        tvStatusBarHeight.setText(getStatusBarHeight().toString())
         initView()
+        L.e()
     }
 
     private fun initView() {

@@ -2,7 +2,9 @@ package com.ayvytr.ktxapp.ext
 
 import android.os.Bundle
 import android.text.InputType
-import com.ayvytr.coroutine.BaseCoroutineActivity
+import com.ayvytr.flow.BaseActivity
+import com.ayvytr.flow.base.IView
+import com.ayvytr.flow.vm.BaseViewModel
 import com.ayvytr.ktx.ui.edittext.DecimalDigitsInputFilter
 import com.ayvytr.ktx.ui.addFilters
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
@@ -12,7 +14,7 @@ import com.ayvytr.ktx.ui.edittext.PasswordFilter
 import com.ayvytr.ktxapp.R
 import kotlinx.android.synthetic.main.activity_filters.*
 
-class FiltersActivity : BaseCoroutineActivity() {
+class FiltersActivity : BaseActivity<BaseViewModel<IView>>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
