@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:3.1.5'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.6'
 ```
 
 
@@ -22,13 +22,16 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.5'
 
 ## ChangeLog
 
+### 3.1.6
+
+* 修改**ActivityStack**：
+  * **isForeground()**适配android12
+  * **registerCallback()**增加第二个参数observer，回调判断Activity是否前台可见
+  * 适配：不停的按返回很快关闭多个Activity时，Activity关闭/销毁顺序和正常顺序相反的问题
+
 ### 3.1.5
 
-* 
-
-### 3.1.4
-
-* 修改**EditText.selectText()**空指针问题
+* 修改**EditText.selectText() @Nullable无效问题
 
 ### 3.1.3
 

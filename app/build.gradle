@@ -24,6 +24,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 def testJcenter = false
@@ -45,8 +50,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
 
-    implementation 'io.github.ayvytr:Logger:+'
-    implementation 'com.ayvytr:base-coroutine-activity-androidx:0.2.0'
+    implementation 'io.github.ayvytr:logger:+'
+    implementation 'io.github.ayvytr:flow:+'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:+'
     implementation 'com.tencent.bugly:crashreport:+'

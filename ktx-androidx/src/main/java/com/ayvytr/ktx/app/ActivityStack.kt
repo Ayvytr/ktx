@@ -7,24 +7,43 @@ import android.os.Bundle
 import android.os.Process
 import com.ayvytr.ktx.provider.ContextProvider
 import java.io.Serializable
-import java.util.*
 import kotlin.system.exitProcess
 
 /**
  * Activity管理任务栈，内部通过[Application.registerActivityLifecycleCallbacks]实现，可以打开和关闭指定
  * Activity，关闭所有Activity，关闭除指定Activity外所有Activity，终止进程等功能.
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
+ * @since 3.1.6
+ * 1. 修改[isForeground]，适配Android12最后关闭的Activity默认不会onDestroy()的问题
+ * 2. [registerCallback]增加第二个参数observer，回调判断Activity是否前台可见
+ * 3. 适配：不停的按返回很快关闭多个Activity时，Activity关闭/销毁顺序和正常顺序相反的问题
+ *
  * @since 2.5.1
  */
 object ActivityStack {
+    /**
+     * 应用是否运行在前台的监听器，注意：只关注Activity是否在前台可见.
+     */
+    @JvmStatic
+    private lateinit var foregroundObserver: (Boolean) -> Unit
+
     @JvmStatic
     private var isForceClose: Boolean = false
 
+    /**
+     * 已创建，但是没销毁的Activity map.
+     *
+     * 注意：
+     * 1. android12变更：关闭最后一个Activity后，默认不会调用onDestroy()
+     * 2. 不停的按返回很快关闭多个Activity时，它们结束的顺序正好反了，最先打开的Activity走了onStop，但是
+     * 没走onDestroy, 后面的Activity是从前往后依次销毁的
+     *
+     * Boolean: Activity是不是on stopped
+     */
     @JvmStatic
-    private val list by lazy { LinkedList<Activity>() }
-
-    @JvmStatic
-    private var foregroundActivityCount = 0
+    private val activityMap by lazy {
+        LinkedHashMap<Activity, Boolean>()
+    }
 
     @JvmStatic
     private val callback by lazy {
@@ -36,35 +55,60 @@ object ActivityStack {
             }
 
             override fun onActivityStarted(activity: Activity) {
-                foregroundActivityCount++
+                if (activityMap.isEmpty() && !activityMap.contains(activity)) {
+                    activityMap.put(activity, false)
+                    foregroundObserver.invoke(true)
+                }
             }
 
             override fun onActivityDestroyed(activity: Activity) {
-                list.remove(activity)
-                if (list.isEmpty() && isForceClose) {
+                activityMap.remove(activity)
+                if (activityMap.isEmpty()) {
+                    foregroundObserver.invoke(isForeground())
+                } else if (activityMap.size == 1) {
+                    /**
+                     * @see activityMap
+                     */
+                    val value = activityMap.get(activityMap.keys.first())
+                    if (value != null && value == true) {
+                        activityMap.clear()
+                    }
+                    foregroundObserver.invoke(isForeground())
+                }
+
+                if (activityMap.isEmpty() && isForceClose) {
                     isForceClose = false
                     killApp()
                 }
             }
 
             override fun onActivityStopped(activity: Activity) {
-                foregroundActivityCount--
+                activityMap.put(activity, true)
+                if (activityMap.size == 1) {
+                    activityMap.remove(activity)
+                    foregroundObserver.invoke(isForeground())
+                }
             }
 
             override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                list.add(activity)
+                activityMap.put(activity, false)
+                if (activityMap.size == 1) {
+                    foregroundObserver.invoke(true)
+                }
             }
         }
     }
 
     /**
      * 注册Activity Lifecycle callback.
+     * @param observer 是否在前台的监听器，注意：只判断Activity是不是前台可见的.
      */
     @JvmStatic
-    fun registerCallback(app: Application) {
+    fun registerCallback(app: Application, observer: (Boolean) -> Unit = { isForeground -> }) {
+        this.foregroundObserver = observer
         app.registerActivityLifecycleCallbacks(callback)
     }
 
@@ -73,7 +117,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun unregisterCallback(app: Application) {
-        list.clear()
+        activityMap.clear()
         app.unregisterActivityLifecycleCallbacks(callback)
     }
 
@@ -82,7 +126,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun getRunningActivityCount(): Int {
-        return list.size
+        return activityMap.size
     }
 
     /**
@@ -90,7 +134,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun isForeground(): Boolean {
-        return foregroundActivityCount != 0
+        return activityMap.isNotEmpty()
     }
 
     /**
@@ -98,11 +142,11 @@ object ActivityStack {
      */
     @JvmStatic
     fun getCurrentActivity(): Activity? {
-        if (list.isEmpty()) {
+        if (activityMap.isEmpty()) {
             return null
         }
 
-        return list.last
+        return activityMap.keys.last()
     }
 
     /**
@@ -110,7 +154,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finish(clazz: Class<out Activity>) {
-        list.reversed().forEach {
+        activityMap.keys.reversed().forEach {
             if (it.javaClass == clazz) {
                 it.finish()
                 return
@@ -123,7 +167,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishByName(name: String) {
-        for (activity in list.reversed()) {
+        for (activity in activityMap.keys.reversed()) {
             if (activity.javaClass.name == name) {
                 activity.finish()
             }
@@ -135,7 +179,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishBySimpleName(name: String) {
-        for (activity in list.reversed()) {
+        for (activity in activityMap.keys.reversed()) {
             if (activity.javaClass.simpleName == name) {
                 activity.finish()
             }
@@ -147,8 +191,8 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishCurrent() {
-        if (list.size > 0) {
-            list.last.finish()
+        if (activityMap.size > 0) {
+            activityMap.keys.last().finish()
         }
     }
 
@@ -157,7 +201,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishAll() {
-        list.reversed().forEach {
+        activityMap.keys.reversed().forEach {
             it.finish()
         }
     }
@@ -167,7 +211,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishAllExcept(clazz: Class<out Activity>) {
-        list.reversed().forEach {
+        activityMap.keys.reversed().forEach {
             if (it.javaClass.name != clazz.name) {
                 it.finish()
             }
@@ -179,7 +223,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishAllExceptName(name: String) {
-        list.reversed().forEach {
+        activityMap.keys.reversed().forEach {
             if (it.javaClass.name != name) {
                 it.finish()
             }
@@ -192,7 +236,7 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishAllExceptSimpleName(name: String) {
-        list.reversed().forEach {
+        activityMap.keys.reversed().forEach {
             if (it.javaClass.simpleName != name) {
                 it.finish()
             }
@@ -261,8 +305,8 @@ object ActivityStack {
      */
     @JvmStatic
     fun finishExceptTop() {
-        if (list.isNotEmpty()) {
-            list.subList(0, list.size - 1).forEach {
+        if (activityMap.isNotEmpty()) {
+            activityMap.keys.toList().subList(0, activityMap.size - 1).forEach {
                 it.finish()
             }
         }

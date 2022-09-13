@@ -3,6 +3,7 @@ package com.ayvytr.ktxapp
 import android.app.Application
 import android.content.res.Configuration
 import com.ayvytr.ktx.app.ActivityStack
+import com.ayvytr.logger.L
 import com.tencent.bugly.crashreport.CrashReport
 
 /**
@@ -15,7 +16,9 @@ class App : Application() {
 
         CrashReport.initCrashReport(getApplicationContext(), "844a494050", true);
 
-        ActivityStack.registerCallback(this)
+        ActivityStack.registerCallback(this, { isForeground->
+            L.e(isForeground)
+        })
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
