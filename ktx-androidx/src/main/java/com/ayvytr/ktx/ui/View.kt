@@ -117,4 +117,9 @@ fun View.getViewId(): Int {
     return id
 }
 
-
+/**
+ * 反选
+ */
+fun View.unselect() {
+    isSelected = !isSelected
+}

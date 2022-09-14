@@ -1,11 +1,14 @@
 package com.ayvytr.ktx.ui
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.view.WindowManager
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.ayvytr.ktx.tools.bundleOf
 
 /**
  * Activity 相关的Kotlin扩展方法
@@ -14,6 +17,44 @@ import androidx.fragment.app.Fragment
  * @author Ayvytr ['s GitHub](https://github.com/Ayvytr)
  * @since 0.1.0
  */
+
+/**
+ * @since 3.1.7
+ */
+inline fun <reified T: Activity> Context.startActivity(vararg params: Pair<String, Any?>) {
+    val intent = Intent(this, T::class.java)
+    intent.putExtras(bundleOf(*params))
+    startActivity(intent)
+}
+
+/**
+ * @since 3.1.7
+ */
+inline fun <reified T: Activity> Fragment.startActivity(vararg params: Pair<String, Any?>) {
+    requireContext().startActivity<T>(*params)
+}
+
+/**
+ * @since 3.1.7
+ */
+inline fun <reified T: Activity> Activity.startActivityForResult(
+    requestCode: Int,
+    vararg params: Pair<String, Any?>
+) {
+    val intent = Intent(this, T::class.java)
+    intent.putExtras(bundleOf(*params))
+    startActivityForResult(intent, requestCode)
+}
+
+/**
+ * @since 3.1.7
+ */
+inline fun <reified T: Activity> Fragment.startActivityForResult(
+    requestCode: Int,
+    vararg params: Pair<String, Any?>
+) {
+    requireActivity().startActivityForResult<T>(requestCode, *params)
+}
 
 
 /**

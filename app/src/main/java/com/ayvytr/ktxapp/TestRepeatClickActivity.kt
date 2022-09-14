@@ -3,10 +3,10 @@ package com.ayvytr.ktxapp
 import android.os.Bundle
 import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
+import com.ayvytr.ktx.context.toast
 import com.ayvytr.ktx.ui.getViewId
 import com.ayvytr.ktx.ui.onClick
 import kotlinx.android.synthetic.main.activity_test_repeat_click.*
-import org.jetbrains.anko.toast
 
 class TestRepeatClickActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

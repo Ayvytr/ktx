@@ -2,9 +2,9 @@ package com.ayvytr.ktxapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ayvytr.ktx.context.toast
 import com.ayvytr.ktx.ui.textChange
 import kotlinx.android.synthetic.main.activity_text_change.*
-import org.jetbrains.anko.toast
 
 class TextChangeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

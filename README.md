@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:3.1.6'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.7'
 ```
 
 
@@ -21,6 +21,10 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.6'
 
 
 ## ChangeLog
+
+### 3.1.7
+
+* 增加**bundleOf()**，**<reified T: Activity> Context.startActivity()**
 
 ### 3.1.6
 

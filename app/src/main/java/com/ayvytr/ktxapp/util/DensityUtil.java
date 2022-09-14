@@ -1,4 +1,4 @@
-package com.ayvytr.ktxapp;
+package com.ayvytr.ktxapp.util;
 
 import android.content.Context;
 
