@@ -1,6 +1,7 @@
 package com.ayvytr.ktx.ui
 
 import android.app.Activity
+import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -63,6 +64,12 @@ inline fun <reified T: Activity> Fragment.startActivityForResult(
 fun Activity.getContext(): Activity {
     return this
 }
+
+/**
+ * 获取Activity作为context.
+ */
+val Activity.context: Context
+    get() = this
 
 fun Activity.showActionBar() {
     if (this is AppCompatActivity) {
