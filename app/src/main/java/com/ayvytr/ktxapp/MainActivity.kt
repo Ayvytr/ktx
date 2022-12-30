@@ -15,6 +15,7 @@ import com.ayvytr.ktx.context.isNightMode
 import com.ayvytr.ktx.ui.*
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
+import com.ayvytr.ktxapp.dialog.TestDialog
 import com.ayvytr.ktxapp.util.DensityUtil
 import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
@@ -101,6 +102,8 @@ class MainActivity : AppCompatActivity() {
         btn_test_text_change.setOnClickListener {
             startActivity<TextChangeActivity>()
         }
+
+//        TestDialog(context).show()
     }
 
 }

@@ -19,6 +19,8 @@ abstract class BaseDialog(context: Context, themeResId: Int = R.style.Transparen
 
     private var mGravity = Gravity.NO_GRAVITY
 
+    var isFullWidth = true
+
     @LayoutRes
     protected abstract fun getContentView(): Int
 
@@ -32,25 +34,24 @@ abstract class BaseDialog(context: Context, themeResId: Int = R.style.Transparen
 
     override fun show() {
         super.show()
-        setFullWidth()
+
+        if(isFullWidth) {
+            /**
+             * 设置对话框宽度占满屏幕宽度，解决了MIUI等某些定制系统手机的Dialog宽度很窄的问题. 需要对话框左右有间距，
+             * 直接给布局加margin.
+             */
+            val window = window
+            window.decorView.setPadding(0, 0, 0, 0)
+            val layoutParams = window.attributes
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+            layoutParams.horizontalMargin = 0f
+            window.attributes = layoutParams
+            window.decorView.minimumWidth = context.resources.displayMetrics.widthPixels
+        }
 
         if (mGravity != 0) {
             window.setGravity(mGravity)
         }
-    }
-
-    /**
-     * 设置对话框宽度占满屏幕宽度，解决了MIUI等某些定制系统手机的Dialog宽度很窄的问题. 需要对话框左右有间距，
-     * 直接给布局加margin.
-     */
-    fun setFullWidth(isFullWidth: Boolean = true) {
-        val window = window
-        window.decorView.setPadding(0, 0, 0, 0)
-        val layoutParams = window.attributes
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
-        layoutParams.horizontalMargin = 0f
-        window.attributes = layoutParams
-        window.decorView.minimumWidth = context.resources.displayMetrics.widthPixels
     }
 
     /**
