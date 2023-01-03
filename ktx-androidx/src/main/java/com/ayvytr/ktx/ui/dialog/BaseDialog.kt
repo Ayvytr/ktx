@@ -19,6 +19,9 @@ abstract class BaseDialog(context: Context, themeResId: Int = R.style.Transparen
 
     private var mGravity = Gravity.NO_GRAVITY
 
+    /**
+     * 注意：这个标志不能动态互相转换，只能创建时指定
+     */
     var isFullWidth = true
 
     @LayoutRes
