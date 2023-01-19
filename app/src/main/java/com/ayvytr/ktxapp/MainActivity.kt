@@ -4,23 +4,23 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.ayvytr.ktxapp.activitystack.StackActivity
-import com.ayvytr.ktxapp.et.EditTextActivity
-import com.ayvytr.ktxapp.ext.FiltersActivity
-import com.ayvytr.ktxapp.ext.StatusBarActivity
-import com.ayvytr.ktxapp.rich.RichActivity
 import com.ayvytr.ktx.context.dp
 import com.ayvytr.ktx.context.dp2px
 import com.ayvytr.ktx.context.isNightMode
 import com.ayvytr.ktx.ui.*
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
+import com.ayvytr.ktxapp.activitystack.StackActivity
 import com.ayvytr.ktxapp.dialog.TestDialog
+import com.ayvytr.ktxapp.et.EditTextActivity
+import com.ayvytr.ktxapp.ext.FiltersActivity
+import com.ayvytr.ktxapp.ext.StatusBarActivity
+import com.ayvytr.ktxapp.rich.RichActivity
 import com.ayvytr.ktxapp.util.DensityUtil
 import com.ayvytr.logger.L
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,11 +72,11 @@ class MainActivity : AppCompatActivity() {
 //        L.e(ContextProvider.getContext())
 
         val et = EditText(this)
-        et.addFilters(arrayOf<InputFilter>(EmojiFilter(), ChineseFilter()).toList())
+        et.addFilters(EmojiFilter(), ChineseFilter())
 
-        btn_to_night.text = if(isNightMode()) "切换到白天模式" else "切换到黑夜模式"
+        btn_to_night.text = if (isNightMode()) "切换到白天模式" else "切换到黑夜模式"
 //        L.e(isNightMode(), delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES)
-        btn_to_night.setOnClickListener{
+        btn_to_night.setOnClickListener {
             toNightMode(!isNightMode())
         }
         btn_activity_stack.setOnClickListener {
@@ -103,7 +103,6 @@ class MainActivity : AppCompatActivity() {
             startActivity<TextChangeActivity>()
         }
 
-//        TestDialog(context).show()
     }
 
 }

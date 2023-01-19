@@ -22,7 +22,7 @@ class ResourcesActivity : AppCompatActivity()
             btnGetAppName.text = getString(R.string.app_name)
         }
 
-        ib1.setImageDrawable(getDrawable2(R.mipmap.ic_launcher))
+        ib1.setImageDrawable(getDrawableCompat(R.mipmap.ic_launcher))
 
         val drawableArray = getDrawableArray(R.array.drawableArray)
 //        toast("drawable array size: ${drawableArray.size}")
@@ -41,7 +41,7 @@ class ResourcesActivity : AppCompatActivity()
         windowManager.defaultDisplay.getMetrics(m)
         toast("${m.widthPixels}, ${m.heightPixels}")
 
-        val color = getColor2(R.color.abc_background_cache_hint_selector_material_dark)
+        val color = getColorCompat(R.color.abc_background_cache_hint_selector_material_dark)
         btnGetAppName.setBackgroundColor(color)
 
 //        setLandscape()

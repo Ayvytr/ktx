@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:3.1.8'
+implementation 'io.github.ayvytr:ktx-androidx:4.0.0'
 ```
 
 
@@ -21,6 +21,16 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.8'
 
 
 ## ChangeLog
+
+### 4.0.0
+
+* 更新compileSdkVersion为**30**，且修改可空方法/变量问题
+* **View.onClick()** 最后一个参数action增加view参数，方便外部调用
+* 增加Activity扩展方法：**setStatusBarBgColorRes(), setStatusBarBgColor(), setNavigationBarBgColorRes(), setNavigationBarBgColor(). setLightStatusBar()**
+* 增加**File.toUriCompat**，适配android7的**FileProvider.getUriForFile**.
+* 删除所有之前版本标 **@Deprecated** 的方法
+* 修改**BaseDialog.isFullWidth**为protected
+* 更新注释
 
 ### 3.1.8
 
@@ -67,18 +77,18 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.8'
 
 ### 3.0.6
 
-1. 方法弃用和改名：
+1. 方法@Deprecated和改名：
 
-   | 文件名        | 原方法         | 新方法            |
-   | ------------- | -------------- | ----------------- |
-   | Clipboard     | getText2()     | getPalinText()    |
-   | Clipboard     | setText2()     | setPalinText()    |
-   | Res           | getDrawable2() | getDrawableCompat |
-   | Res           | getColor2()    | getColorCompat    |
-   | Context       | inflate()      | -                 |
-   | Context       | inflateRv()    | -                 |
-   | ActivityStack | killSelf()     | killApp()         |
-   | EditText      | setText2       | selectText        |
+   | 文件名        | @Deprecated 方法 | 新方法            |
+   | ------------- | ---------------- | ----------------- |
+   | Clipboard     | getText2()       | getPalinText()    |
+   | Clipboard     | setText2()       | setPalinText()    |
+   | Res           | getDrawable2()   | getDrawableCompat |
+   | Res           | getColor2()      | getColorCompat    |
+   | Context       | inflate()        | -                 |
+   | Context       | inflateRv()      | -                 |
+   | ActivityStack | killSelf()       | killApp()         |
+   | EditText      | setText2         | selectText        |
 
 2. 代码分类和优化（部分方法移动了文件，需要重新导包）
 
@@ -124,6 +134,30 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.8'
 
 
 ## 包含内容以及用法
+
+### Activity新增扩展方法
+
+    //新增方法
+    setStatusBarBgColorRes(), 
+    setStatusBarBgColor(), 
+    setNavigationBarBgColorRes(), 
+    setNavigationBarBgColor(). 
+    setLightStatusBar()
+    
+    //之前版本的方法
+    showActionBar
+    hideActionBar
+    getContext
+    fullscreen(boolean)
+    ...
+
+### File新增扩展方法
+
+```ko
+toUriCompat()  //适配android7的 [FileProvider.getUriForFile]
+```
+
+
 
 ### View最新新增方法
 
@@ -264,13 +298,6 @@ onLongClick
 ### Toast.kt 最简单的toast使用扩展方法，内部共享一个Toast实例
     context.toast(...)
     context.toastLong(...)
-
-### Activity.kt Activity扩展方法    
-    activity.showActionBar
-    activity.hideActionBar
-    activity.getContext
-    activity.fullscreen(boolean)
-    ...
 
 ### Bitmap.kt  提供了Bitmap和Drawable相互转化的方法
 

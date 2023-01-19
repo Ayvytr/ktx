@@ -97,6 +97,7 @@ fun View.isHide(): Boolean {
  * 以[millisecondInterval]内点击记录点击次数，点击次数到[doActionAfterTimes]，触发[action].
  *
  * [doActionAfterTimes]默认为1 [millisecondInterval]默认500ms.
+ * @since 4.0.0 [action]增加view参数，方便外部调用
  * @since 3.0.0
  */
 fun View.onClick(

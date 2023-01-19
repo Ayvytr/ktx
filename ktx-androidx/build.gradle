@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../kotlin_maven_push.gradle'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 14

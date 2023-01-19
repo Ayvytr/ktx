@@ -43,10 +43,10 @@ fun isNetworkConnected(): Boolean {
 
 fun isWifiConnected(): Boolean {
     val cm = getConnectivityManager()
-    return cm.activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI
+    return cm.activeNetworkInfo?.type == ConnectivityManager.TYPE_WIFI
 }
 
 fun isMobileDataConnected(): Boolean {
     val cm = getConnectivityManager()
-    return cm.activeNetworkInfo.type == ConnectivityManager.TYPE_MOBILE
+    return cm.activeNetworkInfo?.type == ConnectivityManager.TYPE_MOBILE
 }

@@ -312,41 +312,14 @@ object ActivityStack {
         }
     }
 
-    /**
-     * 强制关闭Activity.
-     * @param closeImmediately true:直接调用[Process.killProcess]和[exitProcess]终止进程; false:关闭
-     * 已打开的Activity, 在后台终止进程.
-     */
-    @Deprecated(
-        "弃用。推荐使用finishAllAndKillApp()。请慎重使用killApp()",
-        replaceWith = ReplaceWith("finishAllAndKillApp()"),
-        DeprecationLevel.ERROR
-    )
-    @JvmStatic
-    fun forceClose(closeImmediately: Boolean = false) {
-        if (closeImmediately) {
-            killApp()
-        } else {
-            isForceClose = true
-            finishAll()
-        }
-    }
 
     /**
      * 关闭所有页面后，终止进程。推荐使用这个方法终止进程.
      */
+    @JvmStatic
     fun finishAllAndKillApp() {
         isForceClose = true
         finishAll()
-    }
-
-    @Deprecated(
-        "Replace with killApp.",
-        replaceWith = ReplaceWith("killApp()")
-    )
-    @JvmStatic
-    fun killSelf() {
-        killApp()
     }
 
     /**

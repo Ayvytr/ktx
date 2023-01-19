@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/btnShowOrHideStatusBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="显示/隐藏状态栏"/>
+        android:text="显示/隐藏状态栏"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_light_or_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="切换到Dark模式" />
+</LinearLayout>

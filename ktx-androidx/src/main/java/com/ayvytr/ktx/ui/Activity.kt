@@ -4,10 +4,16 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.os.Build
+import android.view.View
+import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import android.view.WindowManager
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.ayvytr.ktx.context.getColorCompat
 import com.ayvytr.ktx.tools.bundleOf
 
 /**
@@ -148,5 +154,67 @@ fun Activity.setActivityTitle(title: String) {
             supportActionBar?.setTitle(title)
         }
         else -> actionBar?.title = title
+    }
+}
+
+
+/**
+ * 设置状态栏背景色
+ * @since 3.1.9
+ */
+fun Activity.setStatusBarBgColorRes(@ColorRes colorRes: Int) {
+    setStatusBarBgColor(getColorCompat(colorRes))
+}
+
+/**
+ * 设置状态栏背景色
+ * @since 4.0.0
+ */
+fun Activity.setStatusBarBgColor(@ColorInt color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = color
+    }
+}
+
+/**
+ * 设置导航栏背景色
+ * @since 4.0.0
+ */
+fun Activity.setNavigationBarBgColorRes(@ColorRes colorRes: Int) {
+    setNavigationBarBgColor(getColorCompat(colorRes))
+}
+
+/**
+ * 设置导航栏背景色
+ * @since 4.0.0
+ */
+fun Activity.setNavigationBarBgColor(@ColorInt color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.navigationBarColor = color
+    }
+}
+
+/**
+ * 设置状态栏为Light/Dark模式，
+ * @param isLight true: 亮色模式，文字和图标都是白色；false：暗色模式：文字和图标都是黑色
+ * @since 4.0.0
+ */
+fun Activity.setLightStatusBar(isLight: Boolean = true) {
+    if (isLight) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS)
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+        }
+    } else {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.setSystemBarsAppearance(
+                APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS
+            )
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+        }
     }
 }

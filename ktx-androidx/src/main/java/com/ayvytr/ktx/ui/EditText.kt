@@ -34,29 +34,6 @@ fun EditText.selectText(text: CharSequence?, selectAllText: Boolean = false) {
     }
 }
 
-/**
- * 设置 [EditText] 文本，并且把光标定位到末尾
- */
-@Deprecated(
-    "Deprecated. replace with selectText. Will Delete after version 4.0.0.",
-    replaceWith = ReplaceWith("selectText(text)")
-)
-fun EditText.setText2(text: CharSequence?) {
-    setText(text)
-    setSelection(getText().length)
-}
-
-/**
- * 设置 [EditText] 文本，并且全选文本
- */
-@Deprecated(
-    "Deprecated. replace with selectText. Will Delete after version 4.0.0.",
-    replaceWith = ReplaceWith("selectText(text, true)")
-)
-fun EditText.setTextWithSelection(text: CharSequence?) {
-    setText(text)
-    setSelection(0, getText().length)
-}
 
 /**
  * 增加[EditText] [filter]
@@ -65,16 +42,6 @@ fun EditText.addFilters(vararg filter: InputFilter) {
     val list = filters.toMutableList()
     list.addAll(filter)
     filters = list.toTypedArray()
-}
-
-/**
- * 设置 [EditText] filters, 先获取原有filters，和[filters]一并设置到[EditText]
- */
-@Deprecated("Deprecated, replace with add filters by vararg")
-fun EditText.addFilters(filters: List<InputFilter>) {
-    val list = filters.toMutableList()
-    list.addAll(getFilters())
-    setFilters(list.toTypedArray())
 }
 
 /**

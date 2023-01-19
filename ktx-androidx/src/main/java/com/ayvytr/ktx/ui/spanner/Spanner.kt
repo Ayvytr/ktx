@@ -25,7 +25,7 @@ import java.util.regex.Pattern
  * 1. 取消长按点击事件
  * 2. 修改点击时的字体自动换行问题
  * 3. 取消点击时的背景色圆角
- * 4. 修改点击时的字体颜色和背景色为[TextColorSpan] [BgColorSpan]保存
+ * 4. 修改点击时的字体颜色和背景色为[TextColorSpan]，[BgColorSpan]保存
  * @since 0.1.0
  */
 class Spanner(text: CharSequence):
