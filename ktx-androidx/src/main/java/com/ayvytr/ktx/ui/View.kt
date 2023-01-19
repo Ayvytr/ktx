@@ -2,7 +2,11 @@ package com.ayvytr.ktx.ui
 
 import android.os.Build
 import android.view.View
-import android.view.View.*
+import android.view.View.GONE
+import android.view.View.INVISIBLE
+import android.view.View.NO_ID
+import android.view.View.VISIBLE
+import android.view.View.generateViewId
 import androidx.annotation.IntRange
 import com.ayvytr.ktx.internal.Views
 
@@ -95,9 +99,11 @@ fun View.isHide(): Boolean {
  * [doActionAfterTimes]默认为1 [millisecondInterval]默认500ms.
  * @since 3.0.0
  */
-fun View.onClick(@IntRange(from = 1, to = Long.MAX_VALUE) doActionAfterTimes: Int = 1,
-                 @IntRange(from = 1, to = Long.MAX_VALUE) millisecondInterval: Int = 500,
-                 action: () -> Unit) {
+fun View.onClick(
+    @IntRange(from = 1, to = Long.MAX_VALUE) doActionAfterTimes: Int = 1,
+    @IntRange(from = 1, to = Long.MAX_VALUE) millisecondInterval: Int = 500,
+    action: (view: View) -> Unit
+) {
     Views.onClick(this, doActionAfterTimes, millisecondInterval, action)
 }
 

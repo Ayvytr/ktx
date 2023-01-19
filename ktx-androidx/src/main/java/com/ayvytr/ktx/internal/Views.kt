@@ -18,10 +18,12 @@ import com.ayvytr.ktx.ui.getViewId
 internal object Views {
     private val clickMap by lazy { hashMapOf<Int, Triple<Int, Int, Long>>() }
 
-    fun onClick(view: View,
-                doActionAfterTimes: Int = 1,
-                millisecondInterval: Int = 300,
-                action: () -> Unit) {
+    fun onClick(
+        view: View,
+        doActionAfterTimes: Int = 1,
+        millisecondInterval: Int = 300,
+        action: (view: View) -> Unit
+    ) {
         view.setOnClickListener {
             val viewId = view.getViewId()
             val t = clickMap[viewId]
@@ -33,7 +35,7 @@ internal object Views {
             val third = System.currentTimeMillis()
             if (times == 1) {
                 if (t == null || (third - t.third >= millisecondInterval)) {
-                    action.invoke()
+                    action.invoke(view)
                     clickMap[viewId] = Triple(1, 1, third)
                 }
             } else {
@@ -48,7 +50,7 @@ internal object Views {
                         if (newT.second != newT.first) {
                             //不做任何操作
                         } else {
-                            action.invoke()
+                            action.invoke(view)
                             clickMap.remove(viewId)
                         }
                     }
@@ -79,19 +81,21 @@ internal object Views {
         }
     }
 
-    fun textChange(et: EditText,
-                   timeout: Int,
-                   ignoreEmpty: Boolean,
-                   action: (text: String) -> Unit) {
+    fun textChange(
+        et: EditText,
+        timeout: Int,
+        ignoreEmpty: Boolean,
+        action: (text: String) -> Unit
+    ) {
         if (!textChangeMap.containsKey(et)) {
             (et.context as? FragmentActivity)?.lifecycle?.addObserver(textChangeObserver)
 
             val textWatcher = object: BaseTextWatcher() {
                 override fun afterTextChanged(s: Editable) {
                     val runnable =
-                            if (!textChangeMap.containsKey(et))
-                                Runnable { action.invoke(s.toString()) }
-                            else textChangeMap[et]!!.second
+                        if (!textChangeMap.containsKey(et))
+                            Runnable { action.invoke(s.toString()) }
+                        else textChangeMap[et]!!.second
 
                     if (!textChangeMap.containsKey(et)) {
                         textChangeMap[et] = Pair(this, runnable)
