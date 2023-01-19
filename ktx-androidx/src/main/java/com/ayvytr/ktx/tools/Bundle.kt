@@ -19,17 +19,13 @@ fun bundleOf(vararg params: Pair<String, Any?>): Bundle {
             null -> bundle.putSerializable(key, null as Serializable?)
             is Int -> bundle.putInt(key, value)
             is Long -> bundle.putLong(key, value)
-            is CharSequence -> bundle.putCharSequence(key, value)
             is String -> bundle.putString(key, value)
+            is CharSequence -> bundle.putCharSequence(key, value)
             is Float -> bundle.putFloat(key, value)
             is Double -> bundle.putDouble(key, value)
             is Char -> bundle.putChar(key, value)
             is Short -> bundle.putShort(key, value)
             is Boolean -> bundle.putBoolean(key, value)
-
-            is Serializable -> bundle.putSerializable(key, value)
-            is Bundle -> bundle.putBundle(key, value)
-            is Parcelable -> bundle.putParcelable(key, value)
 
             is ByteArray -> bundle.putByteArray(key, value)
             is CharArray -> bundle.putCharArray(key, value)
@@ -50,6 +46,10 @@ fun bundleOf(vararg params: Pair<String, Any?>): Bundle {
             }
 
             is ArrayList<*> -> bundle.putSerializable(key, value)
+
+            is Serializable -> bundle.putSerializable(key, value)
+            is Bundle -> bundle.putBundle(key, value)
+            is Parcelable -> bundle.putParcelable(key, value)
 
             //除了基本类型，数组，ArrayList，其他类型反射获取BaseBundle.mMap直接存储
             else -> {
