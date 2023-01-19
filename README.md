@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:3.1.7'
+implementation 'io.github.ayvytr:ktx-androidx:3.1.8'
 ```
 
 
@@ -21,6 +21,10 @@ implementation 'io.github.ayvytr:ktx-androidx:3.1.7'
 
 
 ## ChangeLog
+
+### 3.1.8
+
+* 修改BaseDialog full width 无法取消的问题，删除 setFullWidth()，使用 var isFullWidth代替
 
 ### 3.1.7
 
