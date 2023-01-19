@@ -160,7 +160,7 @@ fun Activity.setActivityTitle(title: String) {
 
 /**
  * 设置状态栏背景色
- * @since 3.1.9
+ * @since 4.0.0
  */
 fun Activity.setStatusBarBgColorRes(@ColorRes colorRes: Int) {
     setStatusBarBgColor(getColorCompat(colorRes))
