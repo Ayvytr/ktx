@@ -22,39 +22,44 @@ const val INTENT_LABEL = "INTENT_LABEL"
  * @since 3.0.1
  */
 fun ClipboardManager.setPlainText(text: CharSequence, label: CharSequence = PLAIN_TEXT_LABEL) {
-    primaryClip = ClipData.newPlainText(label, text)
+    setPrimaryClip(ClipData.newPlainText(label, text))
 }
 
 /**
  * @since 3.0.1
  */
 fun ClipboardManager.getPlainText(): String? {
-    if (primaryClip.itemCount > 0) {
-        return primaryClip.getItemAt(0).coerceToText(ContextProvider.getContext()).toString()
+    primaryClip?.apply {
+        if (itemCount > 0) {
+            getItemAt(0).coerceToText(ContextProvider.getContext()).toString()
+        }
     }
-
     return null
 }
 
 fun ClipboardManager.setUri(uri: Uri, label: CharSequence = URI_LABEL) {
-    primaryClip = ClipData.newUri(ContextProvider.getContext().contentResolver, label, uri)
+    setPrimaryClip(ClipData.newUri(ContextProvider.getContext().contentResolver, label, uri))
 }
 
 fun ClipboardManager.getUri(): Uri? {
-    if (primaryClip.itemCount > 0) {
-        return primaryClip.getItemAt(0).uri
+    primaryClip?.apply {
+        if(itemCount > 0) {
+            return getItemAt(0).uri
+        }
     }
 
     return null
 }
 
 fun ClipboardManager.setIntent(intent: Intent, label: CharSequence = INTENT_LABEL) {
-    primaryClip = ClipData.newIntent(label, intent)
+    setPrimaryClip(ClipData.newIntent(label, intent))
 }
 
 fun ClipboardManager.getIntent(): Intent? {
-    if (primaryClip.itemCount > 0) {
-        return primaryClip.getItemAt(0).intent
+    primaryClip?.apply {
+        if (itemCount > 0) {
+            return getItemAt(0).intent
+        }
     }
 
     return null
