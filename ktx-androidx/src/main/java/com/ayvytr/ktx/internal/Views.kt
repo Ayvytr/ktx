@@ -18,11 +18,11 @@ import com.ayvytr.ktx.ui.getViewId
 internal object Views {
     private val clickMap by lazy { hashMapOf<Int, Triple<Int, Int, Long>>() }
 
-    fun onClick(
-        view: View,
+    fun <T: View> onClick(
+        view: T,
         doActionAfterTimes: Int = 1,
         millisecondInterval: Int = 300,
-        action: (view: View) -> Unit
+        action: T.() -> Unit
     ) {
         view.setOnClickListener {
             val viewId = view.getViewId()

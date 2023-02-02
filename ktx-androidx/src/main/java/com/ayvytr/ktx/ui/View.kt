@@ -100,10 +100,10 @@ fun View.isHide(): Boolean {
  * @since 4.0.0 [action]增加view参数，方便外部调用
  * @since 3.0.0
  */
-fun View.onClick(
+fun <T: View> T.onClick(
     @IntRange(from = 1, to = Long.MAX_VALUE) doActionAfterTimes: Int = 1,
     @IntRange(from = 1, to = Long.MAX_VALUE) millisecondInterval: Int = 500,
-    action: (view: View) -> Unit
+    action: T.() -> Unit
 ) {
     Views.onClick(this, doActionAfterTimes, millisecondInterval, action)
 }

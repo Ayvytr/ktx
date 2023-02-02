@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:4.0.1'
+implementation 'io.github.ayvytr:ktx-androidx:4.0.2'
 ```
 
 
@@ -22,6 +22,9 @@ implementation 'io.github.ayvytr:ktx-androidx:4.0.1'
 
 ## ChangeLog
 
+### 4.0.2
+* 修改**View.onClick()** action的view参数没有泛型的问题
+ 
 ### 4.0.1
 * 修改切横竖屏方法**setLandscape()**,**setPortrait()**
 

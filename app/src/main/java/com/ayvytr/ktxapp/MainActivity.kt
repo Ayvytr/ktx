@@ -1,17 +1,21 @@
 package com.ayvytr.ktxapp
 
 import android.os.Bundle
-import android.text.InputFilter
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.ktx.context.dp
 import com.ayvytr.ktx.context.dp2px
 import com.ayvytr.ktx.context.isNightMode
-import com.ayvytr.ktx.ui.*
+import com.ayvytr.ktx.ui.addFilters
 import com.ayvytr.ktx.ui.edittext.ChineseFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
+import com.ayvytr.ktx.ui.getContext
+import com.ayvytr.ktx.ui.isShow
+import com.ayvytr.ktx.ui.onClick
+import com.ayvytr.ktx.ui.show
+import com.ayvytr.ktx.ui.startActivity
+import com.ayvytr.ktx.ui.toNightMode
 import com.ayvytr.ktxapp.activitystack.StackActivity
-import com.ayvytr.ktxapp.dialog.TestDialog
 import com.ayvytr.ktxapp.et.EditTextActivity
 import com.ayvytr.ktxapp.ext.FiltersActivity
 import com.ayvytr.ktxapp.ext.StatusBarActivity
