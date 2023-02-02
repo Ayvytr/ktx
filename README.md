@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:4.0.0'
+implementation 'io.github.ayvytr:ktx-androidx:4.0.1'
 ```
 
 
@@ -21,6 +21,9 @@ implementation 'io.github.ayvytr:ktx-androidx:4.0.0'
 
 
 ## ChangeLog
+
+### 4.0.1
+* 修改切横竖屏方法**setLandscape()**,**setPortrait()**
 
 ### 4.0.0
 

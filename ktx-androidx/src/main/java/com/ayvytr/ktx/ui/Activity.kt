@@ -88,12 +88,24 @@ fun Activity.hideActionBar() {
     if (this is AppCompatActivity) supportActionBar?.hide() else actionBar?.hide()
 }
 
-fun Activity.setLandscape() {
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+/**
+ * 切横竖屏
+ * @param isLandscape true: 横屏；false: 竖屏
+ */
+fun Activity.setLandscape(isLandscape: Boolean = true) {
+    requestedOrientation =
+        if (isLandscape) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
 
-fun Activity.setPortrait() {
-    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+/**
+ * 切横竖屏
+ * @param isPortrait true: 竖屏；false: 横屏
+ */
+fun Activity.setPortrait(isPortrait: Boolean = true) {
+    requestedOrientation =
+        if (!isPortrait) ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 }
 
 
