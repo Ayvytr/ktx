@@ -56,7 +56,7 @@ fun bundleOf(vararg params: Pair<String, Any?>): Bundle {
                 /**
                  * 触发Bundle.unparcel()初始化，防止mMap为空
                  */
-                bundle.remove(Int.MAX_VALUE.toString())
+                bundle.putString(null, null)
 
                 //需要sdk>=19
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
