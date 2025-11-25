@@ -16,19 +16,21 @@ import com.ayvytr.ktx.ui.show
 import com.ayvytr.ktx.ui.startActivity
 import com.ayvytr.ktx.ui.toNightMode
 import com.ayvytr.ktxapp.activitystack.StackActivity
+import com.ayvytr.ktxapp.databinding.ActivityMainBinding
 import com.ayvytr.ktxapp.et.EditTextActivity
 import com.ayvytr.ktxapp.ext.FiltersActivity
 import com.ayvytr.ktxapp.ext.StatusBarActivity
 import com.ayvytr.ktxapp.rich.RichActivity
 import com.ayvytr.ktxapp.util.DensityUtil
 import com.ayvytr.logger.L
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: AppCompatActivity() {
+    val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //        toast("这是我的Toast，哈哈！")
         //        toast("这是我的Toast，哈哈！1")
@@ -60,53 +62,56 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun initView() {
-        btn_et.onClick {
-            startActivity<EditTextActivity>()
-        }
-        btnStatusBar.setOnClickListener { startActivity<StatusBarActivity>() }
-        btn_filters.setOnClickListener {
-            startActivity<FiltersActivity>()
-        }
-        btn_rich.setOnClickListener {
-            startActivity<RichActivity>()
-        }
+        binding.apply {
 
-        getContext()
+            btnEt.onClick {
+                startActivity<EditTextActivity>()
+            }
+            btnStatusBar.setOnClickListener { startActivity<StatusBarActivity>() }
+            btnFilters.setOnClickListener {
+                startActivity<FiltersActivity>()
+            }
+            btnRich.setOnClickListener {
+                startActivity<RichActivity>()
+            }
+
+            getContext()
 
 //        L.e(ContextProvider.getContext())
 
-        val et = EditText(this)
-        et.addFilters(EmojiFilter(), ChineseFilter())
+            val et = EditText(getContext())
+            et.addFilters(EmojiFilter(), ChineseFilter())
 
-        btn_to_night.text = if (isNightMode()) "切换到白天模式" else "切换到黑夜模式"
+            btnToNight.text = if (isNightMode()) "切换到白天模式" else "切换到黑夜模式"
 //        L.e(isNightMode(), delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES)
-        btn_to_night.setOnClickListener {
-            toNightMode(!isNightMode())
-        }
-        btn_activity_stack.setOnClickListener {
-            startActivity<StackActivity>()
-        }
+            btnToNight.setOnClickListener {
+                toNightMode(!isNightMode())
+            }
+            btnActivityStack.setOnClickListener {
+                startActivity<StackActivity>()
+            }
 
-        val i = 10
-        val f = 50.5f
+            val i = 10
+            val f = 50.5f
 //        println("densityutil: dp2px:${DensityUtil.dip2px(this, i.toFloat())}")
 //        println("me: dp=${i.dp} dp2px=${i.dp2px}")
 
-        println("densityutil: dp2px:${DensityUtil.dip2px(this, f)}")
-        println("me: dp=${f.dp} dp2px=${f.dp2px}")
+            println("densityutil: dp2px:${DensityUtil.dip2px(getContext(), f)}")
+            println("me: dp=${f.dp} dp2px=${f.dp2px}")
 
-        btn_show.setOnClickListener {
-            btnStatusBar.show(btnStatusBar.isShow().not())
+            btnShow.setOnClickListener {
+                btnStatusBar.show(btnStatusBar.isShow().not())
+            }
+
+            btnTestClick.setOnClickListener {
+                startActivity<TestRepeatClickActivity>()
+            }
+
+            btnTestTextChange.setOnClickListener {
+                startActivity<TextChangeActivity>()
+            }
+
         }
-
-        btn_test_click.setOnClickListener {
-            startActivity<TestRepeatClickActivity>()
-        }
-
-        btn_test_text_change.setOnClickListener {
-            startActivity<TextChangeActivity>()
-        }
-
     }
 
 }

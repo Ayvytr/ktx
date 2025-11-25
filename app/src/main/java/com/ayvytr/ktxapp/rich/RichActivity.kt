@@ -30,7 +30,7 @@ class RichActivity: AppCompatActivity() {
             .tags(foo, bar)
             .textColorRes(
                 R.color.link,
-                R.color.red
+                R.color.colorAccent
             ) //                                    .pressedBackgroundRes(R.color.pressedBg, 2)
             .onClick(textView) { text: CharSequence, range: Range ->
                 Toast.makeText(

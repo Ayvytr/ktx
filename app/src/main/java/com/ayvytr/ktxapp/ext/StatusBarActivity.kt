@@ -8,9 +8,12 @@ import com.ayvytr.ktx.context.showStatusBar
 import com.ayvytr.ktx.ui.onClick
 import com.ayvytr.ktx.ui.setLightStatusBar
 import com.ayvytr.ktxapp.R
-import kotlinx.android.synthetic.main.activity_status_bar.*
+import com.ayvytr.ktxapp.databinding.ActivityStatusBarBinding
+import com.ayvytr.ktxapp.util.viewBinding
 
 class StatusBarActivity: AppCompatActivity() {
+    private val binding by viewBinding<ActivityStatusBarBinding>()
+
     private var isLight = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,19 +23,22 @@ class StatusBarActivity: AppCompatActivity() {
     }
 
     private fun initView() {
-        btnShowOrHideStatusBar.setOnClickListener {
-            if (isStatusBarShowing()) {
-                hideStatusBar()
-            } else {
-                showStatusBar()
-            }
-        }
+        binding.apply {
 
-        btn_light_or_dark.onClick {
-            isLight = !isLight
-            setLightStatusBar(isLight)
-            btn_light_or_dark.text = "切换到" + if (isLight) "Dark" else "Light"
-            btn_light_or_dark.append("模式")
+            btnShowOrHideStatusBar.setOnClickListener {
+                if (isStatusBarShowing()) {
+                    hideStatusBar()
+                } else {
+                    showStatusBar()
+                }
+            }
+
+            btnLightOrDark.onClick {
+                isLight = !isLight
+                setLightStatusBar(isLight)
+                btnLightOrDark.text = "切换到" + if (isLight) "Dark" else "Light"
+                btnLightOrDark.append("模式")
+            }
         }
     }
 }

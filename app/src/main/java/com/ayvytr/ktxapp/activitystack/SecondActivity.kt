@@ -4,20 +4,26 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ayvytr.ktx.app.ActivityStack
 import com.ayvytr.ktxapp.R
-import kotlinx.android.synthetic.main.activity_second.*
+import com.ayvytr.ktxapp.databinding.ActivitySecondBinding
+import com.ayvytr.ktxapp.util.viewBinding
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity: AppCompatActivity() {
+    private val binding by viewBinding<ActivitySecondBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        setContentView(binding.root)
         setTitle("SecondActivity")
-        btn_close_all_background_kill.setOnClickListener {
-            ActivityStack.finishAllAndKillApp()
-        }
-        btn_kill.setOnClickListener {
-            ActivityStack.killApp()
-        }
 
+        binding.apply {
+
+            btnCloseAllBackgroundKill.setOnClickListener {
+                ActivityStack.finishAllAndKillApp()
+            }
+            btnKill.setOnClickListener {
+                ActivityStack.killApp()
+            }
+
+        }
     }
 }

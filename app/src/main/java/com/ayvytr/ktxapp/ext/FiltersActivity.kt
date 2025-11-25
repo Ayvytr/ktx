@@ -12,23 +12,27 @@ import com.ayvytr.ktx.ui.edittext.EmailFilter
 import com.ayvytr.ktx.ui.edittext.EmojiFilter
 import com.ayvytr.ktx.ui.edittext.PasswordFilter
 import com.ayvytr.ktxapp.R
-import kotlinx.android.synthetic.main.activity_filters.*
+import com.ayvytr.ktxapp.databinding.ActivityFiltersBinding
+import com.ayvytr.ktxapp.util.viewBinding
 
 class FiltersActivity : BaseActivity<BaseViewModel<IView>>() {
+    private val binding by viewBinding<ActivityFiltersBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_filters)
+        setContentView(binding.root)
     }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
-        et_emoji_filter.addFilters(EmojiFilter(true))
-        et_password_filter.addFilters(PasswordFilter())
-        et_email_filter.addFilters(EmailFilter())
-        et_chinese_filter.addFilters(ChineseFilter())
-        et_2_digits.addFilters(DecimalDigitsInputFilter())
-        et_2_digits.setRawInputType(InputType.TYPE_CLASS_NUMBER)
+        binding.apply {
+            etEmojiFilter.addFilters(EmojiFilter(true))
+            etPasswordFilter.addFilters(PasswordFilter())
+            etEmailFilter.addFilters(EmailFilter())
+            etChineseFilter.addFilters(ChineseFilter())
+            et2Digits.addFilters(DecimalDigitsInputFilter())
+            et2Digits.setRawInputType(InputType.TYPE_CLASS_NUMBER)
+        }
     }
 }
