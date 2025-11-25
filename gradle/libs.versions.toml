@@ -5,7 +5,7 @@ coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
+appcompat = "1.1.0"
 material = "1.10.0"
 
 [libraries]
@@ -15,9 +15,18 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+constraintlayout = 'androidx.constraintlayout:constraintlayout:1.1.3'
+kotlin-stdlib8 =  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.0"
+
+logger = 'io.github.ayvytr:logger:+'
+flow = 'io.github.ayvytr:flow:+'
+
+leakcanary = 'com.squareup.leakcanary:leakcanary-android:+'
+crashreport = 'com.tencent.bugly:crashreport:+'
+
+ktx-androidx = 'io.github.ayvytr:ktx-androidx:+'
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library= { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-

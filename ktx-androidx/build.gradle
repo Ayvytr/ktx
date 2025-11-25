@@ -1,6 +1,8 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-//apply from: '../kotlin_maven_push.gradle'
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    id "com.vanniktech.maven.publish" version("0.35.0")
+}
 
 android {
     compileSdk 32
@@ -35,12 +37,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation libs.androidx.appcompat
 
-    testImplementation "junit:junit:4.12"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    implementation libs.junit
+    androidTestImplementation libs.androidx.junit
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.0"
+    implementation libs.kotlin.stdlib8
 
 //    compileOnly "io.github.ayvytr:logger:+"
 

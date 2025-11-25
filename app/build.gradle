@@ -1,8 +1,7 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-//apply plugin: 'kotlin-android-extensions'
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+}
 
 android {
     compileSdk 36
@@ -45,24 +44,22 @@ def testJcenter = false
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation libs.androidx.appcompat
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation "junit:junit:4.12"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-
-    implementation(libs.androidx.core.ktx)
+    implementation libs.androidx.core.ktx
 
 
-    implementation 'io.github.ayvytr:logger:+'
-    implementation 'io.github.ayvytr:flow:+'
+    implementation libs.logger
+    implementation libs.flow
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:+'
-    implementation 'com.tencent.bugly:crashreport:+'
+    debugImplementation libs.leakcanary
+    implementation libs.crashreport
 
     if (testJcenter) {
-        implementation 'io.github.ayvytr:ktx-androidx:+'
+        implementation libs.ktx.androidx
     } else {
         implementation project(':ktx-androidx')
     }
