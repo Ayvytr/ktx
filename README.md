@@ -9,7 +9,7 @@
 mavenCentral()
 
 ```
-implementation 'io.github.ayvytr:ktx-androidx:4.0.3'
+implementation 'io.github.ayvytr:ktx-androidx:4.0.4'
 ```
 
 
@@ -21,6 +21,10 @@ implementation 'io.github.ayvytr:ktx-androidx:4.0.3'
 
 
 ## ChangeLog
+
+### 4.0.4
+
+* 增加ActivityStack.contains()
 
 ### 4.0.3
 

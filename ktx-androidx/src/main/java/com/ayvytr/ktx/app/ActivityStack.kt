@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
+import androidx.lifecycle.Transformations.map
 import com.ayvytr.ktx.provider.ContextProvider
 import java.io.Serializable
 import kotlin.system.exitProcess
@@ -41,7 +42,7 @@ object ActivityStack {
      * Boolean: Activity是不是on stopped
      */
     @JvmStatic
-    private val activityMap by lazy {
+    val activityMap by lazy {
         LinkedHashMap<Activity, Boolean>()
     }
 
@@ -250,10 +251,7 @@ object ActivityStack {
     fun start(clazz: Class<out Activity>, map: Map<String, Serializable>? = null) {
         val currentActivity = getCurrentActivity()
         val context = ContextProvider.getContext()
-        val intent = Intent(context, clazz)
-        map?.map {
-            intent.putExtra(it.key, it.value)
-        }
+        val intent = makeIntent(clazz, map)
 
         if (currentActivity == null) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -261,6 +259,17 @@ object ActivityStack {
         } else {
             currentActivity.startActivity(intent)
         }
+    }
+
+
+    @JvmStatic
+    fun makeIntent(clazz: Class<out Activity>, map: Map<String, Serializable>?): Intent {
+        val context = ContextProvider.getContext()
+        val intent = Intent(context, clazz)
+        map?.map {
+            intent.putExtra(it.key, it.value)
+        }
+        return intent
     }
 
     /**
@@ -330,5 +339,15 @@ object ActivityStack {
     fun killApp() {
         Process.killProcess(Process.myPid())
         exitProcess(0)
+    }
+
+    @JvmStatic
+    fun contains(clazz: Class<out Activity>): Boolean {
+        return activityMap.filter { it.key.javaClass.name == clazz.name }.isNotEmpty()
+    }
+
+    @JvmStatic
+    fun contains(activityName: String): Boolean {
+        return activityMap.filter { it.key.javaClass.name == activityName }.isNotEmpty()
     }
 }
