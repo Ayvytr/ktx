@@ -16,10 +16,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup JDK 11
+      - name: Setup JDK
         uses: actions/setup-java@v5
         with:
-          java-version: '11'
+          java-version: '17'
           distribution: 'zulu'
           cache: 'gradle' # 启用 Gradle 依赖缓存
 
