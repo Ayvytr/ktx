@@ -1,6 +1,5 @@
 name: Deploy GitHub Pages
 
-# 触发条件：在 push 到 master 分支后
 on:
   push:
     branches: [ master ]
@@ -11,27 +10,31 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 拉取代码
+      # 1. 拉取代码（包括 Gradle Wrapper）
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: Set up the Java JDK
-        uses: actions/setup-java@v2
+      # 2. 设置 Java 环境
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'zulu'
 
-      # 生成javadoc
-      - uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: 6.7.1
-          arguments: dokkaHtml
+      # 3. （可选但推荐）设置 Gradle 环境并利用其缓存优化
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4 # 使用新的官方 Action 并省略 gradle-version 参数
+        # 注意这里移除了 with: gradle-version 配置
 
-      # 部署到 GitHub Pages
+      # 4. 使用项目自身的 Gradle Wrapper 生成文档
+      - name: Generate Javadoc with Gradle Wrapper
+        run: ./gradlew dokkaHtml # 使用 ./gradlew 而不是指定版本的 gradle
+
+      # 5. 部署到 GitHub Pages
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           REPOSITORY_NAME: ayvytr/ayvytr.github.io
