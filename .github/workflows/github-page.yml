@@ -28,6 +28,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v4 # 使用新的官方 Action 并省略 gradle-version 参数
         # 注意这里移除了 with: gradle-version 配置
 
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       # 4. 使用项目自身的 Gradle Wrapper 生成文档
       - name: Generate Javadoc with Gradle Wrapper
         run: ./gradlew dokkaHtml # 使用 ./gradlew 而不是指定版本的 gradle

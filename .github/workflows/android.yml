@@ -28,10 +28,12 @@ jobs:
 
       - name: Execute Gradle tasks
         uses: gradle/actions/setup-gradle@v5
-        with:
-          # 移除单独的 gradle-version，让 Action 自动使用项目中的 wrapper
-          arguments: |
-            build --dry-run
-            check
-            lint
-            assembleRelease
+
+      - name: Build with Gradle
+        run: ./gradlew --dry-run
+
+      - name: Build with Gradle
+        run: ./gradlew lint
+
+      - name: Build with Gradle
+        run: ./gradlew assembleRelease
