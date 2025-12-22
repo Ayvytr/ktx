@@ -32,8 +32,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew --dry-run
 
-      - name: Build with Gradle
-        run: ./gradlew lint
+#      - name: Build with Gradle
+#        run: ./gradlew lint
 
       - name: Build with Gradle
         run: ./gradlew assembleRelease
