@@ -33,7 +33,7 @@ jobs:
 
       # 4. 使用项目自身的 Gradle Wrapper 生成文档
       - name: Generate Javadoc with Gradle Wrapper
-        run: ./gradlew dokkaHtml # 使用 ./gradlew 而不是指定版本的 gradle
+        run: ./gradlew dokkaGenerateHtml # 使用 ./gradlew 而不是指定版本的 gradle
 
       # 5. 部署到 GitHub Pages
       - name: Deploy
