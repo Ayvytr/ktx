@@ -1,1 +1,0 @@
-sourceset_dependencies='{":ktx-androidx/debug":[],":ktx-androidx/main":[],":ktx-androidx/release":[]}'
