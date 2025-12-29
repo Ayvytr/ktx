@@ -39,12 +39,9 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # 关键修正1：使用标准的 'token' 参数
-          token: ${{ secrets.ACCESS_TOKEN }}
-          # 关键修正2：使用 'repository-name' 而非 'REPOSITORY_NAME'
-          repository-name: ayvytr/ayvytr.github.io
-          branch: master
-          folder: ./ktx-androidx/build/dokka/html
-          clean: false
-          # 关键修正3：使用 'target-folder' 而非 'TARGET_FOLDER'
-          target-folder: javadocs/ktx
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          REPOSITORY_NAME: ayvytr/ayvytr.github.io
+          BRANCH: master
+          FOLDER: ./ktx-androidx/build/dokka/html
+          CLEAN: false
+          TARGET_FOLDER: javadocs/ktx

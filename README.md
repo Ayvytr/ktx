@@ -16,7 +16,7 @@ implementation 'io.github.ayvytr:ktx-androidx:4.0.4'
 
 ## 说明
 
-3.0.6适配了androidx
+3.0.6k开始适配了androidx
 
 
 
